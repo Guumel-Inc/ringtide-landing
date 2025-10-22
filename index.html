@@ -475,21 +475,35 @@
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="pt-20 pb-4 lg:pt-24 lg:pb-6 bg-gray-50">
+    <section id="pricing" class="pt-14 pb-4 lg:pt-16 lg:pb-6 bg-gray-50" x-data="{ billingPeriod: 'monthly' }">
         <div class="container mx-auto px-4">
             <h2 class="text-xl lg:text-2xl font-bold text-center mb-1" x-text="t('pricing.headline')"></h2>
             <p class="text-xs lg:text-sm text-gray-600 text-center mb-3" x-text="t('pricing.subheadline')"></p>
 
+            <!-- Billing Period Toggle -->
+            <div class="flex items-center justify-center gap-3 mb-6">
+                <span class="text-sm font-medium" :class="billingPeriod === 'monthly' ? 'text-gray-900' : 'text-gray-500'" x-text="t('pricing.monthly')"></span>
+
+                <button @click="billingPeriod = billingPeriod === 'monthly' ? 'yearly' : 'monthly'" class="relative w-14 h-7 bg-gray-300 rounded-full transition-colors duration-300" :class="billingPeriod === 'yearly' ? 'bg-cyan-600' : 'bg-gray-300'">
+                    <span class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-transform duration-300 transform" :class="billingPeriod === 'yearly' ? 'translate-x-7' : 'translate-x-0'"></span>
+                </button>
+
+                <span class="text-sm font-medium" :class="billingPeriod === 'yearly' ? 'text-gray-900' : 'text-gray-500'" x-text="t('pricing.yearly')"></span>
+
+                <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-semibold" x-show="billingPeriod === 'yearly'" x-text="t('pricing.save')"></span>
+            </div>
+
             <div class="grid md:grid-cols-3 gap-4 max-w-7xl mx-auto">
                 <!-- Basic Plan -->
-                <div class="bg-white rounded-lg p-3 shadow-lg hover:shadow-xl transition">
+                <div class="bg-white rounded-lg p-3 shadow-xl hover:shadow-2xl transition border border-gray-200">
                     <div class="text-center mb-2">
                         <h3 class="text-lg font-bold mb-1" x-text="t('pricing.basic.name')"></h3>
                         <div class="inline-block bg-gray-200 text-gray-700 px-2 py-0.5 rounded-full text-xs font-semibold" x-text="t('pricing.basic.badge')"></div>
                     </div>
                     <div class="text-center mb-3">
-                        <div class="text-3xl font-bold text-gray-900">$99</div>
+                        <div class="text-3xl font-bold text-gray-900" x-text="billingPeriod === 'monthly' ? '$99' : '$84'"></div>
                         <div class="text-xs text-gray-600" x-text="'/ ' + t('pricing.month')"></div>
+                        <div class="text-xs text-gray-500 mt-1" x-show="billingPeriod === 'yearly'" x-text="'$1,010 ' + t('pricing.billedYearly')"></div>
                     </div>
                     <ul class="space-y-1.5 mb-4">
                         <li class="flex items-start gap-2">
@@ -536,8 +550,9 @@
                         <div class="inline-block bg-cyan-100 text-cyan-700 px-2 py-0.5 rounded-full text-xs font-semibold" x-text="t('pricing.professional.badge')"></div>
                     </div>
                     <div class="text-center mb-3">
-                        <div class="text-3xl font-bold gradient-text">$299</div>
+                        <div class="text-3xl font-bold gradient-text" x-text="billingPeriod === 'monthly' ? '$299' : '$254'"></div>
                         <div class="text-xs text-gray-600" x-text="'/ ' + t('pricing.month')"></div>
+                        <div class="text-xs text-gray-500 mt-1" x-show="billingPeriod === 'yearly'" x-text="'$3,050 ' + t('pricing.billedYearly')"></div>
                     </div>
                     <ul class="space-y-1.5 mb-4">
                         <li class="flex items-start gap-2">
@@ -581,14 +596,15 @@
                 </div>
 
                 <!-- Growth Plan -->
-                <div class="bg-white rounded-lg p-3 shadow-lg hover:shadow-xl transition">
+                <div class="bg-white rounded-lg p-3 shadow-xl hover:shadow-2xl transition border border-gray-200">
                     <div class="text-center mb-2">
                         <h3 class="text-lg font-bold mb-1" x-text="t('pricing.growth.name')"></h3>
                         <div class="inline-block bg-gray-200 text-gray-700 px-2 py-0.5 rounded-full text-xs font-semibold" x-text="t('pricing.growth.badge')"></div>
                     </div>
                     <div class="text-center mb-3">
-                        <div class="text-3xl font-bold text-gray-900">$599</div>
+                        <div class="text-3xl font-bold text-gray-900" x-text="billingPeriod === 'monthly' ? '$599' : '$509'"></div>
                         <div class="text-xs text-gray-600" x-text="'/ ' + t('pricing.month')"></div>
+                        <div class="text-xs text-gray-500 mt-1" x-show="billingPeriod === 'yearly'" x-text="'$6,110 ' + t('pricing.billedYearly')"></div>
                     </div>
                     <ul class="space-y-1.5 mb-4">
                         <li class="flex items-start gap-2">
@@ -630,14 +646,6 @@
                     </ul>
                     <a href="mailto:hi@ringtide.ai?subject=RingTide Growth Plan" class="block w-full text-center bg-gray-200 text-gray-800 py-1.5 rounded-lg font-bold text-xs hover:bg-gray-300 transition" x-text="t('pricing.cta')"></a>
                 </div>
-            </div>
-
-            <!-- Pricing Footer -->
-            <div class="text-center mt-3">
-                <p class="text-xs text-gray-600">
-                    <span class="font-semibold" x-text="t('pricing.footer.discount')"></span>
-                    <span x-text="t('pricing.footer.annual')"></span>
-                </p>
             </div>
         </div>
     </section>
@@ -1034,12 +1042,16 @@
                             pricing: {
                                 headline: "Simple, Transparent Pricing",
                                 subheadline: "No setup fees. No contracts. Cancel anytime.",
+                                monthly: "Monthly",
+                                yearly: "Yearly",
+                                save: "Save 15%",
                                 month: "month",
+                                billedYearly: "billed yearly",
                                 cta: "Start Free Trial",
                                 basic: {
                                     name: "Basic",
                                     badge: "Small Businesses",
-                                    feature1: "300 minutes/month (~15-20 calls/day)",
+                                    feature1: "300 minutes/month",
                                     feature2: "English OR French",
                                     feature3: "24/7 answering",
                                     feature4: "Message taking",
@@ -1049,7 +1061,7 @@
                                     name: "Professional",
                                     badge: "Growing Businesses",
                                     featured: "MOST POPULAR",
-                                    feature1: "800 minutes/month (~40-50 calls/day)",
+                                    feature1: "800 minutes/month",
                                     feature2: "Bilingual (EN + FR)",
                                     feature3: "Appointment booking",
                                     feature4: "Call routing to team",
@@ -1059,7 +1071,7 @@
                                 growth: {
                                     name: "Growth",
                                     badge: "Multi-Location",
-                                    feature1: "2,000 minutes/month (~100-130 calls/day)",
+                                    feature1: "2,000 minutes/month",
                                     feature2: "Outbound calling",
                                     feature3: "Multi-location (up to 5)",
                                     feature4: "Advanced CRM integration",
@@ -1224,7 +1236,11 @@
                             pricing: {
                                 headline: "Tarification Simple et Transparente",
                                 subheadline: "Aucuns frais d'installation. Sans engagement. Annulez à tout moment.",
+                                monthly: "Mensuel",
+                                yearly: "Annuel",
+                                save: "Économisez 15%",
                                 month: "mois",
+                                billedYearly: "facturé annuellement",
                                 cta: "Essai Gratuit",
                                 basic: {
                                     name: "Basique",
