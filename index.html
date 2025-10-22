@@ -64,6 +64,7 @@
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 20px;
         }
 
         .gradient-bg {
@@ -159,8 +160,8 @@
         <nav class="container mx-auto px-4 py-4">
             <div class="flex justify-between items-center">
                 <!-- Logo -->
-                <div class="flex items-center">
-                    <svg class="h-12 lg:h-14 w-auto" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+                <a href="#" class="flex items-center">
+                    <svg class="h-12 lg:h-14 w-auto cursor-pointer" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                                 <stop offset="0%" style="stop-color:#0891B2;stop-opacity:1" />
@@ -180,7 +181,7 @@
                         <text x="125" y="65" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="42" font-weight="800" letter-spacing="-0.02em" fill="url(#textGradient)">RingTide</text>
                         <text x="125" y="85" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" font-style="italic" letter-spacing="0.02em" fill="#64748B">always there</text>
                     </svg>
-                </div>
+                </a>
 
                 <!-- Navigation Links & Language Switcher -->
                 <div class="flex items-center gap-6">
@@ -197,7 +198,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="gradient-bg text-white py-16 lg:py-24 relative overflow-hidden">
+    <section class="gradient-bg text-white py-8 lg:py-12 relative overflow-hidden">
         <div class="absolute inset-0 opacity-10">
             <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
                 <pattern id="wave" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
@@ -209,31 +210,31 @@
 
         <div class="container mx-auto px-4 relative z-10">
             <div class="max-w-4xl mx-auto text-center">
-                <h1 class="text-4xl lg:text-6xl font-extrabold mb-6 leading-tight" x-text="t('hero.headline')"></h1>
-                <p class="text-lg lg:text-xl mb-8 opacity-95" x-text="t('hero.subheadline')"></p>
+                <h1 class="text-3xl lg:text-4xl font-extrabold mb-2 leading-tight" x-text="t('hero.headline')"></h1>
+                <p class="text-sm lg:text-base mb-4 opacity-95" x-text="t('hero.subheadline')"></p>
 
                 <!-- Try It Live Section -->
-                <div class="bg-white/15 backdrop-blur-md border-2 border-white/30 rounded-2xl p-6 lg:p-8 mb-8 shadow-2xl">
-                    <h3 class="text-xl lg:text-2xl font-bold mb-4" x-text="t('hero.tryItLive.headline')"></h3>
-                    <p class="text-sm lg:text-base mb-6 opacity-90" x-text="t('hero.tryItLive.subheadline')"></p>
+                <div class="bg-white/15 backdrop-blur-md border-2 border-white/30 rounded-xl p-4 lg:p-5 mb-4 shadow-2xl">
+                    <h3 class="text-base lg:text-xl font-bold mb-2" x-text="t('hero.tryItLive.headline')"></h3>
+                    <p class="text-xs lg:text-sm mb-4 opacity-90" x-text="t('hero.tryItLive.subheadline')"></p>
 
-                    <div class="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                    <div class="grid sm:grid-cols-2 gap-3 max-w-2xl mx-auto">
                         <!-- English Number -->
-                        <a href="tel:+18777692515" class="bg-white text-gray-900 rounded-xl p-4 hover:shadow-xl transition transform hover:scale-105 group">
-                            <div class="flex items-center justify-center gap-2 mb-2">
-                                <span class="text-2xl">🇬🇧</span>
-                                <span class="font-bold text-lg" x-text="t('hero.tryItLive.english')"></span>
+                        <a href="tel:+18777692515" class="bg-white text-gray-900 rounded-lg p-3.5 hover:shadow-xl transition transform hover:scale-105 group">
+                            <div class="flex items-center justify-center gap-2 mb-1.5">
+                                <span class="text-xl">🇬🇧</span>
+                                <span class="font-bold text-base" x-text="t('hero.tryItLive.english')"></span>
                             </div>
-                            <div class="text-2xl lg:text-3xl font-bold text-cyan-600 group-hover:text-cyan-700">
+                            <div class="text-xl lg:text-2xl font-bold text-cyan-600 group-hover:text-cyan-700">
                                 +1 877-769-2515
                             </div>
-                            <div class="text-xs text-gray-600 mt-2" x-text="t('hero.tryItLive.tapToCall')"></div>
+                            <div class="text-xs text-gray-600 mt-1.5" x-text="t('hero.tryItLive.tapToCall')"></div>
                         </a>
 
                         <!-- French Number -->
-                        <a href="tel:+14388009629" class="bg-white text-gray-900 rounded-xl p-4 hover:shadow-xl transition transform hover:scale-105 group">
-                            <div class="flex items-center justify-center gap-2 mb-2">
-                                <svg class="w-6 h-6" viewBox="0 0 48 36" xmlns="http://www.w3.org/2000/svg">
+                        <a href="tel:+14388009629" class="bg-white text-gray-900 rounded-lg p-3.5 hover:shadow-xl transition transform hover:scale-105 group">
+                            <div class="flex items-center justify-center gap-2 mb-1.5">
+                                <svg class="w-5 h-5" viewBox="0 0 48 36" xmlns="http://www.w3.org/2000/svg">
                                     <!-- Blue background -->
                                     <rect width="48" height="36" fill="#003F87"/>
                                     <!-- White cross -->
@@ -245,37 +246,37 @@
                                     <text x="7" y="30" font-size="8" fill="white">⚜</text>
                                     <text x="33" y="30" font-size="8" fill="white">⚜</text>
                                 </svg>
-                                <span class="font-bold text-lg" x-text="t('hero.tryItLive.french')"></span>
+                                <span class="font-bold text-base" x-text="t('hero.tryItLive.french')"></span>
                             </div>
-                            <div class="text-2xl lg:text-3xl font-bold text-cyan-600 group-hover:text-cyan-700">
+                            <div class="text-xl lg:text-2xl font-bold text-cyan-600 group-hover:text-cyan-700">
                                 +1 438-800-9629
                             </div>
-                            <div class="text-xs text-gray-600 mt-2" x-text="t('hero.tryItLive.tapToCall')"></div>
+                            <div class="text-xs text-gray-600 mt-1.5" x-text="t('hero.tryItLive.tapToCall')"></div>
                         </a>
                     </div>
                 </div>
 
                 <!-- Dual CTAs -->
-                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-                    <a href="#demo" class="bg-white text-cyan-600 px-8 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition transform hover:-translate-y-1" x-text="t('hero.ctaPrimary')"></a>
-                    <a href="#pricing" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-cyan-600 transition transform hover:-translate-y-1" x-text="t('hero.ctaSecondary')"></a>
+                <div class="flex flex-col sm:flex-row gap-3 justify-center mb-3">
+                    <a href="#demo" class="bg-white text-cyan-600 px-6 py-2.5 rounded-lg font-bold text-sm hover:shadow-xl transition transform hover:-translate-y-1" x-text="t('hero.ctaPrimary')"></a>
+                    <a href="#pricing" class="bg-transparent border-2 border-white text-white px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-white hover:text-cyan-600 transition transform hover:-translate-y-1" x-text="t('hero.ctaSecondary')"></a>
                 </div>
 
                 <!-- Trust Badges -->
-                <div class="flex flex-wrap justify-center gap-4 lg:gap-8 text-sm lg:text-base">
-                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                <div class="flex flex-wrap justify-center gap-2 lg:gap-3 text-xs">
+                    <div class="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20">
                         <span>🇨🇦</span>
                         <span x-text="t('hero.badges.canadian')"></span>
                     </div>
-                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                    <div class="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20">
                         <span>🔒</span>
                         <span x-text="t('hero.badges.pipeda')"></span>
                     </div>
-                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                    <div class="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20">
                         <span>⚡</span>
                         <span x-text="t('hero.badges.setup')"></span>
                     </div>
-                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                    <div class="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20">
                         <span>🚫</span>
                         <span x-text="t('hero.badges.noContract')"></span>
                     </div>
@@ -285,15 +286,15 @@
     </section>
 
     <!-- Interactive Demo Section -->
-    <section id="demo" class="py-16 lg:py-24 bg-white">
+    <section id="demo" class="py-10 lg:py-16 bg-white">
         <div class="container mx-auto px-4">
             <div class="max-w-5xl mx-auto">
-                <h2 class="text-3xl lg:text-5xl font-bold text-center mb-4" x-text="t('demo.headline')"></h2>
-                <p class="text-xl text-gray-600 text-center mb-12" x-text="t('demo.subheadline')"></p>
+                <h2 class="text-2xl lg:text-4xl font-bold text-center mb-3" x-text="t('demo.headline')"></h2>
+                <p class="text-base lg:text-lg text-gray-600 text-center mb-8" x-text="t('demo.subheadline')"></p>
 
-                <div class="grid md:grid-cols-2 gap-8">
+                <div class="grid md:grid-cols-2 gap-6">
                     <!-- HVAC Demo Card -->
-                    <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition">
+                    <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 shadow-lg hover:shadow-xl transition">
                         <div class="inline-block bg-cyan-600 text-white px-3 py-1 rounded-full text-sm font-semibold mb-4" x-text="t('demo.hvac.badge')"></div>
                         <h3 class="text-2xl font-bold mb-3" x-text="t('demo.hvac.title')"></h3>
 
@@ -322,7 +323,7 @@
                     </div>
 
                     <!-- Medical Demo Card -->
-                    <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition">
+                    <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 shadow-lg hover:shadow-xl transition">
                         <div class="inline-block bg-cyan-600 text-white px-3 py-1 rounded-full text-sm font-semibold mb-4" x-text="t('demo.medical.badge')"></div>
                         <h3 class="text-2xl font-bold mb-3" x-text="t('demo.medical.title')"></h3>
 
@@ -355,7 +356,7 @@
     </section>
 
     <!-- Problem/Solution Section -->
-    <section class="py-16 lg:py-24 bg-gray-50">
+    <section class="py-10 lg:py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
                 <!-- Problem Side -->
@@ -424,11 +425,11 @@
     </section>
 
     <!-- ROI Calculator -->
-    <section class="py-16 lg:py-24 bg-white">
+    <section class="py-10 lg:py-16 bg-white">
         <div class="container mx-auto px-4">
             <div class="max-w-3xl mx-auto">
-                <h2 class="text-3xl lg:text-4xl font-bold text-center mb-4" x-text="t('roi.headline')"></h2>
-                <p class="text-xl text-gray-600 text-center mb-12" x-text="t('roi.subheadline')"></p>
+                <h2 class="text-2xl lg:text-3xl font-bold text-center mb-3" x-text="t('roi.headline')"></h2>
+                <p class="text-base lg:text-lg text-gray-600 text-center mb-8" x-text="t('roi.subheadline')"></p>
 
                 <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 shadow-lg">
                     <!-- Calculator Inputs -->
@@ -474,166 +475,166 @@
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="py-16 lg:py-24 bg-gray-50">
+    <section id="pricing" class="pt-20 pb-4 lg:pt-24 lg:pb-6 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl lg:text-5xl font-bold text-center mb-4" x-text="t('pricing.headline')"></h2>
-            <p class="text-xl text-gray-600 text-center mb-12" x-text="t('pricing.subheadline')"></p>
+            <h2 class="text-xl lg:text-2xl font-bold text-center mb-1" x-text="t('pricing.headline')"></h2>
+            <p class="text-xs lg:text-sm text-gray-600 text-center mb-3" x-text="t('pricing.subheadline')"></p>
 
-            <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-3 gap-4 max-w-7xl mx-auto">
                 <!-- Basic Plan -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition">
-                    <div class="text-center mb-6">
-                        <h3 class="text-2xl font-bold mb-2" x-text="t('pricing.basic.name')"></h3>
-                        <div class="inline-block bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold" x-text="t('pricing.basic.badge')"></div>
+                <div class="bg-white rounded-lg p-3 shadow-lg hover:shadow-xl transition">
+                    <div class="text-center mb-2">
+                        <h3 class="text-lg font-bold mb-1" x-text="t('pricing.basic.name')"></h3>
+                        <div class="inline-block bg-gray-200 text-gray-700 px-2 py-0.5 rounded-full text-xs font-semibold" x-text="t('pricing.basic.badge')"></div>
                     </div>
-                    <div class="text-center mb-6">
-                        <div class="text-5xl font-bold text-gray-900">$99</div>
-                        <div class="text-gray-600" x-text="'/ ' + t('pricing.month')"></div>
+                    <div class="text-center mb-3">
+                        <div class="text-3xl font-bold text-gray-900">$99</div>
+                        <div class="text-xs text-gray-600" x-text="'/ ' + t('pricing.month')"></div>
                     </div>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <ul class="space-y-1.5 mb-4">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-gray-700" x-text="t('pricing.basic.feature1')"></span>
+                            <span class="text-xs text-gray-700" x-text="t('pricing.basic.feature1')"></span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-gray-700" x-text="t('pricing.basic.feature2')"></span>
+                            <span class="text-xs text-gray-700" x-text="t('pricing.basic.feature2')"></span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-gray-700" x-text="t('pricing.basic.feature3')"></span>
+                            <span class="text-xs text-gray-700" x-text="t('pricing.basic.feature3')"></span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-gray-700" x-text="t('pricing.basic.feature4')"></span>
+                            <span class="text-xs text-gray-700" x-text="t('pricing.basic.feature4')"></span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-gray-700" x-text="t('pricing.basic.feature5')"></span>
+                            <span class="text-xs text-gray-700" x-text="t('pricing.basic.feature5')"></span>
                         </li>
                     </ul>
-                    <a href="mailto:hi@ringtide.ai?subject=RingTide Basic Plan" class="block w-full text-center bg-gray-200 text-gray-800 py-3 rounded-lg font-bold hover:bg-gray-300 transition" x-text="t('pricing.cta')"></a>
+                    <a href="mailto:hi@ringtide.ai?subject=RingTide Basic Plan" class="block w-full text-center bg-gray-200 text-gray-800 py-1.5 rounded-lg font-bold text-xs hover:bg-gray-300 transition" x-text="t('pricing.cta')"></a>
                 </div>
 
                 <!-- Professional Plan (Featured) -->
-                <div class="bg-white rounded-2xl p-8 shadow-2xl border-4 border-cyan-500 transform lg:scale-105 relative">
-                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                        <div class="bg-cyan-500 text-white px-4 py-1 rounded-full text-sm font-bold" x-text="t('pricing.professional.featured')"></div>
+                <div class="bg-white rounded-lg p-3 shadow-2xl border-4 border-cyan-500 transform lg:scale-105 relative">
+                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                        <div class="bg-cyan-500 text-white px-3 py-0.5 rounded-full text-xs font-bold" x-text="t('pricing.professional.featured')"></div>
                     </div>
-                    <div class="text-center mb-6 mt-4">
-                        <h3 class="text-2xl font-bold mb-2" x-text="t('pricing.professional.name')"></h3>
-                        <div class="inline-block bg-cyan-100 text-cyan-700 px-3 py-1 rounded-full text-sm font-semibold" x-text="t('pricing.professional.badge')"></div>
+                    <div class="text-center mb-2 mt-2">
+                        <h3 class="text-lg font-bold mb-1" x-text="t('pricing.professional.name')"></h3>
+                        <div class="inline-block bg-cyan-100 text-cyan-700 px-2 py-0.5 rounded-full text-xs font-semibold" x-text="t('pricing.professional.badge')"></div>
                     </div>
-                    <div class="text-center mb-6">
-                        <div class="text-5xl font-bold gradient-text">$299</div>
-                        <div class="text-gray-600" x-text="'/ ' + t('pricing.month')"></div>
+                    <div class="text-center mb-3">
+                        <div class="text-3xl font-bold gradient-text">$299</div>
+                        <div class="text-xs text-gray-600" x-text="'/ ' + t('pricing.month')"></div>
                     </div>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <ul class="space-y-1.5 mb-4">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-gray-700" x-text="t('pricing.professional.feature1')"></span>
+                            <span class="text-xs text-gray-700" x-text="t('pricing.professional.feature1')"></span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-gray-700 font-semibold" x-text="t('pricing.professional.feature2')"></span>
+                            <span class="text-xs text-gray-700 font-semibold" x-text="t('pricing.professional.feature2')"></span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-gray-700" x-text="t('pricing.professional.feature3')"></span>
+                            <span class="text-xs text-gray-700" x-text="t('pricing.professional.feature3')"></span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-gray-700" x-text="t('pricing.professional.feature4')"></span>
+                            <span class="text-xs text-gray-700" x-text="t('pricing.professional.feature4')"></span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-gray-700" x-text="t('pricing.professional.feature5')"></span>
+                            <span class="text-xs text-gray-700" x-text="t('pricing.professional.feature5')"></span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-gray-700 font-semibold" x-text="t('pricing.professional.feature6')"></span>
+                            <span class="text-xs text-gray-700 font-semibold" x-text="t('pricing.professional.feature6')"></span>
                         </li>
                     </ul>
-                    <a href="mailto:hi@ringtide.ai?subject=RingTide Professional Plan" class="block w-full text-center gradient-bg text-white py-3 rounded-lg font-bold hover:shadow-cyan transition transform hover:-translate-y-0.5" x-text="t('pricing.cta')"></a>
+                    <a href="mailto:hi@ringtide.ai?subject=RingTide Professional Plan" class="block w-full text-center gradient-bg text-white py-1.5 rounded-lg font-bold text-xs hover:shadow-cyan transition transform hover:-translate-y-0.5" x-text="t('pricing.cta')"></a>
                 </div>
 
                 <!-- Growth Plan -->
-                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition">
-                    <div class="text-center mb-6">
-                        <h3 class="text-2xl font-bold mb-2" x-text="t('pricing.growth.name')"></h3>
-                        <div class="inline-block bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold" x-text="t('pricing.growth.badge')"></div>
+                <div class="bg-white rounded-lg p-3 shadow-lg hover:shadow-xl transition">
+                    <div class="text-center mb-2">
+                        <h3 class="text-lg font-bold mb-1" x-text="t('pricing.growth.name')"></h3>
+                        <div class="inline-block bg-gray-200 text-gray-700 px-2 py-0.5 rounded-full text-xs font-semibold" x-text="t('pricing.growth.badge')"></div>
                     </div>
-                    <div class="text-center mb-6">
-                        <div class="text-5xl font-bold text-gray-900">$599</div>
-                        <div class="text-gray-600" x-text="'/ ' + t('pricing.month')"></div>
+                    <div class="text-center mb-3">
+                        <div class="text-3xl font-bold text-gray-900">$599</div>
+                        <div class="text-xs text-gray-600" x-text="'/ ' + t('pricing.month')"></div>
                     </div>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <ul class="space-y-1.5 mb-4">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-gray-700" x-text="t('pricing.growth.feature1')"></span>
+                            <span class="text-xs text-gray-700" x-text="t('pricing.growth.feature1')"></span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-gray-700 font-semibold" x-text="t('pricing.growth.feature2')"></span>
+                            <span class="text-xs text-gray-700 font-semibold" x-text="t('pricing.growth.feature2')"></span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-gray-700" x-text="t('pricing.growth.feature3')"></span>
+                            <span class="text-xs text-gray-700" x-text="t('pricing.growth.feature3')"></span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-gray-700" x-text="t('pricing.growth.feature4')"></span>
+                            <span class="text-xs text-gray-700" x-text="t('pricing.growth.feature4')"></span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-gray-700" x-text="t('pricing.growth.feature5')"></span>
+                            <span class="text-xs text-gray-700" x-text="t('pricing.growth.feature5')"></span>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <li class="flex items-start gap-2">
+                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-gray-700" x-text="t('pricing.growth.feature6')"></span>
+                            <span class="text-xs text-gray-700" x-text="t('pricing.growth.feature6')"></span>
                         </li>
                     </ul>
-                    <a href="mailto:hi@ringtide.ai?subject=RingTide Growth Plan" class="block w-full text-center bg-gray-200 text-gray-800 py-3 rounded-lg font-bold hover:bg-gray-300 transition" x-text="t('pricing.cta')"></a>
+                    <a href="mailto:hi@ringtide.ai?subject=RingTide Growth Plan" class="block w-full text-center bg-gray-200 text-gray-800 py-1.5 rounded-lg font-bold text-xs hover:bg-gray-300 transition" x-text="t('pricing.cta')"></a>
                 </div>
             </div>
 
             <!-- Pricing Footer -->
-            <div class="text-center mt-12">
-                <p class="text-gray-600">
+            <div class="text-center mt-3">
+                <p class="text-xs text-gray-600">
                     <span class="font-semibold" x-text="t('pricing.footer.discount')"></span>
                     <span x-text="t('pricing.footer.annual')"></span>
                 </p>
@@ -642,9 +643,9 @@
     </section>
 
     <!-- Industry Use Cases -->
-    <section id="solution" class="py-16 lg:py-24 bg-white">
+    <section id="solution" class="py-10 lg:py-16 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl lg:text-5xl font-bold text-center mb-12" x-text="t('industries.headline')"></h2>
+            <h2 class="text-2xl lg:text-4xl font-bold text-center mb-8" x-text="t('industries.headline')"></h2>
 
             <!-- Industry Tabs -->
             <div class="flex flex-wrap justify-center gap-4 mb-12" x-data="{activeIndustry: 'home'}">
@@ -788,9 +789,9 @@
     </section>
 
     <!-- FAQ Section -->
-    <section id="faq" class="py-16 lg:py-24 bg-gray-50">
+    <section id="faq" class="py-10 lg:py-16 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl lg:text-5xl font-bold text-center mb-12" x-text="t('faq.headline')"></h2>
+            <h2 class="text-2xl lg:text-4xl font-bold text-center mb-8" x-text="t('faq.headline')"></h2>
 
             <div class="max-w-3xl mx-auto space-y-4" x-data="{openFaq: null}">
                 <!-- FAQ 1 -->
@@ -863,7 +864,7 @@
     </section>
 
     <!-- Final CTA Section -->
-    <section id="contact" class="gradient-bg text-white py-16 lg:py-24 relative overflow-hidden">
+    <section id="contact" class="gradient-bg text-white py-10 lg:py-16 relative overflow-hidden">
         <div class="absolute inset-0 opacity-10">
             <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
                 <pattern id="wave2" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
@@ -874,12 +875,12 @@
         </div>
 
         <div class="container mx-auto px-4 relative z-10 text-center">
-            <h2 class="text-4xl lg:text-5xl font-bold mb-6" x-text="t('finalCta.headline')"></h2>
-            <p class="text-xl mb-8 opacity-95" x-text="t('finalCta.subheadline')"></p>
+            <h2 class="text-2xl lg:text-4xl font-bold mb-4" x-text="t('finalCta.headline')"></h2>
+            <p class="text-base lg:text-lg mb-6 opacity-95" x-text="t('finalCta.subheadline')"></p>
 
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-                <a href="mailto:hi@ringtide.ai?subject=RingTide Demo Request" class="bg-white text-cyan-600 px-8 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition transform hover:-translate-y-1" x-text="t('finalCta.ctaPrimary')"></a>
-                <a href="tel:+16138018291" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-cyan-600 transition transform hover:-translate-y-1" x-text="t('finalCta.ctaSecondary')"></a>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center mb-6">
+                <a href="mailto:hi@ringtide.ai?subject=RingTide Demo Request" class="bg-white text-cyan-600 px-6 py-3 rounded-lg font-bold text-base hover:shadow-xl transition transform hover:-translate-y-1" x-text="t('finalCta.ctaPrimary')"></a>
+                <a href="tel:+16138018291" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-bold text-base hover:bg-white hover:text-cyan-600 transition transform hover:-translate-y-1" x-text="t('finalCta.ctaSecondary')"></a>
             </div>
 
             <div class="flex flex-wrap justify-center gap-6 text-sm">
@@ -891,9 +892,9 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-12">
+    <footer class="bg-gray-900 text-gray-300 py-8">
         <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8 mb-8">
+            <div class="grid md:grid-cols-4 gap-6 mb-6">
                 <!-- Company Info -->
                 <div>
                     <h4 class="text-white font-bold mb-4">RingTide</h4>
@@ -930,7 +931,7 @@
                 </div>
             </div>
 
-            <div class="border-t border-gray-800 pt-8 text-center text-sm">
+            <div class="border-t border-gray-800 pt-6 text-center text-sm">
                 <p x-text="t('footer.copyright')"></p>
             </div>
         </div>
@@ -1015,7 +1016,7 @@
                             solution: {
                                 headline: "RingTide Captures Every Opportunity",
                                 point1: "Answer every call, 24/7/365",
-                                point2: "For $99/month (less than 3 hours of receptionist time)",
+                                point2: "For $99/month (< 3 hours of receptionist time)",
                                 point3: "Live in 48 hours (not weeks)",
                                 point4: "Bilingual by default"
                             },

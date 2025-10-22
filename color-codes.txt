@@ -1,0 +1,48 @@
+Here are all the color codes used in your RingTide website, organized by category:
+
+  Primary Brand Colors
+
+  - #0891B2 - Cyan 600 (primary brand color - used in gradients, headings, links)
+  - #06B6D4 - Cyan 400 (secondary brand color - used in gradients, badges, accents)
+
+  Text Colors
+
+  - #1F2937 - Gray 800 (main body text, dark headings)
+  - #4B5563 - Gray 600 (navigation links)
+  - #6B7280 - Gray 500 (secondary text, subtitles)
+  - #64748B - Slate 500 (logo tagline "always there")
+  - #9CA3AF - Gray 400 (tertiary text, footer links)
+
+  Background Colors
+
+  - #F9FAFB - Gray 50 (page background, section backgrounds)
+  - #FFFFFF - White (cards, header)
+  - #F3F4F6 - Gray 100 (hover states)
+  - #1F2937 - Gray 800 (footer background)
+
+  Accent Colors
+
+  - #FDE68A - Amber 200 (demo phone number highlight)
+  - #DBEAFE - Blue 100 (stats background, ROI calculator start)
+  - #BFDBFE - Blue 200 (ROI calculator end gradient)
+  - #075985 - Sky 800 (ROI text color)
+
+  Border Colors
+
+  - #E5E7EB - Gray 200 (borders, dividers)
+  - #374151 - Gray 700 (footer border)
+
+  Transparent/Overlay Colors
+
+  - rgba(0,0,0,0.1) - Black 10% (subtle shadows)
+  - rgba(0,0,0,0.2) - Black 20% (medium shadows)
+  - rgba(0,0,0,0.15) - Black 15% (card hover shadows)
+  - rgba(255,255,255,0.05) - White 5% (decorative wave patterns)
+  - rgba(255,255,255,0.15) - White 15% (demo number background)
+  - rgba(255,255,255,0.2) - White 20% (demo number border, audio buttons)
+  - rgba(255,255,255,0.3) - White 30% (audio button hover)
+  - rgba(8,145,178,0.3) - Cyan 600 30% (gradient shadow effects)
+  - rgba(6,182,212,0.2) - Cyan 400 20% (featured card shadow)
+
+  The color scheme follows a professional cyan/teal theme with neutral grays, perfect
+   for a tech/AI service brand!
