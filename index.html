@@ -1,1126 +1,1363 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" x-data="{ language: 'en' }" :lang="language">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RingTide - AI Voice Receptionists for Canadian Businesses | Never Miss a Call</title>
-    <meta name="description" content="RingTide AI Voice Receptionists for your businesse. Answer every call 24/7, book appointments automatically. Starting at $299/month.">
-    <meta name="keywords" content="AI receptionist, voice AI, Ottawa business, Montreal business, call answering service, virtual receptionist">
+
+    <!-- Primary Meta Tags -->
+    <title>RingTide - AI Voice Receptionist for Canadian Businesses | Never Miss Another Call</title>
+    <meta name="description" content="AI voice receptionist for Canadian businesses. Answer every call 24/7 in English or French. Live in 48 hours. Starting at $99/month.">
+    <meta name="keywords" content="AI receptionist, voice AI, Canadian business, bilingual receptionist, 24/7 answering service, virtual receptionist, Ottawa, Montreal">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="RingTide - AI Voice Receptionist for Canadian Businesses">
+    <meta property="og:description" content="Never miss another call. AI voice receptionist that answers 24/7 in English or French. Live in 48 hours.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ringtide.ai">
+    <meta property="og:image" content="https://ringtide.ai/og-image.jpg">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="RingTide - AI Voice Receptionist">
+    <meta name="twitter:description" content="Never miss another call. AI answering service for Canadian businesses.">
+    <meta name="twitter:image" content="https://ringtide.ai/og-image.jpg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://ringtide.ai">
+
+    <!-- Alternate Languages (hreflang) -->
+    <link rel="alternate" hreflang="en" href="https://ringtide.ai">
+    <link rel="alternate" hreflang="fr" href="https://ringtide.ai">
+    <link rel="alternate" hreflang="x-default" href="https://ringtide.ai">
+
+    <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><linearGradient id=%22g%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 style=%22stop-color:%230891B2%22/><stop offset=%22100%25%22 style=%22stop-color:%2306B6D4%22/></linearGradient></defs><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22url(%23g)%22/><path d=%22M20 45 Q30 35 40 45 T60 45 T80 45%22 stroke=%22white%22 stroke-width=%224%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M20 55 Q30 45 40 55 T60 55 T80 55%22 stroke=%22white%22 stroke-width=%224%22 fill=%22none%22 stroke-linecap=%22round%22 opacity=%220.7%22/><path d=%22M20 65 Q30 55 40 65 T60 65 T80 65%22 stroke=%22white%22 stroke-width=%224%22 fill=%22none%22 stroke-linecap=%22round%22 opacity=%220.4%22/></svg>">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Alpine.js CDN -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cyan: {
+                            400: '#06B6D4',
+                            600: '#0891B2',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles -->
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', sans-serif;
-            line-height: 1.6;
-            color: #1F2937;
-            background: #F9FAFB;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header */
-        header {
-            background: white;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-        
-        .logo-container {
-            display: flex;
-            align-items: center;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+        html {
+            scroll-behavior: smooth;
         }
 
-        .logo {
-            height: 50px;
-            width: auto;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: #4B5563;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: #0891B2;
-        }
-
-        /* Language Switcher */
-        .lang-switcher {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .lang-btn {
+        .gradient-bg {
             background: linear-gradient(135deg, #0891B2 0%, #06B6D4 100%);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .lang-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(8,145,178,0.3);
+        .gradient-text {
+            background: linear-gradient(90deg, #0891B2 0%, #06B6D4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #0891B2 0%, #06B6D4 100%);
-            color: white;
-            padding: 6rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
+        .shadow-cyan {
+            box-shadow: 0 8px 16px -4px rgba(8, 145, 178, 0.3);
         }
-        
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,50 Q300,100 600,50 T1200,50 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.05)"/></svg>') repeat-x bottom;
-            opacity: 0.3;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-        
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .demo-number {
-            background: rgba(255,255,255,0.15);
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin: 2rem auto;
-            max-width: 600px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-        
-        .demo-number h3 {
-            font-size: 1rem;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .demo-number .phone {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #FDE68A;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .btn {
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-        
-        .btn-primary {
-            background: white;
-            color: #0891B2;
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-        }
-        
-        /* Social Proof */
-        .social-proof {
-            background: white;
-            padding: 2rem 0;
-            text-align: center;
-            border-bottom: 1px solid #E5E7EB;
-        }
-        
-        .social-proof p {
-            color: #6B7280;
-            margin-bottom: 1rem;
-        }
-        
-        .business-types {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            color: #9CA3AF;
-            font-weight: 500;
-        }
-        
-        /* Problem Section */
-        .problem {
-            padding: 5rem 0;
-            text-align: center;
-        }
-        
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1F2937;
-            margin-bottom: 3rem;
-        }
-        
-        .problem-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .problem-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-        
-        .problem-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .problem-card .icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .problem-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #0891B2;
-        }
-        
-        .stat {
-            background: #DBEAFE;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-top: 1rem;
-            font-weight: 600;
-            color: #075985;
-        }
-        
-        /* Solution Section */
-        .solution {
-            background: white;
-            padding: 5rem 0;
-        }
-        
-        .solution-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-        
-        .demo-player {
-            background: linear-gradient(135deg, #0891B2 0%, #06B6D4 100%);
-            padding: 3rem;
-            border-radius: 16px;
-            color: white;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(8,145,178,0.3);
-        }
-        
-        .demo-player h4 {
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-        
-        .audio-controls {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 1.5rem;
-            flex-wrap: wrap;
-        }
-        
-        .audio-btn {
-            padding: 0.75rem 1.5rem;
-            background: rgba(255,255,255,0.2);
-            border: 1px solid white;
-            color: white;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.3s;
-            font-weight: 500;
-        }
-        
-        .audio-btn:hover {
-            background: rgba(255,255,255,0.3);
-        }
-        
-        .steps {
-            list-style: none;
-        }
-        
-        .steps li {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-        }
-        
-        .steps .step-number {
-            background: #0891B2;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            margin-right: 1rem;
-            flex-shrink: 0;
-        }
-        
-        /* Pricing Section */
-        .pricing {
-            padding: 5rem 0;
-            background: #F9FAFB;
-        }
-        
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .pricing-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            position: relative;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-        
-        .pricing-card.featured {
-            border: 3px solid #06B6D4;
-            box-shadow: 0 8px 20px rgba(6,182,212,0.2);
-        }
-        
-        .badge {
-            background: #06B6D4;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            position: absolute;
-            top: -15px;
-            right: 20px;
-        }
-        
-        .pricing-card h3 {
-            font-size: 1.75rem;
-            margin-bottom: 0.5rem;
-            color: #0891B2;
-        }
-        
-        .price {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #1F2937;
-            margin: 1rem 0;
-        }
-        
-        .price span {
-            font-size: 1rem;
-            color: #6B7280;
-            font-weight: 400;
-        }
-        
-        .features {
-            list-style: none;
-            margin: 2rem 0;
-        }
-        
-        .features li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid #E5E7EB;
-        }
-        
-        .features li:before {
-            content: "✓ ";
-            color: #06B6D4;
-            font-weight: 700;
-            margin-right: 0.5rem;
-        }
-        
-        /* ROI Calculator */
-        .roi-calculator {
-            background: linear-gradient(135deg, #DBEAFE 0%, #BFDBFE 100%);
-            padding: 2rem;
-            border-radius: 12px;
-            margin-top: 3rem;
-            text-align: center;
-        }
-        
-        .roi-calculator h3 {
-            color: #075985;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-        }
-        
-        .roi-examples {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .roi-example {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        
-        /* Trust Section */
-        .trust {
-            background: white;
-            padding: 4rem 0;
-            text-align: center;
-        }
-        
-        .trust-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .trust-item {
-            padding: 1.5rem;
-        }
-        
-        .trust-item .icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .trust-item h4 {
-            color: #0891B2;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-        
-        /* FAQ Section */
-        .faq {
-            padding: 5rem 0;
-            background: #F9FAFB;
-        }
-        
-        .faq-list {
-            max-width: 800px;
-            margin: 3rem auto 0;
-        }
-        
-        .faq-item {
-            background: white;
-            margin-bottom: 1rem;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .faq-question {
-            padding: 1.5rem;
-            cursor: pointer;
-            font-weight: 600;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background 0.3s;
-        }
-        
-        .faq-question:hover {
-            background: #F3F4F6;
-        }
-        
-        .faq-answer {
-            padding: 0 1.5rem 1.5rem;
-            color: #6B7280;
+
+        /* Hide scrollbar for demo player */
+        .no-scrollbar::-webkit-scrollbar {
             display: none;
         }
-        
-        .faq-item.active .faq-answer {
-            display: block;
-        }
-        
-        .faq-arrow {
-            transition: transform 0.3s;
-        }
-        
-        .faq-item.active .faq-arrow {
-            transform: rotate(180deg);
-        }
-        
-        /* Final CTA */
-        .final-cta {
-            background: linear-gradient(135deg, #0891B2 0%, #06B6D4 100%);
-            color: white;
-            padding: 5rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .final-cta::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,50 Q300,10 600,50 T1200,50 L1200,0 L0,0 Z" fill="rgba(255,255,255,0.05)"/></svg>') repeat-x top;
-        }
-        
-        .final-cta-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .final-cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .signup-stats {
-            margin-top: 2rem;
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-        
-        /* Footer */
-        footer {
-            background: #1F2937;
-            color: white;
-            padding: 3rem 0 1rem;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .footer-section h4 {
-            margin-bottom: 1rem;
-            color: #06B6D4;
-        }
-        
-        .footer-section ul {
-            list-style: none;
-        }
-        
-        .footer-section a {
-            color: #9CA3AF;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
-            transition: color 0.3s;
-        }
-        
-        .footer-section a:hover {
-            color: white;
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid #374151;
-            color: #9CA3AF;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .logo {
-                height: 40px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            .solution-content {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .business-types {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
+
+    <!-- Structured Data (Schema.org) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "RingTide",
+        "description": "AI voice receptionist for Canadian businesses",
+        "url": "https://ringtide.ai",
+        "email": "hi@ringtide.ai",
+        "telephone": "+1-613-801-8291",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "CA",
+            "addressLocality": "Ottawa",
+            "addressRegion": "ON"
+        },
+        "priceRange": "$99-$599",
+        "areaServed": "CA",
+        "availableLanguage": ["English", "French"],
+        "serviceType": "AI Voice Receptionist",
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Basic Plan",
+                "price": "99",
+                "priceCurrency": "CAD",
+                "priceSpecification": {
+                    "@type": "UnitPriceSpecification",
+                    "price": "99",
+                    "priceCurrency": "CAD",
+                    "unitText": "MONTH"
+                }
+            },
+            {
+                "@type": "Offer",
+                "name": "Professional Plan",
+                "price": "299",
+                "priceCurrency": "CAD",
+                "priceSpecification": {
+                    "@type": "UnitPriceSpecification",
+                    "price": "299",
+                    "priceCurrency": "CAD",
+                    "unitText": "MONTH"
+                }
+            },
+            {
+                "@type": "Offer",
+                "name": "Growth Plan",
+                "price": "599",
+                "priceCurrency": "CAD",
+                "priceSpecification": {
+                    "@type": "UnitPriceSpecification",
+                    "price": "599",
+                    "priceCurrency": "CAD",
+                    "unitText": "MONTH"
+                }
+            }
+        ]
+    }
+    </script>
 </head>
-<body>
+
+<body class="bg-gray-50 font-sans antialiased" x-data="appData()">
     <!-- Header -->
-    <header>
-        <nav class="container">
-            <div class="logo-container">
-                <svg class="logo" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#0891B2;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1" />
-                        </linearGradient>
-                        <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" style="stop-color:#0891B2;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <svg class="h-12 lg:h-14 w-auto" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#0891B2;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1" />
+                            </linearGradient>
+                            <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#0891B2;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <g transform="translate(10, 10)">
+                            <circle cx="50" cy="50" r="48" fill="url(#logoGradient)"/>
+                            <path d="M20 45 Q30 35 40 45 T60 45 T80 45" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
+                            <path d="M20 55 Q30 45 40 55 T60 55 T80 55" stroke="white" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.7"/>
+                            <path d="M20 65 Q30 55 40 65 T60 65 T80 65" stroke="white" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.4"/>
+                        </g>
+                        <text x="125" y="65" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="42" font-weight="800" letter-spacing="-0.02em" fill="url(#textGradient)">RingTide</text>
+                        <text x="125" y="85" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" font-style="italic" letter-spacing="0.02em" fill="#64748B">always there</text>
+                    </svg>
+                </div>
 
-                    <!-- Logo Icon Circle with Wave Pattern -->
-                    <g transform="translate(10, 10)">
-                        <circle cx="50" cy="50" r="48" fill="url(#logoGradient)"/>
-                        <!-- Wave lines -->
-                        <path d="M20 45 Q30 35 40 45 T60 45 T80 45" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
-                        <path d="M20 55 Q30 45 40 55 T60 55 T80 55" stroke="white" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.7"/>
-                        <path d="M20 65 Q30 55 40 65 T60 65 T80 65" stroke="white" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.4"/>
-                    </g>
-
-                    <!-- RingTide Text -->
-                    <text x="125" y="65" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="42" font-weight="800" letter-spacing="-0.02em" fill="url(#textGradient)">RingTide</text>
-
-                    <!-- Tagline -->
-                    <text x="125" y="85" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="14" font-weight="400" font-style="italic" letter-spacing="0.02em" fill="#64748B">always there</text>
-                </svg>
-            </div>
-            <div class="lang-switcher">
-                <ul class="nav-links">
-                    <li><a href="#solution" data-fr="Comment ça fonctionne">How It Works</a></li>
-                    <li><a href="#pricing" data-fr="Tarification">Pricing</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <button class="lang-btn" id="langToggle">FR</button>
+                <!-- Navigation Links & Language Switcher -->
+                <div class="flex items-center gap-6">
+                    <ul class="hidden md:flex gap-6">
+                        <li><a href="#solution" class="text-gray-600 hover:text-cyan-600 font-medium transition" x-text="t('nav.howItWorks')"></a></li>
+                        <li><a href="#pricing" class="text-gray-600 hover:text-cyan-600 font-medium transition" x-text="t('nav.pricing')"></a></li>
+                        <li><a href="#faq" class="text-gray-600 hover:text-cyan-600 font-medium transition">FAQ</a></li>
+                        <li><a href="#contact" class="text-gray-600 hover:text-cyan-600 font-medium transition">Contact</a></li>
+                    </ul>
+                    <button @click="toggleLanguage()" class="gradient-bg text-white px-4 py-2 rounded-lg font-semibold text-sm hover:shadow-cyan transition transform hover:-translate-y-0.5" x-text="language === 'en' ? 'FR' : 'EN'"></button>
+                </div>
             </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 data-fr="Ne Manquez Plus Jamais un Appel Client">Never Miss Another Customer Call Again</h1>
-                <p data-fr="Réceptionnistes Vocales IA pour Entreprises d'Ottawa et Montréal - Répondez à Tous les Appels 24/7, Prenez des Rendez-vous Automatiquement, Convertissez Plus de Prospects">AI Voice Receptionists for Ottawa & Montreal Businesses - Answer Every Call 24/7, Book Appointments Automatically, Convert More Leads</p>
-
-                <div class="demo-number">
-                    <h3 data-fr="🎯 Essayez-le Maintenant">🎯 Try It Right Now</h3>
-                    <p class="phone" data-fr="📞 Appelez: +1 782-802-3264">📞 Call: +1 782-802-3264</p>
-                    <p style="font-size: 0.9rem; margin-top: 0.5rem;" data-fr="Parlez à notre réceptionniste IA en direct - voyez comment ça fonctionne!">Talk to our AI receptionist live - see how it works!</p>
-                </div>
-
-                <div class="cta-buttons">
-                    <a href="mailto:hi@ringtide.ai?subject=RingTide AI Demo Request" class="btn btn-primary" data-fr="Obtenez Votre Démo IA Gratuite →">Get Your Free AI Demo →</a>
-                    <a href="#pricing" class="btn btn-secondary" data-fr="Voir la Tarification">See Pricing</a>
-                </div>
-            </div>
+    <section class="gradient-bg text-white py-16 lg:py-24 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <pattern id="wave" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                    <path d="M0,50 Q25,40 50,50 T100,50" fill="none" stroke="white" stroke-width="2"/>
+                </pattern>
+                <rect width="100%" height="100%" fill="url(#wave)"/>
+            </svg>
         </div>
-    </section>
 
-    <!-- Social Proof -->
-    <section class="social-proof">
-        <div class="container">
-            <p><strong data-fr="Approuvé par des Entreprises en Croissance à Travers le Canada">Trusted by Growing Businesses Across Canada</strong></p>
-            <div class="business-types">
-                <span>🍴 Restaurants</span>
-                <span data-fr="🏥 Cliniques Médicales">🏥 Medical Clinics</span>
-                <span data-fr="🔧 Services à Domicile">🔧 Home Services</span>
-                <span data-fr="⚖️ Cabinets Juridiques">⚖️ Legal Firms</span>
-                <span data-fr="🏠 Immobilier">🏠 Real Estate</span>
-            </div>
-        </div>
-    </section>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl lg:text-6xl font-extrabold mb-6 leading-tight" x-text="t('hero.headline')"></h1>
+                <p class="text-lg lg:text-xl mb-8 opacity-95" x-text="t('hero.subheadline')"></p>
 
-    <!-- Problem Section -->
-    <section class="problem" id="problem">
-        <div class="container">
-            <h2 class="section-title" data-fr="Chaque Appel Manqué est de l'Argent Laissé sur la Table">Every Missed Call is Money Left on the Table</h2>
+                <!-- Try It Live Section -->
+                <div class="bg-white/15 backdrop-blur-md border-2 border-white/30 rounded-2xl p-6 lg:p-8 mb-8 shadow-2xl">
+                    <h3 class="text-xl lg:text-2xl font-bold mb-4" x-text="t('hero.tryItLive.headline')"></h3>
+                    <p class="text-sm lg:text-base mb-6 opacity-90" x-text="t('hero.tryItLive.subheadline')"></p>
 
-            <div class="problem-grid">
-                <div class="problem-card">
-                    <div class="icon">📞</div>
-                    <h3 data-fr="Perdez des Clients Quand Vous Êtes Occupé">Lose Customers When Busy</h3>
-                    <p data-fr="Votre équipe aide un client pendant que 3 autres appellent et raccrochent. Ils appellent ensuite votre concurrent.">Your team is helping one customer while 3 others call and hang up. They call your competitor next.</p>
-                    <div class="stat" data-fr="35% des appels restent sans réponse durant les heures de pointe">35% of calls go unanswered during peak hours</div>
-                </div>
+                    <div class="grid sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+                        <!-- English Number -->
+                        <a href="tel:+18777692515" class="bg-white text-gray-900 rounded-xl p-4 hover:shadow-xl transition transform hover:scale-105 group">
+                            <div class="flex items-center justify-center gap-2 mb-2">
+                                <span class="text-2xl">🇬🇧</span>
+                                <span class="font-bold text-lg" x-text="t('hero.tryItLive.english')"></span>
+                            </div>
+                            <div class="text-2xl lg:text-3xl font-bold text-cyan-600 group-hover:text-cyan-700">
+                                +1 877-769-2515
+                            </div>
+                            <div class="text-xs text-gray-600 mt-2" x-text="t('hero.tryItLive.tapToCall')"></div>
+                        </a>
 
-                <div class="problem-card">
-                    <div class="icon">⏰</div>
-                    <h3 data-fr="Manquez des Appels Après les Heures">Miss Calls After Hours</h3>
-                    <p data-fr="Les clients appellent les soirs et week-ends quand c'est pratique pour eux - mais vous êtes fermé.">Customers call evenings and weekends when it's convenient for them - but you're closed.</p>
-                    <div class="stat" data-fr="42% des appels clients ont lieu en dehors des heures d'ouverture">42% of customer calls happen outside business hours</div>
-                </div>
-
-                <div class="problem-card">
-                    <div class="icon">💸</div>
-                    <h3 data-fr="Les Concurrents Captent VOS Prospects">Competitors Capture YOUR Leads</h3>
-                    <p data-fr="Chaque appel sans réponse est un client qui essaiera l'entreprise suivante. Vous ne saurez jamais ce que vous avez manqué.">Every unanswered call is a customer who will try the next business. You'll never know what you missed.</p>
-                    <div class="stat" data-fr="Les restaurants perdent 1 000$+/mois en réservations manquées">Restaurants lose $1,000+/month in missed reservations</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Solution Section -->
-    <section class="solution" id="solution">
-        <div class="container">
-            <h2 class="section-title" data-fr="Votre Réceptionniste IA qui ne Dort Jamais">Your AI Receptionist That Never Sleeps</h2>
-
-            <div class="solution-content">
-                <div>
-                    <div class="demo-player">
-                        <h4 data-fr="🎧 Écoutez RingTide en Action">🎧 Hear RingTide In Action</h4>
-                        <p data-fr="Écoutez de vraies conversations entre clients et nos réceptionnistes IA">Listen to real conversations between customers and our AI receptionists</p>
-                        <div class="audio-controls">
-                            <button class="audio-btn">🍴 Restaurant</button>
-                            <button class="audio-btn" data-fr="🏥 Médical">🏥 Medical</button>
-                            <button class="audio-btn">🔧 Services</button>
-                        </div>
-                        <p style="margin-top: 1rem; font-size: 0.9rem;" data-fr="Ou appelez le 613-801-8291 pour l'essayer en direct!">Or call 613-801-8291 to try it live!</p>
+                        <!-- French Number -->
+                        <a href="tel:+14388009629" class="bg-white text-gray-900 rounded-xl p-4 hover:shadow-xl transition transform hover:scale-105 group">
+                            <div class="flex items-center justify-center gap-2 mb-2">
+                                <svg class="w-6 h-6" viewBox="0 0 48 36" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Blue background -->
+                                    <rect width="48" height="36" fill="#003F87"/>
+                                    <!-- White cross -->
+                                    <rect x="0" y="14" width="48" height="8" fill="white"/>
+                                    <rect x="20" y="0" width="8" height="36" fill="white"/>
+                                    <!-- Fleur-de-lis in each quadrant -->
+                                    <text x="7" y="10" font-size="8" fill="white">⚜</text>
+                                    <text x="33" y="10" font-size="8" fill="white">⚜</text>
+                                    <text x="7" y="30" font-size="8" fill="white">⚜</text>
+                                    <text x="33" y="30" font-size="8" fill="white">⚜</text>
+                                </svg>
+                                <span class="font-bold text-lg" x-text="t('hero.tryItLive.french')"></span>
+                            </div>
+                            <div class="text-2xl lg:text-3xl font-bold text-cyan-600 group-hover:text-cyan-700">
+                                +1 438-800-9629
+                            </div>
+                            <div class="text-xs text-gray-600 mt-2" x-text="t('hero.tryItLive.tapToCall')"></div>
+                        </a>
                     </div>
                 </div>
 
+                <!-- Dual CTAs -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+                    <a href="#demo" class="bg-white text-cyan-600 px-8 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition transform hover:-translate-y-1" x-text="t('hero.ctaPrimary')"></a>
+                    <a href="#pricing" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-cyan-600 transition transform hover:-translate-y-1" x-text="t('hero.ctaSecondary')"></a>
+                </div>
+
+                <!-- Trust Badges -->
+                <div class="flex flex-wrap justify-center gap-4 lg:gap-8 text-sm lg:text-base">
+                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                        <span>🇨🇦</span>
+                        <span x-text="t('hero.badges.canadian')"></span>
+                    </div>
+                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                        <span>🔒</span>
+                        <span x-text="t('hero.badges.pipeda')"></span>
+                    </div>
+                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                        <span>⚡</span>
+                        <span x-text="t('hero.badges.setup')"></span>
+                    </div>
+                    <div class="flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full border border-white/20">
+                        <span>🚫</span>
+                        <span x-text="t('hero.badges.noContract')"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Demo Section -->
+    <section id="demo" class="py-16 lg:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-3xl lg:text-5xl font-bold text-center mb-4" x-text="t('demo.headline')"></h2>
+                <p class="text-xl text-gray-600 text-center mb-12" x-text="t('demo.subheadline')"></p>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- HVAC Demo Card -->
+                    <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition">
+                        <div class="inline-block bg-cyan-600 text-white px-3 py-1 rounded-full text-sm font-semibold mb-4" x-text="t('demo.hvac.badge')"></div>
+                        <h3 class="text-2xl font-bold mb-3" x-text="t('demo.hvac.title')"></h3>
+
+                        <!-- Audio Player Placeholder -->
+                        <div class="bg-gradient-to-br from-cyan-600 to-cyan-400 rounded-xl p-6 mb-4 text-white">
+                            <div class="flex items-center justify-between mb-4">
+                                <button class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </button>
+                                <div class="text-sm font-medium">Demo Recording</div>
+                            </div>
+                            <div class="h-2 bg-white/20 rounded-full overflow-hidden">
+                                <div class="h-full bg-white w-0 rounded-full"></div>
+                            </div>
+                        </div>
+
+                        <p class="text-gray-600 mb-3" x-text="t('demo.hvac.scenario')"></p>
+                        <div class="flex items-center gap-2 text-green-600 font-semibold">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span x-text="t('demo.hvac.outcome')"></span>
+                        </div>
+                    </div>
+
+                    <!-- Medical Demo Card -->
+                    <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition">
+                        <div class="inline-block bg-cyan-600 text-white px-3 py-1 rounded-full text-sm font-semibold mb-4" x-text="t('demo.medical.badge')"></div>
+                        <h3 class="text-2xl font-bold mb-3" x-text="t('demo.medical.title')"></h3>
+
+                        <!-- Audio Player Placeholder -->
+                        <div class="bg-gradient-to-br from-cyan-600 to-cyan-400 rounded-xl p-6 mb-4 text-white">
+                            <div class="flex items-center justify-between mb-4">
+                                <button class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                </button>
+                                <div class="text-sm font-medium">Demo Recording</div>
+                            </div>
+                            <div class="h-2 bg-white/20 rounded-full overflow-hidden">
+                                <div class="h-full bg-white w-0 rounded-full"></div>
+                            </div>
+                        </div>
+
+                        <p class="text-gray-600 mb-3" x-text="t('demo.medical.scenario')"></p>
+                        <div class="flex items-center gap-2 text-green-600 font-semibold">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span x-text="t('demo.medical.outcome')"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem/Solution Section -->
+    <section class="py-16 lg:py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <!-- Problem Side -->
                 <div>
-                    <h3 style="font-size: 1.75rem; margin-bottom: 1.5rem;" data-fr="Comment RingTide Fonctionne">How RingTide Works</h3>
-                    <ol class="steps">
-                        <li>
-                            <span class="step-number">1</span>
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-8 text-red-600" x-text="t('problem.headline')"></h2>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <span class="text-2xl">❌</span>
                             <div>
-                                <strong data-fr="Le client appelle votre numéro">Customer calls your number</strong><br>
-                                <span data-fr="Jour ou nuit, occupé ou non - chaque appel obtient une réponse instantanée">Day or night, busy or not - every call gets answered instantly</span>
+                                <p class="text-lg font-semibold text-gray-800" x-text="t('problem.point1')"></p>
                             </div>
                         </li>
-                        <li>
-                            <span class="step-number">2</span>
+                        <li class="flex items-start gap-4">
+                            <span class="text-2xl">❌</span>
                             <div>
-                                <strong data-fr="L'IA répond naturellement, sonne humain">AI answers naturally, sounds human</strong><br>
-                                <span data-fr="Gère les demandes, répond aux FAQ, prend les commandes ou réserve des rendez-vous">Handles requests, answers FAQs, takes orders or books appointments</span>
+                                <p class="text-lg font-semibold text-gray-800" x-text="t('problem.point2')"></p>
                             </div>
                         </li>
-                        <li>
-                            <span class="step-number">3</span>
+                        <li class="flex items-start gap-4">
+                            <span class="text-2xl">❌</span>
                             <div>
-                                <strong data-fr="Rendez-vous réservé, vous êtes notifié">Appointment booked, you get notified</strong><br>
-                                <span data-fr="Calendrier mis à jour automatiquement. Résumé envoyé par texto/courriel. Tout est fait.">Calendar updated automatically. Text/email summary sent. All done.</span>
+                                <p class="text-lg font-semibold text-gray-800" x-text="t('problem.point3')"></p>
                             </div>
                         </li>
-                    </ol>
+                        <li class="flex items-start gap-4">
+                            <span class="text-2xl">❌</span>
+                            <div>
+                                <p class="text-lg font-semibold text-gray-800" x-text="t('problem.point4')"></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Solution Side -->
+                <div>
+                    <h2 class="text-3xl lg:text-4xl font-bold mb-8 text-green-600" x-text="t('solution.headline')"></h2>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <span class="text-2xl">✅</span>
+                            <div>
+                                <p class="text-lg font-semibold text-gray-800" x-text="t('solution.point1')"></p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-2xl">✅</span>
+                            <div>
+                                <p class="text-lg font-semibold text-gray-800" x-text="t('solution.point2')"></p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-2xl">✅</span>
+                            <div>
+                                <p class="text-lg font-semibold text-gray-800" x-text="t('solution.point3')"></p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <span class="text-2xl">✅</span>
+                            <div>
+                                <p class="text-lg font-semibold text-gray-800" x-text="t('solution.point4')"></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROI Calculator -->
+    <section class="py-16 lg:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <h2 class="text-3xl lg:text-4xl font-bold text-center mb-4" x-text="t('roi.headline')"></h2>
+                <p class="text-xl text-gray-600 text-center mb-12" x-text="t('roi.subheadline')"></p>
+
+                <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 shadow-lg">
+                    <!-- Calculator Inputs -->
+                    <div class="space-y-6 mb-8">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2" x-text="t('roi.callsPerDay')"></label>
+                            <input type="range" min="10" max="200" x-model.number="roiCalc.callsPerDay" class="w-full h-2 bg-cyan-200 rounded-lg appearance-none cursor-pointer">
+                            <div class="text-right text-cyan-600 font-bold mt-1" x-text="roiCalc.callsPerDay + ' ' + t('roi.callsPerDayUnit')"></div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2" x-text="t('roi.missedPercent')"></label>
+                            <input type="range" min="0" max="100" x-model.number="roiCalc.missedPercent" class="w-full h-2 bg-cyan-200 rounded-lg appearance-none cursor-pointer">
+                            <div class="text-right text-cyan-600 font-bold mt-1" x-text="roiCalc.missedPercent + '%'"></div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2" x-text="t('roi.avgValue')"></label>
+                            <input type="number" x-model.number="roiCalc.avgCustomerValue" class="w-full px-4 py-3 border-2 border-cyan-300 rounded-lg focus:outline-none focus:border-cyan-500" min="0">
+                        </div>
+                    </div>
+
+                    <!-- Calculator Results -->
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-red-100 border-2 border-red-300 rounded-xl p-6 text-center">
+                            <div class="text-sm font-semibold text-red-700 mb-2" x-text="t('roi.lostRevenue')"></div>
+                            <div class="text-3xl font-bold text-red-600" x-text="'$' + calculateLostRevenue().toLocaleString()"></div>
+                        </div>
+
+                        <div class="bg-blue-100 border-2 border-blue-300 rounded-xl p-6 text-center">
+                            <div class="text-sm font-semibold text-blue-700 mb-2" x-text="t('roi.ringtideCost')"></div>
+                            <div class="text-3xl font-bold text-blue-600">$299</div>
+                        </div>
+
+                        <div class="bg-green-100 border-2 border-green-300 rounded-xl p-6 text-center">
+                            <div class="text-sm font-semibold text-green-700 mb-2" x-text="t('roi.savings')"></div>
+                            <div class="text-3xl font-bold text-green-600" x-text="'$' + calculateSavings().toLocaleString()"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section class="pricing" id="pricing">
-        <div class="container">
-            <h2 class="section-title" data-fr="Tarification Simple - Coûte Moins Cher que 2 Heures au Salaire Minimum">Simple Pricing - Costs Less Than 2 Hours of Minimum Wage</h2>
+    <section id="pricing" class="py-16 lg:py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl lg:text-5xl font-bold text-center mb-4" x-text="t('pricing.headline')"></h2>
+            <p class="text-xl text-gray-600 text-center mb-12" x-text="t('pricing.subheadline')"></p>
 
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3 data-fr="Basique">Basic</h3>
-                    <div class="price" data-fr="299$">$299<span data-fr="/mois">/month</span></div>
-                    <p style="color: #6B7280; margin-bottom: 1rem;" data-fr="Parfait pour les petites entreprises">Perfect for small businesses</p>
-                    <ul class="features">
-                        <li data-fr="200 appels/mois">200 calls/month</li>
-                        <li data-fr="Heures d'ouverture & FAQ">Business hours & FAQs</li>
-                        <li data-fr="Résumés par texto au propriétaire">Text summaries to owner</li>
-                        <li data-fr="5 réponses FAQ personnalisées">5 custom FAQ responses</li>
-                        <li data-fr="Support par courriel">Email support</li>
+            <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <!-- Basic Plan -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold mb-2" x-text="t('pricing.basic.name')"></h3>
+                        <div class="inline-block bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold" x-text="t('pricing.basic.badge')"></div>
+                    </div>
+                    <div class="text-center mb-6">
+                        <div class="text-5xl font-bold text-gray-900">$99</div>
+                        <div class="text-gray-600" x-text="'/ ' + t('pricing.month')"></div>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700" x-text="t('pricing.basic.feature1')"></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700" x-text="t('pricing.basic.feature2')"></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700" x-text="t('pricing.basic.feature3')"></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700" x-text="t('pricing.basic.feature4')"></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700" x-text="t('pricing.basic.feature5')"></span>
+                        </li>
                     </ul>
-                    <a href="mailto:hi@ringtide.ai?subject=RingTide Basic Plan Inquiry" class="btn btn-secondary" style="width: 100%; text-align: center;" data-fr="Commencer">Get Started</a>
+                    <a href="mailto:hi@ringtide.ai?subject=RingTide Basic Plan" class="block w-full text-center bg-gray-200 text-gray-800 py-3 rounded-lg font-bold hover:bg-gray-300 transition" x-text="t('pricing.cta')"></a>
                 </div>
 
-                <div class="pricing-card featured">
-                    <span class="badge" data-fr="LE PLUS POPULAIRE">MOST POPULAR</span>
-                    <h3 data-fr="Professionnel">Professional</h3>
-                    <div class="price" data-fr="599$">$599<span data-fr="/mois">/month</span></div>
-                    <p style="color: #6B7280; margin-bottom: 1rem;" data-fr="Pour entreprises en croissance">For growing businesses</p>
-                    <ul class="features">
-                        <li data-fr="500 appels/mois">500 calls/month</li>
-                        <li data-fr="Intégration calendrier de réservation">Calendar booking integration</li>
-                        <li data-fr="Routage d'appels vers départements">Call routing to departments</li>
-                        <li data-fr="Voix & personnalité personnalisées">Custom voice & personality</li>
-                        <li data-fr="15 réponses FAQ">15 FAQ responses</li>
-                        <li data-fr="Résumés par courriel de tous les appels">Email summaries of all calls</li>
-                        <li data-fr="Support prioritaire">Priority support</li>
+                <!-- Professional Plan (Featured) -->
+                <div class="bg-white rounded-2xl p-8 shadow-2xl border-4 border-cyan-500 transform lg:scale-105 relative">
+                    <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                        <div class="bg-cyan-500 text-white px-4 py-1 rounded-full text-sm font-bold" x-text="t('pricing.professional.featured')"></div>
+                    </div>
+                    <div class="text-center mb-6 mt-4">
+                        <h3 class="text-2xl font-bold mb-2" x-text="t('pricing.professional.name')"></h3>
+                        <div class="inline-block bg-cyan-100 text-cyan-700 px-3 py-1 rounded-full text-sm font-semibold" x-text="t('pricing.professional.badge')"></div>
+                    </div>
+                    <div class="text-center mb-6">
+                        <div class="text-5xl font-bold gradient-text">$299</div>
+                        <div class="text-gray-600" x-text="'/ ' + t('pricing.month')"></div>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700" x-text="t('pricing.professional.feature1')"></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700 font-semibold" x-text="t('pricing.professional.feature2')"></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700" x-text="t('pricing.professional.feature3')"></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700" x-text="t('pricing.professional.feature4')"></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700" x-text="t('pricing.professional.feature5')"></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700 font-semibold" x-text="t('pricing.professional.feature6')"></span>
+                        </li>
                     </ul>
-                    <a href="mailto:hi@ringtide.ai?subject=RingTide Professional Plan Inquiry" class="btn btn-primary" style="width: 100%; text-align: center;" data-fr="Commencer">Get Started</a>
+                    <a href="mailto:hi@ringtide.ai?subject=RingTide Professional Plan" class="block w-full text-center gradient-bg text-white py-3 rounded-lg font-bold hover:shadow-cyan transition transform hover:-translate-y-0.5" x-text="t('pricing.cta')"></a>
                 </div>
 
-                <div class="pricing-card">
-                    <h3>Premium</h3>
-                    <div class="price" data-fr="999$">$999<span data-fr="/mois">/month</span></div>
-                    <p style="color: #6B7280; margin-bottom: 1rem;" data-fr="Solution de qualité entreprise">Enterprise-grade solution</p>
-                    <ul class="features">
-                        <li data-fr="Appels illimités">Unlimited calls</li>
-                        <li data-fr="Intégration CRM">CRM integration</li>
-                        <li data-fr="Qualification & notation des prospects">Lead qualification & scoring</li>
-                        <li data-fr="Support multilingue">Multi-language support</li>
-                        <li data-fr="Confirmations de rendez-vous sortantes">Outbound appointment confirmations</li>
-                        <li data-fr="Rapports de performance mensuels">Monthly performance reports</li>
-                        <li data-fr="Tests A/B de différents scripts">A/B testing different scripts</li>
-                        <li data-fr="Gestionnaire de compte dédié">Dedicated account manager</li>
+                <!-- Growth Plan -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition">
+                    <div class="text-center mb-6">
+                        <h3 class="text-2xl font-bold mb-2" x-text="t('pricing.growth.name')"></h3>
+                        <div class="inline-block bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm font-semibold" x-text="t('pricing.growth.badge')"></div>
+                    </div>
+                    <div class="text-center mb-6">
+                        <div class="text-5xl font-bold text-gray-900">$599</div>
+                        <div class="text-gray-600" x-text="'/ ' + t('pricing.month')"></div>
+                    </div>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700" x-text="t('pricing.growth.feature1')"></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700 font-semibold" x-text="t('pricing.growth.feature2')"></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700" x-text="t('pricing.growth.feature3')"></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700" x-text="t('pricing.growth.feature4')"></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700" x-text="t('pricing.growth.feature5')"></span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-gray-700" x-text="t('pricing.growth.feature6')"></span>
+                        </li>
                     </ul>
-                    <a href="mailto:hi@ringtide.ai?subject=RingTide Premium Plan Inquiry" class="btn btn-secondary" style="width: 100%; text-align: center;" data-fr="Commencer">Get Started</a>
+                    <a href="mailto:hi@ringtide.ai?subject=RingTide Growth Plan" class="block w-full text-center bg-gray-200 text-gray-800 py-3 rounded-lg font-bold hover:bg-gray-300 transition" x-text="t('pricing.cta')"></a>
                 </div>
             </div>
 
-            <div class="roi-calculator">
-                <h3 data-fr="💰 Est-ce que Cela se Paiera Tout Seul?">💰 Will This Pay For Itself?</h3>
-                <div class="roi-examples">
-                    <div class="roi-example">
-                        <strong>🍴 Restaurant:</strong><br>
-                        <span data-fr="Seulement 2 réservations supplémentaires/mois paient le forfait Basique">Just 2 extra reservations/month pays for Basic tier</span>
-                    </div>
-                    <div class="roi-example">
-                        <strong data-fr="🏥 Clinique:">🏥 Clinic:</strong><br>
-                        <span data-fr="Capture 15+ rendez-vous que vous auriez autrement manqués">Captures 15+ appointments you'd otherwise miss</span>
-                    </div>
-                    <div class="roi-example">
-                        <strong>🔧 Services:</strong><br>
-                        <span data-fr="Un seul travail sauvé = 4 mois de service payés">One saved job = 4 months of service paid</span>
-                    </div>
-                </div>
+            <!-- Pricing Footer -->
+            <div class="text-center mt-12">
+                <p class="text-gray-600">
+                    <span class="font-semibold" x-text="t('pricing.footer.discount')"></span>
+                    <span x-text="t('pricing.footer.annual')"></span>
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Trust Section -->
-    <section class="trust">
-        <div class="container">
-            <h2 class="section-title" data-fr="Sécurité de Niveau Entreprise, Tarifs Adaptés aux PME">Enterprise-Grade Security, SMB-Friendly Pricing</h2>
+    <!-- Industry Use Cases -->
+    <section id="solution" class="py-16 lg:py-24 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl lg:text-5xl font-bold text-center mb-12" x-text="t('industries.headline')"></h2>
 
-            <div class="trust-grid">
-                <div class="trust-item">
-                    <div class="icon">🔒</div>
-                    <h4 data-fr="Chiffrement Niveau Bancaire">Bank-Level Encryption</h4>
-                    <p data-fr="Toutes les conversations chiffrées de bout en bout">All conversations encrypted end-to-end</p>
-                </div>
-                <div class="trust-item">
-                    <div class="icon">🇨🇦</div>
-                    <h4 data-fr="Hébergé au Canada">Canadian-Hosted</h4>
-                    <p data-fr="Vos données restent au Canada">Your data stays in Canada</p>
-                </div>
-                <div class="trust-item">
-                    <div class="icon">📊</div>
-                    <h4 data-fr="Conforme LPRPDE">PIPEDA Compliant</h4>
-                    <p data-fr="Conformité totale aux lois sur la vie privée">Full privacy law compliance</p>
-                </div>
-                <div class="trust-item">
-                    <div class="icon">⚡</div>
-                    <h4 data-fr="99,9% de Disponibilité">99.9% Uptime</h4>
-                    <p data-fr="Toujours disponible quand les clients appellent">Always available when customers call</p>
-                </div>
-                <div class="trust-item">
-                    <div class="icon">🤝</div>
-                    <h4 data-fr="Aucun Engagement">No Lock-In</h4>
-                    <p data-fr="Annulez à tout moment, sans pénalités">Cancel anytime, no penalties</p>
+            <!-- Industry Tabs -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12" x-data="{activeIndustry: 'home'}">
+                <button @click="activeIndustry = 'home'" :class="activeIndustry === 'home' ? 'gradient-bg text-white' : 'bg-gray-200 text-gray-700'" class="px-6 py-3 rounded-lg font-semibold transition" x-text="t('industries.home.tab')"></button>
+                <button @click="activeIndustry = 'medical'" :class="activeIndustry === 'medical' ? 'gradient-bg text-white' : 'bg-gray-200 text-gray-700'" class="px-6 py-3 rounded-lg font-semibold transition" x-text="t('industries.medical.tab')"></button>
+                <button @click="activeIndustry = 'legal'" :class="activeIndustry === 'legal' ? 'gradient-bg text-white' : 'bg-gray-200 text-gray-700'" class="px-6 py-3 rounded-lg font-semibold transition" x-text="t('industries.legal.tab')"></button>
+                <button @click="activeIndustry = 'realestate'" :class="activeIndustry === 'realestate' ? 'gradient-bg text-white' : 'bg-gray-200 text-gray-700'" class="px-6 py-3 rounded-lg font-semibold transition" x-text="t('industries.realestate.tab')"></button>
+
+                <!-- Industry Content -->
+                <div class="w-full mt-8">
+                    <!-- Home Services -->
+                    <div x-show="activeIndustry === 'home'" x-transition class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h3 class="text-3xl font-bold mb-4" x-text="t('industries.home.title')"></h3>
+                            <p class="text-lg text-gray-700 mb-6" x-text="t('industries.home.description')"></p>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span x-text="t('industries.home.benefit1')"></span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span x-text="t('industries.home.benefit2')"></span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span x-text="t('industries.home.benefit3')"></span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-gradient-to-br from-cyan-100 to-blue-100 rounded-2xl p-8 text-center">
+                            <div class="text-6xl mb-4">🔧</div>
+                            <p class="text-gray-700 italic" x-text="t('industries.home.testimonial')"></p>
+                        </div>
+                    </div>
+
+                    <!-- Medical -->
+                    <div x-show="activeIndustry === 'medical'" x-transition class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h3 class="text-3xl font-bold mb-4" x-text="t('industries.medical.title')"></h3>
+                            <p class="text-lg text-gray-700 mb-6" x-text="t('industries.medical.description')"></p>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span x-text="t('industries.medical.benefit1')"></span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span x-text="t('industries.medical.benefit2')"></span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span x-text="t('industries.medical.benefit3')"></span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-gradient-to-br from-cyan-100 to-blue-100 rounded-2xl p-8 text-center">
+                            <div class="text-6xl mb-4">🏥</div>
+                            <p class="text-gray-700 italic" x-text="t('industries.medical.testimonial')"></p>
+                        </div>
+                    </div>
+
+                    <!-- Legal -->
+                    <div x-show="activeIndustry === 'legal'" x-transition class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h3 class="text-3xl font-bold mb-4" x-text="t('industries.legal.title')"></h3>
+                            <p class="text-lg text-gray-700 mb-6" x-text="t('industries.legal.description')"></p>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span x-text="t('industries.legal.benefit1')"></span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span x-text="t('industries.legal.benefit2')"></span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span x-text="t('industries.legal.benefit3')"></span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-gradient-to-br from-cyan-100 to-blue-100 rounded-2xl p-8 text-center">
+                            <div class="text-6xl mb-4">⚖️</div>
+                            <p class="text-gray-700 italic" x-text="t('industries.legal.testimonial')"></p>
+                        </div>
+                    </div>
+
+                    <!-- Real Estate -->
+                    <div x-show="activeIndustry === 'realestate'" x-transition class="grid lg:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <h3 class="text-3xl font-bold mb-4" x-text="t('industries.realestate.title')"></h3>
+                            <p class="text-lg text-gray-700 mb-6" x-text="t('industries.realestate.description')"></p>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span x-text="t('industries.realestate.benefit1')"></span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span x-text="t('industries.realestate.benefit2')"></span>
+                                </li>
+                                <li class="flex items-start gap-3">
+                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                    </svg>
+                                    <span x-text="t('industries.realestate.benefit3')"></span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-gradient-to-br from-cyan-100 to-blue-100 rounded-2xl p-8 text-center">
+                            <div class="text-6xl mb-4">🏠</div>
+                            <p class="text-gray-700 italic" x-text="t('industries.realestate.testimonial')"></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq" id="faq">
-        <div class="container">
-            <h2 class="section-title" data-fr="Questions Fréquemment Posées">Frequently Asked Questions</h2>
+    <section id="faq" class="py-16 lg:py-24 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl lg:text-5xl font-bold text-center mb-12" x-text="t('faq.headline')"></h2>
 
-            <div class="faq-list">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span data-fr="Est-ce que ça sonne robotique?">Will it sound robotic?</span>
-                        <span class="faq-arrow">▼</span>
-                    </div>
-                    <div class="faq-answer" data-fr="Pas du tout! RingTide utilise la même technologie vocale avancée que les grandes entreprises technologiques. La plupart des clients ne réalisent pas qu'ils parlent à une IA. Appelez notre ligne de démonstration (613-801-8291) pour l'entendre vous-même.">
-                        Not at all! RingTide uses the same advanced voice technology as major tech companies. Most customers don't realize they're talking to AI. Call our demo line (613-801-8291) to hear for yourself.
-                    </div>
+            <div class="max-w-3xl mx-auto space-y-4" x-data="{openFaq: null}">
+                <!-- FAQ 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button @click="openFaq = openFaq === 1 ? null : 1" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition">
+                        <span class="font-semibold text-gray-900" x-text="t('faq.q1.question')"></span>
+                        <svg class="w-5 h-5 transform transition-transform" :class="openFaq === 1 ? 'rotate-180' : ''" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                    <div x-show="openFaq === 1" x-transition class="px-6 pb-4 text-gray-600" x-text="t('faq.q1.answer')"></div>
                 </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span data-fr="Et si elle fait une erreur?">What if it makes a mistake?</span>
-                        <span class="faq-arrow">▼</span>
-                    </div>
-                    <div class="faq-answer" data-fr="Les appels complexes ou inhabituels sont automatiquement transférés vers vous. De plus, nous surveillons chaque conversation et améliorons l'IA chaque semaine en fonction des interactions réelles. Vous gardez toujours le contrôle.">
-                        Complex or unusual calls are automatically transferred to you. Plus, we monitor every conversation and improve the AI weekly based on real interactions. You're always in control.
-                    </div>
+                <!-- FAQ 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button @click="openFaq = openFaq === 2 ? null : 2" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition">
+                        <span class="font-semibold text-gray-900" x-text="t('faq.q2.question')"></span>
+                        <svg class="w-5 h-5 transform transition-transform" :class="openFaq === 2 ? 'rotate-180' : ''" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                    <div x-show="openFaq === 2" x-transition class="px-6 pb-4 text-gray-600" x-text="t('faq.q2.answer')"></div>
                 </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span data-fr="À quelle vitesse puis-je commencer?">How fast can I get started?</span>
-                        <span class="faq-arrow">▼</span>
-                    </div>
-                    <div class="faq-answer" data-fr="5 jours entre l'inscription et le lancement. La semaine 1 est GRATUITE pendant que nous perfectionnons les réponses et la personnalité de votre IA. Aucun risque, aucun coût initial.">
-                        5 days from signup to launch. Week 1 is FREE while we perfect your AI's responses and personality. No risk, no upfront cost.
-                    </div>
+                <!-- FAQ 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button @click="openFaq = openFaq === 3 ? null : 3" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition">
+                        <span class="font-semibold text-gray-900" x-text="t('faq.q3.question')"></span>
+                        <svg class="w-5 h-5 transform transition-transform" :class="openFaq === 3 ? 'rotate-180' : ''" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                    <div x-show="openFaq === 3" x-transition class="px-6 pb-4 text-gray-600" x-text="t('faq.q3.answer')"></div>
                 </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span data-fr="Et si je n'aime pas?">What if I don't like it?</span>
-                        <span class="faq-arrow">▼</span>
-                    </div>
-                    <div class="faq-answer" data-fr="Annulez à tout moment, sans poser de questions. Pas de frais d'installation pour les premiers utilisateurs. Nous sommes confiants que vous allez adorer, mais il n'y a aucun risque à essayer.">
-                        Cancel anytime, no questions asked. No setup fees for early adopters. We're confident you'll love it, but there's zero risk to try.
-                    </div>
+                <!-- FAQ 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button @click="openFaq = openFaq === 4 ? null : 4" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition">
+                        <span class="font-semibold text-gray-900" x-text="t('faq.q4.question')"></span>
+                        <svg class="w-5 h-5 transform transition-transform" :class="openFaq === 4 ? 'rotate-180' : ''" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                    <div x-show="openFaq === 4" x-transition class="px-6 pb-4 text-gray-600" x-text="t('faq.q4.answer')"></div>
                 </div>
 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span data-fr="Peut-elle gérer le français et l'anglais?">Can it handle French and English?</span>
-                        <span class="faq-arrow">▼</span>
-                    </div>
-                    <div class="faq-answer" data-fr="Oui! RingTide détecte automatiquement la langue et répond en conséquence. Parfait pour servir les marchés bilingues d'Ottawa et de Montréal.">
-                        Yes! RingTide automatically detects the language and responds accordingly. Perfect for serving Ottawa and Montreal's bilingual markets.
-                    </div>
+                <!-- FAQ 5 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button @click="openFaq = openFaq === 5 ? null : 5" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition">
+                        <span class="font-semibold text-gray-900" x-text="t('faq.q5.question')"></span>
+                        <svg class="w-5 h-5 transform transition-transform" :class="openFaq === 5 ? 'rotate-180' : ''" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                    <div x-show="openFaq === 5" x-transition class="px-6 pb-4 text-gray-600" x-text="t('faq.q5.answer')"></div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <button @click="openFaq = openFaq === 6 ? null : 6" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition">
+                        <span class="font-semibold text-gray-900" x-text="t('faq.q6.question')"></span>
+                        <svg class="w-5 h-5 transform transition-transform" :class="openFaq === 6 ? 'rotate-180' : ''" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                        </svg>
+                    </button>
+                    <div x-show="openFaq === 6" x-transition class="px-6 pb-4 text-gray-600" x-text="t('faq.q6.answer')"></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Final CTA -->
-    <section class="final-cta" id="contact">
-        <div class="container">
-            <div class="final-cta-content">
-                <h2 data-fr="Prêt à Capturer Chaque Appel?">Ready to Catch Every Call?</h2>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem;" data-fr="Mettez votre réceptionniste IA en service en 5 jours">Get your AI receptionist live in 5 days</p>
+    <!-- Final CTA Section -->
+    <section id="contact" class="gradient-bg text-white py-16 lg:py-24 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <pattern id="wave2" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                    <path d="M0,50 Q25,40 50,50 T100,50" fill="none" stroke="white" stroke-width="2"/>
+                </pattern>
+                <rect width="100%" height="100%" fill="url(#wave2)"/>
+            </svg>
+        </div>
 
-                <div class="cta-buttons">
-                    <a href="https://outlook.office.com/book/RingTide@guumel.com/" class="btn btn-primary" data-fr="Réserver une Démo Gratuite">Book Free Demo</a>
-                    <a href="tel:+16138018291" class="btn btn-secondary" data-fr="📞 Appelez: 613-801-8291">📞 Call: 613-801-8291</a>
-                </div>
+        <div class="container mx-auto px-4 relative z-10 text-center">
+            <h2 class="text-4xl lg:text-5xl font-bold mb-6" x-text="t('finalCta.headline')"></h2>
+            <p class="text-xl mb-8 opacity-95" x-text="t('finalCta.subheadline')"></p>
 
-                <div class="signup-stats">
-                    <span data-fr="✓ Aucune carte de crédit requise">✓ No credit card required</span> &nbsp;&nbsp; <span data-fr="✓ Installation en 5 jours">✓ Setup in 5 days</span> &nbsp;&nbsp; <span data-fr="✓ Première semaine gratuite">✓ First week free</span>
-                    <br><br>
-                    <strong data-fr="Comme la marée - fiable, constante, toujours présente">Like the tide - reliable, consistent, always there</strong>
-                </div>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <a href="mailto:hi@ringtide.ai?subject=RingTide Demo Request" class="bg-white text-cyan-600 px-8 py-4 rounded-lg font-bold text-lg hover:shadow-xl transition transform hover:-translate-y-1" x-text="t('finalCta.ctaPrimary')"></a>
+                <a href="tel:+16138018291" class="bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white hover:text-cyan-600 transition transform hover:-translate-y-1" x-text="t('finalCta.ctaSecondary')"></a>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-6 text-sm">
+                <span x-text="t('finalCta.badge1')"></span>
+                <span x-text="t('finalCta.badge2')"></span>
+                <span x-text="t('finalCta.badge3')"></span>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>RingTide</h4>
-                    <p style="color: #9CA3AF;" data-fr="Réceptionnistes Vocales IA pour Entreprises Canadiennes">AI Voice Receptionists for Canadian Businesses</p>
-                    <p style="color: #9CA3AF; margin-top: 1rem;" data-fr="Un Produit Guumel Inc.">A Guumel Inc. Product<br>Ottawa, ON | <span data-fr="Montréal">Montreal</span>, QC</p>
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <!-- Company Info -->
+                <div>
+                    <h4 class="text-white font-bold mb-4">RingTide</h4>
+                    <p class="text-sm mb-4" x-text="t('footer.description')"></p>
+                    <p class="text-sm" x-text="t('footer.company')"></p>
                 </div>
 
-                <div class="footer-section">
-                    <h4 data-fr="Produit">Product</h4>
-                    <ul>
-                        <li><a href="#solution" data-fr="Comment ça fonctionne">How It Works</a></li>
-                        <li><a href="#pricing" data-fr="Tarification">Pricing</a></li>
-                        <li><a href="#faq">FAQ</a></li>
+                <!-- Product -->
+                <div>
+                    <h4 class="text-white font-bold mb-4" x-text="t('footer.product')"></h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#solution" class="hover:text-white transition" x-text="t('nav.howItWorks')"></a></li>
+                        <li><a href="#pricing" class="hover:text-white transition" x-text="t('nav.pricing')"></a></li>
+                        <li><a href="#faq" class="hover:text-white transition">FAQ</a></li>
                     </ul>
                 </div>
 
-                <div class="footer-section">
-                    <h4 data-fr="Entreprise">Company</h4>
-                    <ul>
-                        <li><a href="mailto:hi@ringtide.ai" data-fr="À propos">About</a></li>
-                        <li><a href="mailto:hi@ringtide.ai">Contact</a></li>
+                <!-- Company -->
+                <div>
+                    <h4 class="text-white font-bold mb-4" x-text="t('footer.companySection')"></h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="mailto:hi@ringtide.ai" class="hover:text-white transition" x-text="t('footer.about')"></a></li>
+                        <li><a href="mailto:hi@ringtide.ai" class="hover:text-white transition">Contact</a></li>
                     </ul>
                 </div>
 
-                <div class="footer-section">
-                    <h4 data-fr="Connexion">Connect</h4>
-                    <ul>
-                        <li><a href="mailto:hi@ringtide.ai">📧 hi@ringtide.ai</a></li>
-                        <li><a href="tel:+16138018291">📞 +1 613-801-8291</a></li>
-                        <li><a href="https://linkedin.com/in/ringtide/">LinkedIn</a></li>
-                        <li><a href="https://github.com/Guumel-Inc/ringtide/">GitHub</a></li>
+                <!-- Connect -->
+                <div>
+                    <h4 class="text-white font-bold mb-4" x-text="t('footer.connect')"></h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="mailto:hi@ringtide.ai" class="hover:text-white transition">📧 hi@ringtide.ai</a></li>
+                        <li><a href="tel:+16138018291" class="hover:text-white transition">📞 +1 613-801-8291</a></li>
                     </ul>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p><span data-fr="&copy; 2025 RingTide par Guumel Inc. Tous droits réservés.">&copy; 2025 RingTide by Guumel Inc. All rights reserved.</span> | <span data-fr="Fait avec 🌊 à Ottawa">Made with 🌊 in Ottawa</span></p>
+
+            <div class="border-t border-gray-800 pt-8 text-center text-sm">
+                <p x-text="t('footer.copyright')"></p>
             </div>
         </div>
     </footer>
 
+    <!-- Alpine.js App Data & Translation -->
     <script>
-        // Language Switcher
-        let currentLang = localStorage.getItem('language') || 'en';
+        function appData() {
+            return {
+                language: localStorage.getItem('language') || (navigator.language.startsWith('fr') ? 'fr' : 'en'),
 
-        function switchLanguage(lang) {
-            const elements = document.querySelectorAll('[data-fr]');
-            const langBtn = document.getElementById('langToggle');
-            const htmlTag = document.documentElement;
+                roiCalc: {
+                    callsPerDay: 50,
+                    missedPercent: 30,
+                    avgCustomerValue: 400
+                },
 
-            elements.forEach(element => {
-                const frenchText = element.getAttribute('data-fr');
-                const currentText = element.textContent || element.innerText;
+                toggleLanguage() {
+                    this.language = this.language === 'en' ? 'fr' : 'en';
+                    localStorage.setItem('language', this.language);
+                },
 
-                if (lang === 'fr') {
-                    // Store English text if not already stored
-                    if (!element.getAttribute('data-en')) {
-                        element.setAttribute('data-en', currentText.trim());
+                calculateLostRevenue() {
+                    const monthlyMissedCalls = this.roiCalc.callsPerDay * (this.roiCalc.missedPercent / 100) * 30;
+                    const lostConversions = monthlyMissedCalls * 0.10;
+                    return Math.round(lostConversions * this.roiCalc.avgCustomerValue);
+                },
+
+                calculateSavings() {
+                    return Math.max(0, this.calculateLostRevenue() - 299);
+                },
+
+                t(key) {
+                    const translations = {
+                        en: {
+                            nav: {
+                                howItWorks: "How It Works",
+                                pricing: "Pricing"
+                            },
+                            hero: {
+                                headline: "Never Miss Another Call",
+                                subheadline: "AI voice receptionist for Canadian businesses. Answers in English or French. Live in 48 hours.",
+                                tryItLive: {
+                                    headline: "🎯 Try It Right Now",
+                                    subheadline: "Call our AI receptionist and experience it yourself - it's live!",
+                                    english: "English",
+                                    french: "Français",
+                                    tapToCall: "Tap to call"
+                                },
+                                ctaPrimary: "Hear a Demo Call",
+                                ctaSecondary: "See Pricing",
+                                badges: {
+                                    canadian: "Canadian-owned",
+                                    pipeda: "PIPEDA Compliant",
+                                    setup: "48-hour setup",
+                                    noContract: "No contracts"
+                                }
+                            },
+                            demo: {
+                                headline: "Hear RingTide in Action",
+                                subheadline: "Real calls, unscripted. See how natural our AI sounds.",
+                                hvac: {
+                                    badge: "Home Services",
+                                    title: "Emergency HVAC Call",
+                                    scenario: "Caller: \"My furnace isn't working\"",
+                                    outcome: "Appointment booked in 90 seconds"
+                                },
+                                medical: {
+                                    badge: "Medical Clinic",
+                                    title: "Appointment Request",
+                                    scenario: "Caller: \"I need to see the doctor\"",
+                                    outcome: "Calendar sync + confirmation SMS"
+                                }
+                            },
+                            problem: {
+                                headline: "The Hidden Cost of Missed Calls",
+                                point1: "Lose $6,000+/year from unanswered calls",
+                                point2: "Can't afford 24/7 receptionist ($40K/year)",
+                                point3: "Customers hang up after 3 rings",
+                                point4: "Emergency calls = lost revenue"
+                            },
+                            solution: {
+                                headline: "RingTide Captures Every Opportunity",
+                                point1: "Answer every call, 24/7/365",
+                                point2: "For $99/month (less than 3 hours of receptionist time)",
+                                point3: "Live in 48 hours (not weeks)",
+                                point4: "Bilingual by default"
+                            },
+                            roi: {
+                                headline: "Calculate Your Savings",
+                                subheadline: "See how much RingTide can save your business",
+                                callsPerDay: "How many calls do you get per day?",
+                                callsPerDayUnit: "calls/day",
+                                missedPercent: "What % currently go to voicemail?",
+                                avgValue: "Average value per customer?",
+                                lostRevenue: "Monthly Lost Revenue",
+                                ringtideCost: "With RingTide (Professional)",
+                                savings: "Your Monthly Savings"
+                            },
+                            pricing: {
+                                headline: "Simple, Transparent Pricing",
+                                subheadline: "No setup fees. No contracts. Cancel anytime.",
+                                month: "month",
+                                cta: "Start Free Trial",
+                                basic: {
+                                    name: "Basic",
+                                    badge: "Small Businesses",
+                                    feature1: "300 minutes/month (~15-20 calls/day)",
+                                    feature2: "English OR French",
+                                    feature3: "24/7 answering",
+                                    feature4: "Message taking",
+                                    feature5: "Email/SMS notifications"
+                                },
+                                professional: {
+                                    name: "Professional",
+                                    badge: "Growing Businesses",
+                                    featured: "MOST POPULAR",
+                                    feature1: "800 minutes/month (~40-50 calls/day)",
+                                    feature2: "Bilingual (EN + FR)",
+                                    feature3: "Appointment booking",
+                                    feature4: "Call routing to team",
+                                    feature5: "CRM webhooks",
+                                    feature6: "White-glove setup (<48hrs)"
+                                },
+                                growth: {
+                                    name: "Growth",
+                                    badge: "Multi-Location",
+                                    feature1: "2,000 minutes/month (~100-130 calls/day)",
+                                    feature2: "Outbound calling",
+                                    feature3: "Multi-location (up to 5)",
+                                    feature4: "Advanced CRM integration",
+                                    feature5: "Lead qualification",
+                                    feature6: "Waitlist management"
+                                },
+                                footer: {
+                                    discount: "Annual Discount:",
+                                    annual: "Pay yearly, save 15% (2 months free)"
+                                }
+                            },
+                            industries: {
+                                headline: "Built for Canadian Businesses",
+                                home: {
+                                    tab: "Home Services",
+                                    title: "Never Miss an Emergency Call Again",
+                                    description: "Your technicians are in the field, but customers need help now. RingTide answers every call, qualifies the emergency, and books appointments directly into your calendar.",
+                                    benefit1: "Capture 24/7 emergency calls",
+                                    benefit2: "Seasonal surge capacity (no hiring)",
+                                    benefit3: "Instant routing to on-call tech",
+                                    testimonial: "\"We used to lose 5-8 emergency calls per week to voicemail. Now we capture every one. Paid for itself in the first week.\" — Mike T., Ottawa HVAC"
+                                },
+                                medical: {
+                                    tab: "Medical Clinics",
+                                    title: "Reduce No-Shows, Fill Your Calendar",
+                                    description: "Patients call when it's convenient for them, not just during your hours. RingTide books appointments, sends reminders, and handles rescheduling automatically.",
+                                    benefit1: "24/7 appointment booking",
+                                    benefit2: "Automated reminders reduce no-shows",
+                                    benefit3: "PIPEDA-compliant call handling",
+                                    testimonial: "\"RingTide captures 15+ appointments per month we'd otherwise miss. Our no-show rate dropped 40%.\" — Dr. Chen, Montreal Clinic"
+                                },
+                                legal: {
+                                    tab: "Legal Firms",
+                                    title: "Professional First Impression, Every Time",
+                                    description: "New clients judge your firm in the first 30 seconds. RingTide provides a professional, bilingual reception that screens calls and books consultations 24/7.",
+                                    benefit1: "Screen and qualify new leads",
+                                    benefit2: "Bilingual intake for Quebec clients",
+                                    benefit3: "Confidential, secure call handling",
+                                    testimonial: "\"Every missed call is a potential $5K+ case. RingTide ensures we never lose a lead again.\" — Sarah M., Ottawa Law Firm"
+                                },
+                                realestate: {
+                                    tab: "Real Estate",
+                                    title: "Capture Hot Leads While Showing Properties",
+                                    description: "You can't answer your phone during showings, but buyers won't wait. RingTide captures inquiries, qualifies leads, and books viewings while you work.",
+                                    benefit1: "24/7 lead capture during showings",
+                                    benefit2: "Qualify buyers before wasting time",
+                                    benefit3: "Instant viewing appointments",
+                                    testimonial: "\"I closed 3 deals last month from calls RingTide answered while I was with other clients.\" — James L., Real Estate Agent"
+                                }
+                            },
+                            faq: {
+                                headline: "Common Questions",
+                                q1: {
+                                    question: "Will customers know it's AI?",
+                                    answer: "No. Our AI sounds completely natural with <1 second response time. We use the same technology that powers Fortune 500 customer service. Listen to our demos — you decide."
+                                },
+                                q2: {
+                                    question: "How fast can I get started?",
+                                    answer: "48-72 hours from signup to live. We handle everything: script creation, voice training, testing, and call forwarding setup. You just provide us with your business info."
+                                },
+                                q3: {
+                                    question: "What if RingTide can't answer a question?",
+                                    answer: "Two options: (1) Take a detailed message and notify you immediately, or (2) Transfer to your phone (Professional plan). You choose."
+                                },
+                                q4: {
+                                    question: "Is it really bilingual?",
+                                    answer: "Yes, on Professional and Growth plans. RingTide automatically detects the caller's language and responds in French or English. Not a translation — native fluency in both languages."
+                                },
+                                q5: {
+                                    question: "Do I need to change my phone system?",
+                                    answer: "No. RingTide works with any phone system. You can forward all calls, only after-hours calls, or only when lines are busy. Takes 5 minutes to set up."
+                                },
+                                q6: {
+                                    question: "What if I get more calls than my plan includes?",
+                                    answer: "No problem — we just charge the overage rate ($0.40-0.50/min depending on plan). You'll see usage in your dashboard and we'll notify you at 80% capacity."
+                                }
+                            },
+                            finalCta: {
+                                headline: "Start Capturing Every Call Today",
+                                subheadline: "7-day free trial. No credit card required. Live in 48 hours.",
+                                ctaPrimary: "Get Started Free",
+                                ctaSecondary: "📞 Call: 613-801-8291",
+                                badge1: "✓ Cancel anytime",
+                                badge2: "✓ No setup fees",
+                                badge3: "✓ PIPEDA compliant"
+                            },
+                            footer: {
+                                description: "AI Voice Receptionists for Canadian Businesses",
+                                company: "A Guumel Inc. Product\nOttawa, ON | Montreal, QC",
+                                product: "Product",
+                                companySection: "Company",
+                                about: "About",
+                                connect: "Connect",
+                                copyright: "© 2025 RingTide by Guumel Inc. All rights reserved. | Made with 🌊 in Ottawa"
+                            }
+                        },
+                        fr: {
+                            nav: {
+                                howItWorks: "Comment ça fonctionne",
+                                pricing: "Tarification"
+                            },
+                            hero: {
+                                headline: "Ne Manquez Plus Jamais un Appel",
+                                subheadline: "Réceptionniste vocale IA pour entreprises canadiennes. Répond en anglais ou français. En ligne en 48 heures.",
+                                tryItLive: {
+                                    headline: "🎯 Essayez-le Maintenant",
+                                    subheadline: "Appelez notre réceptionniste IA et expérimentez par vous-même - c'est en direct!",
+                                    english: "English",
+                                    french: "Français",
+                                    tapToCall: "Appuyez pour appeler"
+                                },
+                                ctaPrimary: "Écouter une Démo",
+                                ctaSecondary: "Voir les Tarifs",
+                                badges: {
+                                    canadian: "Entreprise canadienne",
+                                    pipeda: "Conforme LPRPDE",
+                                    setup: "Installation 48h",
+                                    noContract: "Sans engagement"
+                                }
+                            },
+                            demo: {
+                                headline: "Écoutez RingTide en Action",
+                                subheadline: "De vrais appels, non scénarisés. Voyez comme notre IA sonne naturelle.",
+                                hvac: {
+                                    badge: "Services à Domicile",
+                                    title: "Appel d'Urgence CVC",
+                                    scenario: "Appelant: \"Ma fournaise ne fonctionne pas\"",
+                                    outcome: "Rendez-vous réservé en 90 secondes"
+                                },
+                                medical: {
+                                    badge: "Clinique Médicale",
+                                    title: "Demande de Rendez-vous",
+                                    scenario: "Appelant: \"Je dois voir le médecin\"",
+                                    outcome: "Sync calendrier + SMS de confirmation"
+                                }
+                            },
+                            problem: {
+                                headline: "Le Coût Caché des Appels Manqués",
+                                point1: "Perdez 6 000$+/an en appels sans réponse",
+                                point2: "Impossible de payer une réceptionniste 24/7 (40K$/an)",
+                                point3: "Les clients raccrochent après 3 sonneries",
+                                point4: "Appels d'urgence = revenus perdus"
+                            },
+                            solution: {
+                                headline: "RingTide Capture Chaque Opportunité",
+                                point1: "Répond à chaque appel, 24/7/365",
+                                point2: "Pour 99$/mois (moins de 3 heures de réceptionniste)",
+                                point3: "En ligne en 48 heures (pas des semaines)",
+                                point4: "Bilingue par défaut"
+                            },
+                            roi: {
+                                headline: "Calculez Vos Économies",
+                                subheadline: "Voyez combien RingTide peut économiser à votre entreprise",
+                                callsPerDay: "Combien d'appels recevez-vous par jour?",
+                                callsPerDayUnit: "appels/jour",
+                                missedPercent: "Quel % va actuellement à la messagerie vocale?",
+                                avgValue: "Valeur moyenne par client?",
+                                lostRevenue: "Revenus Mensuels Perdus",
+                                ringtideCost: "Avec RingTide (Professionnel)",
+                                savings: "Vos Économies Mensuelles"
+                            },
+                            pricing: {
+                                headline: "Tarification Simple et Transparente",
+                                subheadline: "Aucuns frais d'installation. Sans engagement. Annulez à tout moment.",
+                                month: "mois",
+                                cta: "Essai Gratuit",
+                                basic: {
+                                    name: "Basique",
+                                    badge: "Petites Entreprises",
+                                    feature1: "300 minutes/mois (~15-20 appels/jour)",
+                                    feature2: "Anglais OU Français",
+                                    feature3: "Réponse 24/7",
+                                    feature4: "Prise de messages",
+                                    feature5: "Notifications courriel/SMS"
+                                },
+                                professional: {
+                                    name: "Professionnel",
+                                    badge: "Entreprises en Croissance",
+                                    featured: "LE PLUS POPULAIRE",
+                                    feature1: "800 minutes/mois (~40-50 appels/jour)",
+                                    feature2: "Bilingue (EN + FR)",
+                                    feature3: "Réservation de rendez-vous",
+                                    feature4: "Routage d'appels vers l'équipe",
+                                    feature5: "Webhooks CRM",
+                                    feature6: "Installation premium (<48h)"
+                                },
+                                growth: {
+                                    name: "Croissance",
+                                    badge: "Multi-Emplacements",
+                                    feature1: "2 000 minutes/mois (~100-130 appels/jour)",
+                                    feature2: "Appels sortants",
+                                    feature3: "Multi-emplacements (jusqu'à 5)",
+                                    feature4: "Intégration CRM avancée",
+                                    feature5: "Qualification des prospects",
+                                    feature6: "Gestion des listes d'attente"
+                                },
+                                footer: {
+                                    discount: "Rabais Annuel:",
+                                    annual: "Payez annuellement, économisez 15% (2 mois gratuits)"
+                                }
+                            },
+                            industries: {
+                                headline: "Conçu pour les Entreprises Canadiennes",
+                                home: {
+                                    tab: "Services à Domicile",
+                                    title: "Ne Manquez Plus d'Appel d'Urgence",
+                                    description: "Vos techniciens sont sur le terrain, mais les clients ont besoin d'aide maintenant. RingTide répond à chaque appel, qualifie l'urgence et réserve les rendez-vous directement dans votre calendrier.",
+                                    benefit1: "Capture d'appels d'urgence 24/7",
+                                    benefit2: "Capacité de pointe saisonnière (sans embauche)",
+                                    benefit3: "Routage instantané vers le technicien de garde",
+                                    testimonial: "\"Nous perdions 5 à 8 appels d'urgence par semaine. Maintenant nous capturons tout. Rentabilisé dès la première semaine.\" — Mike T., CVC Ottawa"
+                                },
+                                medical: {
+                                    tab: "Cliniques Médicales",
+                                    title: "Réduisez les Absences, Remplissez Votre Calendrier",
+                                    description: "Les patients appellent quand c'est pratique pour eux, pas seulement pendant vos heures. RingTide réserve des rendez-vous, envoie des rappels et gère les reports automatiquement.",
+                                    benefit1: "Réservation de rendez-vous 24/7",
+                                    benefit2: "Rappels automatiques réduisent les absences",
+                                    benefit3: "Gestion d'appels conforme LPRPDE",
+                                    testimonial: "\"RingTide capture 15+ rendez-vous par mois que nous aurions autrement manqués. Notre taux d'absence a chuté de 40%.\" — Dr Chen, Clinique Montréal"
+                                },
+                                legal: {
+                                    tab: "Cabinets Juridiques",
+                                    title: "Première Impression Professionnelle, Toujours",
+                                    description: "Les nouveaux clients jugent votre cabinet dans les 30 premières secondes. RingTide offre une réception professionnelle bilingue qui filtre les appels et réserve des consultations 24/7.",
+                                    benefit1: "Filtrage et qualification des nouveaux prospects",
+                                    benefit2: "Accueil bilingue pour clients québécois",
+                                    benefit3: "Gestion d'appels confidentielle et sécurisée",
+                                    testimonial: "\"Chaque appel manqué est un cas potentiel de 5K$+. RingTide assure que nous ne perdons plus jamais un prospect.\" — Sarah M., Cabinet Ottawa"
+                                },
+                                realestate: {
+                                    tab: "Immobilier",
+                                    title: "Capturez les Prospects Chauds Pendant les Visites",
+                                    description: "Vous ne pouvez pas répondre pendant les visites, mais les acheteurs n'attendent pas. RingTide capture les demandes, qualifie les prospects et réserve les visites pendant que vous travaillez.",
+                                    benefit1: "Capture de prospects 24/7 pendant les visites",
+                                    benefit2: "Qualifiez les acheteurs avant de perdre du temps",
+                                    benefit3: "Rendez-vous de visite instantanés",
+                                    testimonial: "\"J'ai conclu 3 ventes le mois dernier grâce à des appels que RingTide a répondu pendant que j'étais avec d'autres clients.\" — James L., Agent Immobilier"
+                                }
+                            },
+                            faq: {
+                                headline: "Questions Fréquentes",
+                                q1: {
+                                    question: "Les clients sauront-ils que c'est une IA?",
+                                    answer: "Non. Notre IA sonne complètement naturelle avec un temps de réponse <1 seconde. Nous utilisons la même technologie qui alimente le service client des entreprises Fortune 500. Écoutez nos démos — vous déciderez."
+                                },
+                                q2: {
+                                    question: "À quelle vitesse puis-je commencer?",
+                                    answer: "48-72 heures de l'inscription au lancement. Nous gérons tout: création de script, entraînement vocal, tests et configuration de transfert d'appels. Vous fournissez juste vos infos d'entreprise."
+                                },
+                                q3: {
+                                    question: "Et si RingTide ne peut pas répondre à une question?",
+                                    answer: "Deux options: (1) Prendre un message détaillé et vous notifier immédiatement, ou (2) Transférer vers votre téléphone (plan Professionnel). Vous choisissez."
+                                },
+                                q4: {
+                                    question: "Est-ce vraiment bilingue?",
+                                    answer: "Oui, sur les plans Professionnel et Croissance. RingTide détecte automatiquement la langue de l'appelant et répond en français ou anglais. Pas une traduction — fluidité native dans les deux langues."
+                                },
+                                q5: {
+                                    question: "Dois-je changer mon système téléphonique?",
+                                    answer: "Non. RingTide fonctionne avec tout système téléphonique. Vous pouvez transférer tous les appels, seulement les appels après les heures, ou seulement quand les lignes sont occupées. Configuration en 5 minutes."
+                                },
+                                q6: {
+                                    question: "Et si je reçois plus d'appels que mon plan inclut?",
+                                    answer: "Aucun problème — nous facturons juste le tarif de dépassement (0,40$-0,50$/min selon le plan). Vous verrez l'utilisation dans votre tableau de bord et nous vous notifierons à 80% de capacité."
+                                }
+                            },
+                            finalCta: {
+                                headline: "Commencez à Capturer Chaque Appel Aujourd'hui",
+                                subheadline: "Essai gratuit de 7 jours. Aucune carte de crédit requise. En ligne en 48 heures.",
+                                ctaPrimary: "Commencer Gratuitement",
+                                ctaSecondary: "📞 Appelez: 613-801-8291",
+                                badge1: "✓ Annulez à tout moment",
+                                badge2: "✓ Aucuns frais d'installation",
+                                badge3: "✓ Conforme LPRPDE"
+                            },
+                            footer: {
+                                description: "Réceptionnistes Vocales IA pour Entreprises Canadiennes",
+                                company: "Un Produit Guumel Inc.\nOttawa, ON | Montréal, QC",
+                                product: "Produit",
+                                companySection: "Entreprise",
+                                about: "À propos",
+                                connect: "Connexion",
+                                copyright: "© 2025 RingTide par Guumel Inc. Tous droits réservés. | Fait avec 🌊 à Ottawa"
+                            }
+                        }
+                    };
+
+                    const keys = key.split('.');
+                    let value = translations[this.language];
+
+                    for (const k of keys) {
+                        value = value?.[k];
                     }
-                    element.textContent = frenchText;
-                } else {
-                    // Restore English text
-                    const englishText = element.getAttribute('data-en');
-                    if (englishText) {
-                        element.textContent = englishText;
-                    }
+
+                    return value || key;
                 }
-            });
-
-            // Update button text and HTML lang attribute
-            langBtn.textContent = lang === 'en' ? 'FR' : 'EN';
-            htmlTag.setAttribute('lang', lang);
-            currentLang = lang;
-            localStorage.setItem('language', lang);
+            };
         }
-
-        // Initialize language on page load
-        document.addEventListener('DOMContentLoaded', () => {
-            // Auto-detect browser language on first visit
-            if (!localStorage.getItem('language')) {
-                const browserLang = navigator.language || navigator.userLanguage;
-                currentLang = browserLang.startsWith('fr') ? 'fr' : 'en';
-            }
-
-            // Apply saved or detected language
-            if (currentLang === 'fr') {
-                switchLanguage('fr');
-            }
-
-            // Add click event to language toggle button
-            document.getElementById('langToggle').addEventListener('click', () => {
-                switchLanguage(currentLang === 'en' ? 'fr' : 'en');
-            });
-        });
-
-        // FAQ Accordion
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', () => {
-                const item = question.parentElement;
-                const wasActive = item.classList.contains('active');
-
-                // Close all items
-                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-
-                // Open clicked item if it wasn't active
-                if (!wasActive) {
-                    item.classList.add('active');
-                }
-            });
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
     </script>
 </body>
 </html>
