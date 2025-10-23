@@ -156,12 +156,12 @@
 
 <body class="bg-gray-50 font-sans antialiased" x-data="appData()">
     <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
+    <header class="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-100">
+        <nav class="container mx-auto px-4 lg:px-6">
+            <div class="flex justify-between items-center py-3 lg:py-4">
                 <!-- Logo -->
-                <a href="#" class="flex items-center">
-                    <svg class="h-12 lg:h-14 w-auto cursor-pointer" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+                <a href="#" class="flex items-center group">
+                    <svg class="h-11 lg:h-12 w-auto cursor-pointer transition-transform duration-300 group-hover:scale-105" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
                                 <stop offset="0%" style="stop-color:#0891B2;stop-opacity:1" />
@@ -173,7 +173,7 @@
                             </linearGradient>
                         </defs>
                         <g transform="translate(10, 10)">
-                            <circle cx="50" cy="50" r="48" fill="url(#logoGradient)"/>
+                            <circle cx="50" cy="50" r="48" fill="url(#logoGradient)" class="transition-all duration-300"/>
                             <path d="M20 45 Q30 35 40 45 T60 45 T80 45" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
                             <path d="M20 55 Q30 45 40 55 T60 55 T80 55" stroke="white" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.7"/>
                             <path d="M20 65 Q30 55 40 65 T60 65 T80 65" stroke="white" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.4"/>
@@ -184,101 +184,169 @@
                 </a>
 
                 <!-- Navigation Links & Language Switcher -->
-                <div class="flex items-center gap-6">
-                    <ul class="hidden md:flex gap-6">
-                        <li><a href="#solution" class="text-gray-600 hover:text-cyan-600 font-medium transition" x-text="t('nav.howItWorks')"></a></li>
-                        <li><a href="#pricing" class="text-gray-600 hover:text-cyan-600 font-medium transition" x-text="t('nav.pricing')"></a></li>
-                        <li><a href="#faq" class="text-gray-600 hover:text-cyan-600 font-medium transition">FAQ</a></li>
-                        <li><a href="#contact" class="text-gray-600 hover:text-cyan-600 font-medium transition">Contact</a></li>
+                <div class="flex items-center gap-3 lg:gap-6">
+                    <ul class="hidden md:flex items-center gap-1 lg:gap-2">
+                        <li>
+                            <a href="#solution" class="relative px-3 lg:px-4 py-2 text-gray-700 hover:text-cyan-600 font-semibold text-sm lg:text-base transition-all duration-300 group">
+                                <span x-text="t('nav.howItWorks')"></span>
+                                <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-cyan-600 to-blue-600 transform -translate-x-1/2 group-hover:w-3/4 transition-all duration-300"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#pricing" class="relative px-3 lg:px-4 py-2 text-gray-700 hover:text-cyan-600 font-semibold text-sm lg:text-base transition-all duration-300 group">
+                                <span x-text="t('nav.pricing')"></span>
+                                <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-cyan-600 to-blue-600 transform -translate-x-1/2 group-hover:w-3/4 transition-all duration-300"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#faq" class="relative px-3 lg:px-4 py-2 text-gray-700 hover:text-cyan-600 font-semibold text-sm lg:text-base transition-all duration-300 group">
+                                <span>FAQ</span>
+                                <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-cyan-600 to-blue-600 transform -translate-x-1/2 group-hover:w-3/4 transition-all duration-300"></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#contact" class="relative px-3 lg:px-4 py-2 text-gray-700 hover:text-cyan-600 font-semibold text-sm lg:text-base transition-all duration-300 group">
+                                <span>Contact</span>
+                                <span class="absolute bottom-0 left-1/2 w-0 h-0.5 bg-gradient-to-r from-cyan-600 to-blue-600 transform -translate-x-1/2 group-hover:w-3/4 transition-all duration-300"></span>
+                            </a>
+                        </li>
                     </ul>
-                    <button @click="toggleLanguage()" class="gradient-bg text-white px-4 py-2 rounded-lg font-semibold text-sm hover:shadow-cyan transition transform hover:-translate-y-0.5" x-text="language === 'en' ? 'FR' : 'EN'"></button>
+                    <button @click="toggleLanguage()" class="relative gradient-bg text-white px-4 lg:px-5 py-2 lg:py-2.5 rounded-xl font-bold text-sm shadow-lg hover:shadow-cyan transition-all duration-300 transform hover:-translate-y-1 overflow-hidden group">
+                        <span class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+                        <span class="relative flex items-center gap-2">
+                            <svg class="w-4 h-4 transition-transform duration-300 group-hover:rotate-180" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M7 2a1 1 0 011 1v1h3a1 1 0 110 2H9.578a18.87 18.87 0 01-1.724 4.78c.29.354.596.696.914 1.026a1 1 0 11-1.44 1.389c-.188-.196-.373-.396-.554-.6a19.098 19.098 0 01-3.107 3.567 1 1 0 01-1.334-1.49 17.087 17.087 0 003.13-3.733 18.992 18.992 0 01-1.487-2.494 1 1 0 111.79-.89c.234.47.489.928.764 1.372.417-.934.752-1.913.997-2.927H3a1 1 0 110-2h3V3a1 1 0 011-1zm6 6a1 1 0 01.894.553l2.991 5.982a.869.869 0 01.02.037l.99 1.98a1 1 0 11-1.79.895L15.383 16h-4.764l-.724 1.447a1 1 0 11-1.788-.894l.99-1.98.019-.038 2.99-5.982A1 1 0 0113 8zm-1.382 6h2.764L13 11.236 11.618 14z" clip-rule="evenodd"/>
+                            </svg>
+                            <span x-text="language === 'en' ? 'FR' : 'EN'"></span>
+                        </span>
+                    </button>
                 </div>
             </div>
         </nav>
     </header>
 
     <!-- Hero Section -->
-    <section class="gradient-bg text-white py-8 lg:py-12 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                <pattern id="wave" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-                    <path d="M0,50 Q25,40 50,50 T100,50" fill="none" stroke="white" stroke-width="2"/>
-                </pattern>
-                <rect width="100%" height="100%" fill="url(#wave)"/>
-            </svg>
+    <section class="gradient-bg text-white py-6 lg:py-10 relative overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <!-- Gradient Orbs -->
+            <div class="absolute top-20 left-10 w-64 h-64 bg-cyan-400/20 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-20 right-10 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-72 h-72 bg-purple-400/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+
+            <!-- Decorative Grid Pattern -->
+            <div class="absolute inset-0 opacity-5" style="background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 50px 50px;"></div>
         </div>
 
         <div class="container mx-auto px-4 relative z-10">
-            <div class="max-w-4xl mx-auto text-center">
-                <h1 class="text-3xl lg:text-4xl font-extrabold mb-2 leading-tight" x-text="t('hero.headline')"></h1>
-                <p class="text-sm lg:text-base mb-4 opacity-95" x-text="t('hero.subheadline')"></p>
+            <div class="max-w-5xl mx-auto">
+                <!-- Main Headline with Enhanced Typography -->
+                <div class="text-center mb-3 lg:mb-4">
+                    <h1 class="text-2xl lg:text-4xl font-black mb-1.5 leading-tight tracking-tight" x-text="t('hero.headline')"></h1>
+                    <p class="text-sm lg:text-base mb-1 opacity-95 font-light max-w-4xl mx-auto whitespace-nowrap" x-text="t('hero.subheadline')"></p>
+                </div>
 
-                <!-- Try It Live Section -->
-                <div class="bg-white/15 backdrop-blur-md border-2 border-white/30 rounded-xl p-4 lg:p-5 mb-4 shadow-2xl">
-                    <h3 class="text-base lg:text-xl font-bold mb-2" x-text="t('hero.tryItLive.headline')"></h3>
-                    <p class="text-xs lg:text-sm mb-4 opacity-90" x-text="t('hero.tryItLive.subheadline')"></p>
+                <!-- Try It Live - Featured Callout -->
+                <div class="mb-3 lg:mb-4">
+                    <div class="bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-xl border-2 border-white/40 rounded-3xl p-3 lg:p-4 shadow-2xl relative">
+                        <!-- Shine Effect -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent rounded-3xl"></div>
 
-                    <div class="grid sm:grid-cols-2 gap-3 max-w-2xl mx-auto">
-                        <!-- English Number -->
-                        <a href="tel:+18777692515" class="bg-white text-gray-900 rounded-lg p-3.5 hover:shadow-xl transition transform hover:scale-105 group">
-                            <div class="flex items-center justify-center gap-2 mb-1.5">
-                                <span class="text-xl">🇬🇧</span>
-                                <span class="font-bold text-base" x-text="t('hero.tryItLive.english')"></span>
+                        <div class="relative">
+                            <div class="text-center mb-2">
+                                <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-3 py-0.5 rounded-full mb-1 animate-pulse">
+                                    <span class="w-2 h-2 bg-green-400 rounded-full animate-ping absolute"></span>
+                                    <span class="w-2 h-2 bg-green-400 rounded-full"></span>
+                                    <span class="text-xs font-bold uppercase tracking-wider">LIVE NOW</span>
+                                </div>
+                                <h3 class="text-base lg:text-lg font-black mb-0.5" x-text="t('hero.tryItLive.headline')"></h3>
+                                <p class="text-xs opacity-90 font-medium" x-text="t('hero.tryItLive.subheadline')"></p>
                             </div>
-                            <div class="text-xl lg:text-2xl font-bold text-cyan-600 group-hover:text-cyan-700">
-                                +1 877-769-2515
-                            </div>
-                            <div class="text-xs text-gray-600 mt-1.5" x-text="t('hero.tryItLive.tapToCall')"></div>
-                        </a>
 
-                        <!-- French Number -->
-                        <a href="tel:+14388009629" class="bg-white text-gray-900 rounded-lg p-3.5 hover:shadow-xl transition transform hover:scale-105 group">
-                            <div class="flex items-center justify-center gap-2 mb-1.5">
-                                <svg class="w-5 h-5" viewBox="0 0 48 36" xmlns="http://www.w3.org/2000/svg">
-                                    <!-- Blue background -->
-                                    <rect width="48" height="36" fill="#003F87"/>
-                                    <!-- White cross -->
-                                    <rect x="0" y="14" width="48" height="8" fill="white"/>
-                                    <rect x="20" y="0" width="8" height="36" fill="white"/>
-                                    <!-- Fleur-de-lis in each quadrant -->
-                                    <text x="7" y="10" font-size="8" fill="white">⚜</text>
-                                    <text x="33" y="10" font-size="8" fill="white">⚜</text>
-                                    <text x="7" y="30" font-size="8" fill="white">⚜</text>
-                                    <text x="33" y="30" font-size="8" fill="white">⚜</text>
-                                </svg>
-                                <span class="font-bold text-base" x-text="t('hero.tryItLive.french')"></span>
+                            <div class="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
+                                <!-- English Number - Enhanced Card -->
+                                <a href="tel:+18777692515" class="bg-white text-gray-900 rounded-2xl p-2 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-rotate-1 group relative overflow-hidden">
+                                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-50 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                    <div class="relative text-center">
+                                        <div class="flex items-center justify-center gap-2 mb-1">
+                                            <span class="text-lg">🇬🇧</span>
+                                            <span class="font-black text-sm uppercase tracking-wide" x-text="t('hero.tryItLive.english')"></span>
+                                        </div>
+                                        <div class="text-base lg:text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600 mb-1">
+                                            +1 877-769-2515
+                                        </div>
+                                        <div class="flex justify-center">
+                                            <div class="inline-flex items-center gap-1 text-xs font-semibold text-gray-600 bg-gray-100 px-2 py-0.5 rounded-full">
+                                                <span>📞</span>
+                                                <span x-text="t('hero.tryItLive.tapToCall')"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <!-- French Number - Enhanced Card -->
+                                <a href="tel:+14388009629" class="bg-white text-gray-900 rounded-2xl p-2 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:rotate-1 group relative overflow-hidden">
+                                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-50 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                                    <div class="relative text-center">
+                                        <div class="flex items-center justify-center gap-2 mb-1">
+                                            <svg class="w-4 h-4" viewBox="0 0 48 36" xmlns="http://www.w3.org/2000/svg">
+                                                <rect width="48" height="36" fill="#003F87"/>
+                                                <rect x="0" y="14" width="48" height="8" fill="white"/>
+                                                <rect x="20" y="0" width="8" height="36" fill="white"/>
+                                                <text x="7" y="10" font-size="8" fill="white">⚜</text>
+                                                <text x="33" y="10" font-size="8" fill="white">⚜</text>
+                                                <text x="7" y="30" font-size="8" fill="white">⚜</text>
+                                                <text x="33" y="30" font-size="8" fill="white">⚜</text>
+                                            </svg>
+                                            <span class="font-black text-sm uppercase tracking-wide" x-text="t('hero.tryItLive.french')"></span>
+                                        </div>
+                                        <div class="text-base lg:text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600 mb-1">
+                                            +1 438-800-9629
+                                        </div>
+                                        <div class="flex justify-center">
+                                            <div class="inline-flex items-center gap-1 text-xs font-semibold text-gray-600 bg-gray-100 px-2 py-0.5 rounded-full">
+                                                <span>📞</span>
+                                                <span x-text="t('hero.tryItLive.tapToCall')"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
-                            <div class="text-xl lg:text-2xl font-bold text-cyan-600 group-hover:text-cyan-700">
-                                +1 438-800-9629
-                            </div>
-                            <div class="text-xs text-gray-600 mt-1.5" x-text="t('hero.tryItLive.tapToCall')"></div>
-                        </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Dual CTAs -->
-                <div class="flex flex-col sm:flex-row gap-3 justify-center mb-3">
-                    <a href="#demo" class="bg-white text-cyan-600 px-6 py-2.5 rounded-lg font-bold text-sm hover:shadow-xl transition transform hover:-translate-y-1" x-text="t('hero.ctaPrimary')"></a>
-                    <a href="#pricing" class="bg-transparent border-2 border-white text-white px-6 py-2.5 rounded-lg font-bold text-sm hover:bg-white hover:text-cyan-600 transition transform hover:-translate-y-1" x-text="t('hero.ctaSecondary')"></a>
+                <!-- Enhanced CTAs -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-4">
+                    <a href="#demo" class="group bg-white text-cyan-600 px-5 py-2.5 rounded-lg font-bold text-sm hover:shadow-xl transition-all duration-300 transform hover:scale-105 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-r from-cyan-50 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <span class="relative flex items-center justify-center gap-2">
+                            <span x-text="t('hero.ctaPrimary')"></span>
+                            <span class="transform group-hover:translate-x-1 transition-transform text-xs">→</span>
+                        </span>
+                    </a>
+                    <a href="#pricing" class="group bg-white/10 backdrop-blur-sm border-2 border-white/40 text-white px-5 py-2.5 rounded-lg font-bold text-sm hover:bg-white hover:text-cyan-600 transition-all duration-300 transform hover:scale-105">
+                        <span class="flex items-center justify-center gap-2" x-text="t('hero.ctaSecondary')"></span>
+                    </a>
                 </div>
 
-                <!-- Trust Badges -->
-                <div class="flex flex-wrap justify-center gap-2 lg:gap-3 text-xs">
-                    <div class="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20">
-                        <span>🇨🇦</span>
-                        <span x-text="t('hero.badges.canadian')"></span>
+                <!-- Enhanced Trust Badges -->
+                <div class="flex flex-wrap justify-center gap-2 text-xs">
+                    <div class="flex items-center gap-1.5 bg-white/15 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/30 hover:bg-white/20 transition-all">
+                        <span class="text-sm">🇨🇦</span>
+                        <span class="font-semibold" x-text="t('hero.badges.canadian')"></span>
                     </div>
-                    <div class="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20">
-                        <span>🔒</span>
-                        <span x-text="t('hero.badges.pipeda')"></span>
+                    <div class="flex items-center gap-1.5 bg-white/15 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/30 hover:bg-white/20 transition-all">
+                        <span class="text-sm">🔒</span>
+                        <span class="font-semibold" x-text="t('hero.badges.pipeda')"></span>
                     </div>
-                    <div class="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20">
-                        <span>⚡</span>
-                        <span x-text="t('hero.badges.setup')"></span>
+                    <div class="flex items-center gap-1.5 bg-white/15 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/30 hover:bg-white/20 transition-all">
+                        <span class="text-sm">⚡</span>
+                        <span class="font-semibold" x-text="t('hero.badges.setup')"></span>
                     </div>
-                    <div class="flex items-center gap-1.5 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20">
-                        <span>🚫</span>
-                        <span x-text="t('hero.badges.noContract')"></span>
+                    <div class="flex items-center gap-1.5 bg-white/15 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/30 hover:bg-white/20 transition-all">
+                        <span class="text-sm">🚫</span>
+                        <span class="font-semibold" x-text="t('hero.badges.noContract')"></span>
                     </div>
                 </div>
             </div>
@@ -286,68 +354,217 @@
     </section>
 
     <!-- Interactive Demo Section -->
-    <section id="demo" class="py-10 lg:py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="max-w-5xl mx-auto">
-                <h2 class="text-2xl lg:text-4xl font-bold text-center mb-3" x-text="t('demo.headline')"></h2>
-                <p class="text-base lg:text-lg text-gray-600 text-center mb-8" x-text="t('demo.subheadline')"></p>
+    <section id="demo" class="py-6 lg:py-10 bg-gradient-to-br from-white via-cyan-50 to-blue-50 relative overflow-hidden">
+        <!-- Decorative Background Elements -->
+        <div class="absolute inset-0 opacity-30">
+            <div class="absolute top-10 right-0 w-96 h-96 bg-cyan-200 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 left-0 w-80 h-80 bg-blue-200 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-6xl mx-auto">
+                <!-- Section Header -->
+                <div class="text-center mb-6">
+                    <div class="inline-flex items-center gap-2 bg-cyan-100 text-cyan-700 px-4 py-1.5 rounded-full text-sm font-bold mb-3">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.82l8-1.6v5.894A4.37 4.37 0 0015 12c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"/>
+                        </svg>
+                        <span>Listen to Real Calls</span>
+                    </div>
+                    <h2 class="text-2xl lg:text-3xl font-black mb-2 bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent" x-text="t('demo.headline')"></h2>
+                    <p class="text-sm lg:text-base text-gray-600 max-w-3xl mx-auto" x-text="t('demo.subheadline')"></p>
+                </div>
 
                 <div class="grid md:grid-cols-2 gap-6">
                     <!-- HVAC Demo Card -->
-                    <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 shadow-lg hover:shadow-xl transition">
-                        <div class="inline-block bg-cyan-600 text-white px-3 py-1 rounded-full text-sm font-semibold mb-4" x-text="t('demo.hvac.badge')"></div>
-                        <h3 class="text-2xl font-bold mb-3" x-text="t('demo.hvac.title')"></h3>
-
-                        <!-- Audio Player Placeholder -->
-                        <div class="bg-gradient-to-br from-cyan-600 to-cyan-400 rounded-xl p-6 mb-4 text-white">
-                            <div class="flex items-center justify-between mb-4">
-                                <button class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition">
-                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </button>
-                                <div class="text-sm font-medium">Demo Recording</div>
+                    <div class="group bg-white rounded-3xl p-4 lg:p-5 shadow-2xl border border-gray-100 hover:shadow-cyan-500/20 hover:border-cyan-200 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="inline-flex items-center bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg">
+                                <svg class="w-3 h-3 mr-1.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                                </svg>
+                                <span x-text="t('demo.hvac.badge')"></span>
                             </div>
-                            <div class="h-2 bg-white/20 rounded-full overflow-hidden">
-                                <div class="h-full bg-white w-0 rounded-full"></div>
+                            <div class="w-8 h-8 bg-cyan-100 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+                                </svg>
                             </div>
                         </div>
 
-                        <p class="text-gray-600 mb-3" x-text="t('demo.hvac.scenario')"></p>
-                        <div class="flex items-center gap-2 text-green-600 font-semibold">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            <span x-text="t('demo.hvac.outcome')"></span>
+                        <h3 class="text-lg lg:text-xl font-black text-gray-900 mb-3" x-text="t('demo.hvac.title')"></h3>
+
+                        <!-- Enhanced Audio Player -->
+                        <div class="relative bg-gradient-to-br from-cyan-600 via-cyan-500 to-blue-600 rounded-2xl p-4 mb-3 text-white overflow-hidden group/player">
+                            <!-- Animated background pattern -->
+                            <div class="absolute inset-0 opacity-10">
+                                <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
+                            </div>
+
+                            <div class="relative">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <button class="w-12 h-12 bg-white text-cyan-600 rounded-full flex items-center justify-center hover:scale-110 hover:shadow-xl transition-all duration-300 shadow-lg">
+                                        <svg class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                    </button>
+                                    <div class="flex-1">
+                                        <div class="text-xs font-bold mb-0.5">Demo Recording</div>
+                                        <div class="text-xs text-white/80">Click to play</div>
+                                    </div>
+                                    <div class="text-xs font-mono bg-white/20 px-2 py-1 rounded-full backdrop-blur-sm">1:30</div>
+                                </div>
+
+                                <!-- Waveform visualization -->
+                                <div class="flex items-center justify-center gap-1 h-12 mb-2">
+                                    <div class="w-1 bg-white/40 rounded-full animate-pulse" style="height: 20%; animation-delay: 0ms;"></div>
+                                    <div class="w-1 bg-white/50 rounded-full animate-pulse" style="height: 40%; animation-delay: 100ms;"></div>
+                                    <div class="w-1 bg-white/60 rounded-full animate-pulse" style="height: 60%; animation-delay: 200ms;"></div>
+                                    <div class="w-1 bg-white/70 rounded-full animate-pulse" style="height: 80%; animation-delay: 300ms;"></div>
+                                    <div class="w-1 bg-white rounded-full animate-pulse" style="height: 100%; animation-delay: 400ms;"></div>
+                                    <div class="w-1 bg-white/70 rounded-full animate-pulse" style="height: 75%; animation-delay: 500ms;"></div>
+                                    <div class="w-1 bg-white/60 rounded-full animate-pulse" style="height: 50%; animation-delay: 600ms;"></div>
+                                    <div class="w-1 bg-white/50 rounded-full animate-pulse" style="height: 35%; animation-delay: 700ms;"></div>
+                                    <div class="w-1 bg-white/40 rounded-full animate-pulse" style="height: 25%; animation-delay: 800ms;"></div>
+                                    <div class="w-1 bg-white/50 rounded-full animate-pulse" style="height: 45%; animation-delay: 900ms;"></div>
+                                    <div class="w-1 bg-white/60 rounded-full animate-pulse" style="height: 65%; animation-delay: 1000ms;"></div>
+                                    <div class="w-1 bg-white/70 rounded-full animate-pulse" style="height: 85%; animation-delay: 1100ms;"></div>
+                                    <div class="w-1 bg-white rounded-full animate-pulse" style="height: 95%; animation-delay: 1200ms;"></div>
+                                    <div class="w-1 bg-white/80 rounded-full animate-pulse" style="height: 90%; animation-delay: 1300ms;"></div>
+                                    <div class="w-1 bg-white/60 rounded-full animate-pulse" style="height: 55%; animation-delay: 1400ms;"></div>
+                                    <div class="w-1 bg-white/50 rounded-full animate-pulse" style="height: 40%; animation-delay: 1500ms;"></div>
+                                    <div class="w-1 bg-white/40 rounded-full animate-pulse" style="height: 30%; animation-delay: 1600ms;"></div>
+                                    <div class="w-1 bg-white/50 rounded-full animate-pulse" style="height: 50%; animation-delay: 1700ms;"></div>
+                                    <div class="w-1 bg-white/70 rounded-full animate-pulse" style="height: 70%; animation-delay: 1800ms;"></div>
+                                    <div class="w-1 bg-white rounded-full animate-pulse" style="height: 100%; animation-delay: 1900ms;"></div>
+                                </div>
+
+                                <div class="h-1.5 bg-white/20 rounded-full overflow-hidden">
+                                    <div class="h-full bg-white rounded-full transition-all duration-300" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 rounded-2xl p-3 mb-3 border border-gray-100">
+                            <div class="flex items-start gap-2">
+                                <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="text-xs text-gray-500 mb-0.5 font-semibold">Caller Says:</div>
+                                    <p class="text-sm text-gray-700 font-medium italic" x-text="t('demo.hvac.scenario')"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-2 bg-green-50 rounded-2xl p-3 border border-green-200">
+                            <div class="flex-shrink-0 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                                <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-xs text-green-700 mb-0.5 font-bold uppercase tracking-wide">Result</div>
+                                <span class="text-sm text-green-900 font-bold" x-text="t('demo.hvac.outcome')"></span>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Medical Demo Card -->
-                    <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 shadow-lg hover:shadow-xl transition">
-                        <div class="inline-block bg-cyan-600 text-white px-3 py-1 rounded-full text-sm font-semibold mb-4" x-text="t('demo.medical.badge')"></div>
-                        <h3 class="text-2xl font-bold mb-3" x-text="t('demo.medical.title')"></h3>
-
-                        <!-- Audio Player Placeholder -->
-                        <div class="bg-gradient-to-br from-cyan-600 to-cyan-400 rounded-xl p-6 mb-4 text-white">
-                            <div class="flex items-center justify-between mb-4">
-                                <button class="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition">
-                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </button>
-                                <div class="text-sm font-medium">Demo Recording</div>
+                    <div class="group bg-white rounded-3xl p-4 lg:p-5 shadow-2xl border border-gray-100 hover:shadow-cyan-500/20 hover:border-cyan-200 transition-all duration-300 hover:-translate-y-1">
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="inline-flex items-center bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg">
+                                <svg class="w-3 h-3 mr-1.5" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                                </svg>
+                                <span x-text="t('demo.medical.badge')"></span>
                             </div>
-                            <div class="h-2 bg-white/20 rounded-full overflow-hidden">
-                                <div class="h-full bg-white w-0 rounded-full"></div>
+                            <div class="w-8 h-8 bg-cyan-100 rounded-full flex items-center justify-center">
+                                <svg class="w-5 h-5 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+                                </svg>
                             </div>
                         </div>
 
-                        <p class="text-gray-600 mb-3" x-text="t('demo.medical.scenario')"></p>
-                        <div class="flex items-center gap-2 text-green-600 font-semibold">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            <span x-text="t('demo.medical.outcome')"></span>
+                        <h3 class="text-lg lg:text-xl font-black text-gray-900 mb-3" x-text="t('demo.medical.title')"></h3>
+
+                        <!-- Enhanced Audio Player -->
+                        <div class="relative bg-gradient-to-br from-cyan-600 via-cyan-500 to-blue-600 rounded-2xl p-4 mb-3 text-white overflow-hidden group/player">
+                            <!-- Animated background pattern -->
+                            <div class="absolute inset-0 opacity-10">
+                                <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 24px 24px;"></div>
+                            </div>
+
+                            <div class="relative">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <button class="w-12 h-12 bg-white text-cyan-600 rounded-full flex items-center justify-center hover:scale-110 hover:shadow-xl transition-all duration-300 shadow-lg">
+                                        <svg class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                    </button>
+                                    <div class="flex-1">
+                                        <div class="text-xs font-bold mb-0.5">Demo Recording</div>
+                                        <div class="text-xs text-white/80">Click to play</div>
+                                    </div>
+                                    <div class="text-xs font-mono bg-white/20 px-2 py-1 rounded-full backdrop-blur-sm">1:15</div>
+                                </div>
+
+                                <!-- Waveform visualization -->
+                                <div class="flex items-center justify-center gap-1 h-12 mb-2">
+                                    <div class="w-1 bg-white/40 rounded-full animate-pulse" style="height: 25%; animation-delay: 0ms;"></div>
+                                    <div class="w-1 bg-white/50 rounded-full animate-pulse" style="height: 45%; animation-delay: 100ms;"></div>
+                                    <div class="w-1 bg-white/70 rounded-full animate-pulse" style="height: 70%; animation-delay: 200ms;"></div>
+                                    <div class="w-1 bg-white rounded-full animate-pulse" style="height: 95%; animation-delay: 300ms;"></div>
+                                    <div class="w-1 bg-white/80 rounded-full animate-pulse" style="height: 85%; animation-delay: 400ms;"></div>
+                                    <div class="w-1 bg-white/60 rounded-full animate-pulse" style="height: 60%; animation-delay: 500ms;"></div>
+                                    <div class="w-1 bg-white/50 rounded-full animate-pulse" style="height: 40%; animation-delay: 600ms;"></div>
+                                    <div class="w-1 bg-white/40 rounded-full animate-pulse" style="height: 30%; animation-delay: 700ms;"></div>
+                                    <div class="w-1 bg-white/50 rounded-full animate-pulse" style="height: 50%; animation-delay: 800ms;"></div>
+                                    <div class="w-1 bg-white/70 rounded-full animate-pulse" style="height: 75%; animation-delay: 900ms;"></div>
+                                    <div class="w-1 bg-white rounded-full animate-pulse" style="height: 100%; animation-delay: 1000ms;"></div>
+                                    <div class="w-1 bg-white/70 rounded-full animate-pulse" style="height: 80%; animation-delay: 1100ms;"></div>
+                                    <div class="w-1 bg-white/60 rounded-full animate-pulse" style="height: 55%; animation-delay: 1200ms;"></div>
+                                    <div class="w-1 bg-white/50 rounded-full animate-pulse" style="height: 45%; animation-delay: 1300ms;"></div>
+                                    <div class="w-1 bg-white/60 rounded-full animate-pulse" style="height: 65%; animation-delay: 1400ms;"></div>
+                                    <div class="w-1 bg-white/80 rounded-full animate-pulse" style="height: 90%; animation-delay: 1500ms;"></div>
+                                    <div class="w-1 bg-white/70 rounded-full animate-pulse" style="height: 70%; animation-delay: 1600ms;"></div>
+                                    <div class="w-1 bg-white/50 rounded-full animate-pulse" style="height: 50%; animation-delay: 1700ms;"></div>
+                                    <div class="w-1 bg-white/40 rounded-full animate-pulse" style="height: 35%; animation-delay: 1800ms;"></div>
+                                    <div class="w-1 bg-white/30 rounded-full animate-pulse" style="height: 20%; animation-delay: 1900ms;"></div>
+                                </div>
+
+                                <div class="h-1.5 bg-white/20 rounded-full overflow-hidden">
+                                    <div class="h-full bg-white rounded-full transition-all duration-300" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-gray-50 rounded-2xl p-3 mb-3 border border-gray-100">
+                            <div class="flex items-start gap-2">
+                                <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-4 h-4 text-gray-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <div class="flex-1">
+                                    <div class="text-xs text-gray-500 mb-0.5 font-semibold">Caller Says:</div>
+                                    <p class="text-sm text-gray-700 font-medium italic" x-text="t('demo.medical.scenario')"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-2 bg-green-50 rounded-2xl p-3 border border-green-200">
+                            <div class="flex-shrink-0 w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                                <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="text-xs text-green-700 mb-0.5 font-bold uppercase tracking-wide">Result</div>
+                                <span class="text-sm text-green-900 font-bold" x-text="t('demo.medical.outcome')"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -356,439 +573,1024 @@
     </section>
 
     <!-- Problem/Solution Section -->
-    <section class="py-10 lg:py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+    <section class="py-8 lg:py-12 bg-gradient-to-br from-gray-50 via-white to-gray-100 relative overflow-hidden">
+        <!-- Background decorative elements -->
+        <div class="absolute inset-0 opacity-30">
+            <div class="absolute top-20 left-0 w-72 h-72 bg-red-100 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 right-0 w-96 h-96 bg-green-100 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <!-- Section Title -->
+            <div class="text-center mb-6 max-w-4xl mx-auto">
+                <h2 class="text-2xl lg:text-3xl font-black mb-2 bg-gradient-to-r from-red-600 via-gray-800 to-green-600 bg-clip-text text-transparent" x-text="t('problemSolution.headline')"></h2>
+                <p class="text-sm lg:text-base text-gray-600" x-text="t('problemSolution.subheadline')"></p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
                 <!-- Problem Side -->
-                <div>
-                    <h2 class="text-3xl lg:text-4xl font-bold mb-8 text-red-600" x-text="t('problem.headline')"></h2>
-                    <ul class="space-y-6">
-                        <li class="flex items-start gap-4">
-                            <span class="text-2xl">❌</span>
-                            <div>
-                                <p class="text-lg font-semibold text-gray-800" x-text="t('problem.point1')"></p>
+                <div class="bg-gradient-to-br from-red-50 to-pink-50 rounded-3xl p-5 shadow-xl border-2 border-red-100 relative overflow-hidden group hover:shadow-2xl transition-all duration-300">
+                    <!-- Decorative corner accent -->
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-red-200 to-pink-200 opacity-20 rounded-bl-full"></div>
+
+                    <div class="relative">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-pink-600 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                </svg>
                             </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <span class="text-2xl">❌</span>
-                            <div>
-                                <p class="text-lg font-semibold text-gray-800" x-text="t('problem.point2')"></p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <span class="text-2xl">❌</span>
-                            <div>
-                                <p class="text-lg font-semibold text-gray-800" x-text="t('problem.point3')"></p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <span class="text-2xl">❌</span>
-                            <div>
-                                <p class="text-lg font-semibold text-gray-800" x-text="t('problem.point4')"></p>
-                            </div>
-                        </li>
-                    </ul>
+                            <h2 class="text-2xl lg:text-3xl font-black text-red-600" x-text="t('problem.headline')"></h2>
+                        </div>
+
+                        <ul class="space-y-3">
+                            <li class="group/item bg-white/60 backdrop-blur-sm rounded-xl p-3 hover:bg-white hover:shadow-md transition-all duration-300 transform hover:-translate-x-1">
+                                <div class="flex items-start gap-3">
+                                    <div class="flex-shrink-0 w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center shadow-sm">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <p class="text-base font-semibold text-gray-800 flex-1" x-text="t('problem.point1')"></p>
+                                </div>
+                            </li>
+                            <li class="group/item bg-white/60 backdrop-blur-sm rounded-xl p-3 hover:bg-white hover:shadow-md transition-all duration-300 transform hover:-translate-x-1">
+                                <div class="flex items-start gap-3">
+                                    <div class="flex-shrink-0 w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center shadow-sm">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <p class="text-base font-semibold text-gray-800 flex-1" x-text="t('problem.point2')"></p>
+                                </div>
+                            </li>
+                            <li class="group/item bg-white/60 backdrop-blur-sm rounded-xl p-3 hover:bg-white hover:shadow-md transition-all duration-300 transform hover:-translate-x-1">
+                                <div class="flex items-start gap-3">
+                                    <div class="flex-shrink-0 w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center shadow-sm">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <p class="text-base font-semibold text-gray-800 flex-1" x-text="t('problem.point3')"></p>
+                                </div>
+                            </li>
+                            <li class="group/item bg-white/60 backdrop-blur-sm rounded-xl p-3 hover:bg-white hover:shadow-md transition-all duration-300 transform hover:-translate-x-1">
+                                <div class="flex items-start gap-3">
+                                    <div class="flex-shrink-0 w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center shadow-sm">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <p class="text-base font-semibold text-gray-800 flex-1" x-text="t('problem.point4')"></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
                 <!-- Solution Side -->
-                <div>
-                    <h2 class="text-3xl lg:text-4xl font-bold mb-8 text-green-600" x-text="t('solution.headline')"></h2>
-                    <ul class="space-y-6">
-                        <li class="flex items-start gap-4">
-                            <span class="text-2xl">✅</span>
-                            <div>
-                                <p class="text-lg font-semibold text-gray-800" x-text="t('solution.point1')"></p>
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-5 shadow-xl border-2 border-green-100 relative overflow-hidden group hover:shadow-2xl transition-all duration-300">
+                    <!-- Decorative corner accent -->
+                    <div class="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-green-200 to-emerald-200 opacity-20 rounded-br-full"></div>
+
+                    <div class="relative">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
                             </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <span class="text-2xl">✅</span>
-                            <div>
-                                <p class="text-lg font-semibold text-gray-800" x-text="t('solution.point2')"></p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <span class="text-2xl">✅</span>
-                            <div>
-                                <p class="text-lg font-semibold text-gray-800" x-text="t('solution.point3')"></p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-4">
-                            <span class="text-2xl">✅</span>
-                            <div>
-                                <p class="text-lg font-semibold text-gray-800" x-text="t('solution.point4')"></p>
-                            </div>
-                        </li>
-                    </ul>
+                            <h2 class="text-2xl lg:text-3xl font-black text-green-600" x-text="t('solution.headline')"></h2>
+                        </div>
+
+                        <ul class="space-y-3">
+                            <li class="group/item bg-white/60 backdrop-blur-sm rounded-xl p-3 hover:bg-white hover:shadow-md transition-all duration-300 transform hover:translate-x-1">
+                                <div class="flex items-start gap-3">
+                                    <div class="flex-shrink-0 w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center shadow-sm">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <p class="text-base font-semibold text-gray-800 flex-1" x-text="t('solution.point1')"></p>
+                                </div>
+                            </li>
+                            <li class="group/item bg-white/60 backdrop-blur-sm rounded-xl p-3 hover:bg-white hover:shadow-md transition-all duration-300 transform hover:translate-x-1">
+                                <div class="flex items-start gap-3">
+                                    <div class="flex-shrink-0 w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center shadow-sm">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <p class="text-base font-semibold text-gray-800 flex-1" x-text="t('solution.point2')"></p>
+                                </div>
+                            </li>
+                            <li class="group/item bg-white/60 backdrop-blur-sm rounded-xl p-3 hover:bg-white hover:shadow-md transition-all duration-300 transform hover:translate-x-1">
+                                <div class="flex items-start gap-3">
+                                    <div class="flex-shrink-0 w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center shadow-sm">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <p class="text-base font-semibold text-gray-800 flex-1" x-text="t('solution.point3')"></p>
+                                </div>
+                            </li>
+                            <li class="group/item bg-white/60 backdrop-blur-sm rounded-xl p-3 hover:bg-white hover:shadow-md transition-all duration-300 transform hover:translate-x-1">
+                                <div class="flex items-start gap-3">
+                                    <div class="flex-shrink-0 w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center shadow-sm">
+                                        <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <p class="text-base font-semibold text-gray-800 flex-1" x-text="t('solution.point4')"></p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ROI Calculator -->
-    <section class="py-10 lg:py-16 bg-white">
+    <section class="py-8 lg:py-12 bg-gradient-to-br from-gray-50 via-blue-50 to-cyan-50">
         <div class="container mx-auto px-4">
-            <div class="max-w-3xl mx-auto">
-                <h2 class="text-2xl lg:text-3xl font-bold text-center mb-3" x-text="t('roi.headline')"></h2>
-                <p class="text-base lg:text-lg text-gray-600 text-center mb-8" x-text="t('roi.subheadline')"></p>
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-2xl lg:text-3xl font-bold text-center mb-1 bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent" x-text="t('roi.headline')"></h2>
+                <p class="text-base lg:text-lg text-gray-700 text-center mb-5 font-medium" x-text="t('roi.subheadline')"></p>
 
-                <div class="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 shadow-lg">
+                <div class="bg-white rounded-3xl p-4 lg:p-5 shadow-2xl border border-gray-100">
                     <!-- Calculator Inputs -->
-                    <div class="space-y-6 mb-8">
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2" x-text="t('roi.callsPerDay')"></label>
-                            <input type="range" min="10" max="200" x-model.number="roiCalc.callsPerDay" class="w-full h-2 bg-cyan-200 rounded-lg appearance-none cursor-pointer">
-                            <div class="text-right text-cyan-600 font-bold mt-1" x-text="roiCalc.callsPerDay + ' ' + t('roi.callsPerDayUnit')"></div>
+                    <div class="space-y-3 mb-3">
+                        <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-2xl p-3 flex items-center gap-3">
+                            <div class="flex items-center gap-2 min-w-fit">
+                                <span class="text-cyan-600">📊</span>
+                                <span class="text-sm font-bold text-gray-800 whitespace-nowrap" x-text="t('roi.callsPerDay')"></span>
+                            </div>
+                            <input type="range" min="10" max="200" x-model.number="roiCalc.callsPerDay" class="flex-1 h-3 bg-gradient-to-r from-cyan-200 to-blue-200 rounded-full appearance-none cursor-pointer slider">
+                            <div class="text-cyan-700 font-bold text-base min-w-fit" x-text="roiCalc.callsPerDay + ' ' + t('roi.callsPerDayUnit')"></div>
                         </div>
 
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2" x-text="t('roi.missedPercent')"></label>
-                            <input type="range" min="0" max="100" x-model.number="roiCalc.missedPercent" class="w-full h-2 bg-cyan-200 rounded-lg appearance-none cursor-pointer">
-                            <div class="text-right text-cyan-600 font-bold mt-1" x-text="roiCalc.missedPercent + '%'"></div>
+                        <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-2xl p-3 flex items-center gap-3">
+                            <div class="flex items-center gap-2 min-w-fit">
+                                <span class="text-blue-600">📞</span>
+                                <span class="text-sm font-bold text-gray-800 whitespace-nowrap" x-text="t('roi.missedPercent')"></span>
+                            </div>
+                            <input type="range" min="0" max="100" x-model.number="roiCalc.missedPercent" class="flex-1 h-3 bg-gradient-to-r from-blue-200 to-purple-200 rounded-full appearance-none cursor-pointer slider">
+                            <div class="text-blue-700 font-bold text-base min-w-fit" x-text="roiCalc.missedPercent + '%'"></div>
                         </div>
 
-                        <div>
-                            <label class="block text-sm font-semibold text-gray-700 mb-2" x-text="t('roi.avgValue')"></label>
-                            <input type="number" x-model.number="roiCalc.avgCustomerValue" class="w-full px-4 py-3 border-2 border-cyan-300 rounded-lg focus:outline-none focus:border-cyan-500" min="0">
+                        <div class="grid md:grid-cols-2 gap-3">
+                            <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-3">
+                                <label class="block text-sm font-bold text-gray-800 mb-1 flex items-center gap-2">
+                                    <span class="text-green-600">💰</span>
+                                    <span x-text="t('roi.avgValue')"></span>
+                                </label>
+                                <input type="number" x-model.number="roiCalc.avgCustomerValue" class="w-full px-3 py-2 border-2 border-green-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent text-sm font-semibold bg-white shadow-sm" min="0">
+                            </div>
+
+                            <div class="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-3">
+                                <label class="block text-sm font-bold text-gray-800 mb-1 flex items-center gap-2">
+                                    <span class="text-purple-600">🎯</span>
+                                    <span x-text="t('roi.selectPlan')"></span>
+                                </label>
+                                <div class="grid grid-cols-3 gap-1.5">
+                                    <button @click="roiCalc.selectedPlan = 99" class="px-2 py-2 text-xs font-bold rounded-xl border-2 transition-all transform hover:scale-105 shadow-sm" :class="roiCalc.selectedPlan == 99 ? 'bg-gradient-to-br from-cyan-600 to-blue-600 text-white border-cyan-600 shadow-lg' : 'bg-white text-gray-700 border-gray-300 hover:border-cyan-400'">
+                                        Basic<br><span class="text-sm">$99</span>
+                                    </button>
+                                    <button @click="roiCalc.selectedPlan = 299" class="px-2 py-2 text-xs font-bold rounded-xl border-2 transition-all transform hover:scale-105 shadow-sm" :class="roiCalc.selectedPlan == 299 ? 'bg-gradient-to-br from-cyan-600 to-blue-600 text-white border-cyan-600 shadow-lg' : 'bg-white text-gray-700 border-gray-300 hover:border-cyan-400'">
+                                        Pro<br><span class="text-sm">$299</span>
+                                    </button>
+                                    <button @click="roiCalc.selectedPlan = 599" class="px-2 py-2 text-xs font-bold rounded-xl border-2 transition-all transform hover:scale-105 shadow-sm" :class="roiCalc.selectedPlan == 599 ? 'bg-gradient-to-br from-cyan-600 to-blue-600 text-white border-cyan-600 shadow-lg' : 'bg-white text-gray-700 border-gray-300 hover:border-cyan-400'">
+                                        Growth<br><span class="text-sm">$599</span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Calculator Results -->
-                    <div class="grid md:grid-cols-3 gap-4">
-                        <div class="bg-red-100 border-2 border-red-300 rounded-xl p-6 text-center">
-                            <div class="text-sm font-semibold text-red-700 mb-2" x-text="t('roi.lostRevenue')"></div>
-                            <div class="text-3xl font-bold text-red-600" x-text="'$' + calculateLostRevenue().toLocaleString()"></div>
+                    <div class="grid md:grid-cols-3 gap-2 mb-2">
+                        <div class="bg-gradient-to-br from-red-500 to-pink-600 rounded-xl p-3 text-center shadow-lg transform hover:scale-105 transition-transform">
+                            <div class="text-xs font-bold text-red-100 uppercase tracking-wide" x-text="t('roi.lostRevenue')"></div>
+                            <div class="text-lg lg:text-xl font-black text-white my-0.5" x-text="'$' + calculateLostRevenue().toLocaleString()"></div>
+                            <div class="text-xs text-red-100">😱</div>
                         </div>
 
-                        <div class="bg-blue-100 border-2 border-blue-300 rounded-xl p-6 text-center">
-                            <div class="text-sm font-semibold text-blue-700 mb-2" x-text="t('roi.ringtideCost')"></div>
-                            <div class="text-3xl font-bold text-blue-600">$299</div>
+                        <div class="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl p-3 text-center shadow-lg transform hover:scale-105 transition-transform">
+                            <div class="text-xs font-bold text-blue-100 uppercase tracking-wide" x-text="t('roi.ringtideCost')"></div>
+                            <div class="text-lg lg:text-xl font-black text-white my-0.5" x-text="'$' + roiCalc.selectedPlan"></div>
+                            <div class="text-xs text-blue-100">💎</div>
                         </div>
 
-                        <div class="bg-green-100 border-2 border-green-300 rounded-xl p-6 text-center">
-                            <div class="text-sm font-semibold text-green-700 mb-2" x-text="t('roi.savings')"></div>
-                            <div class="text-3xl font-bold text-green-600" x-text="'$' + calculateSavings().toLocaleString()"></div>
+                        <div class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl p-3 text-center shadow-lg transform hover:scale-105 transition-transform">
+                            <div class="text-xs font-bold text-green-100 uppercase tracking-wide" x-text="t('roi.savings')"></div>
+                            <div class="text-lg lg:text-xl font-black text-white my-0.5" x-text="'$' + calculateSavings().toLocaleString()"></div>
+                            <div class="text-xs text-green-100">🎉</div>
                         </div>
                     </div>
+
+                    <!-- Additional Benefits Note -->
+                    <div class="text-center text-sm font-bold text-gray-800 mb-1 flex items-center justify-center gap-2">
+                        <span>✨</span>
+                        <span x-text="t('roi.focusNote')"></span>
+                        <span>✨</span>
+                    </div>
+
+                    <!-- Conversion Rate Note -->
+                    <div class="text-center text-xs text-gray-500 italic" x-text="t('roi.conversionNote')"></div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="pt-14 pb-4 lg:pt-16 lg:pb-6 bg-gray-50" x-data="{ billingPeriod: 'monthly' }">
-        <div class="container mx-auto px-4">
-            <h2 class="text-xl lg:text-2xl font-bold text-center mb-1" x-text="t('pricing.headline')"></h2>
-            <p class="text-xs lg:text-sm text-gray-600 text-center mb-3" x-text="t('pricing.subheadline')"></p>
+    <section id="pricing" class="pt-14 pb-6 lg:pt-16 lg:pb-8 bg-gradient-to-br from-gray-50 via-blue-50 to-cyan-50 relative overflow-hidden" x-data="{ billingPeriod: 'monthly' }">
+        <!-- Background Decorative Elements -->
+        <div class="absolute inset-0 overflow-hidden opacity-30">
+            <div class="absolute top-10 right-10 w-64 h-64 bg-cyan-200 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 left-10 w-96 h-96 bg-blue-200 rounded-full blur-3xl"></div>
+        </div>
 
-            <!-- Billing Period Toggle -->
-            <div class="flex items-center justify-center gap-3 mb-6">
-                <span class="text-sm font-medium" :class="billingPeriod === 'monthly' ? 'text-gray-900' : 'text-gray-500'" x-text="t('pricing.monthly')"></span>
-
-                <button @click="billingPeriod = billingPeriod === 'monthly' ? 'yearly' : 'monthly'" class="relative w-14 h-7 bg-gray-300 rounded-full transition-colors duration-300" :class="billingPeriod === 'yearly' ? 'bg-cyan-600' : 'bg-gray-300'">
-                    <span class="absolute left-1 top-1 w-5 h-5 bg-white rounded-full transition-transform duration-300 transform" :class="billingPeriod === 'yearly' ? 'translate-x-7' : 'translate-x-0'"></span>
-                </button>
-
-                <span class="text-sm font-medium" :class="billingPeriod === 'yearly' ? 'text-gray-900' : 'text-gray-500'" x-text="t('pricing.yearly')"></span>
-
-                <span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-xs font-semibold" x-show="billingPeriod === 'yearly'" x-text="t('pricing.save')"></span>
+        <div class="container mx-auto px-4 relative z-10">
+            <!-- Header -->
+            <div class="text-center mb-4">
+                <h2 class="text-2xl lg:text-3xl font-black mb-2 bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent" x-text="t('pricing.headline')"></h2>
+                <p class="text-sm lg:text-base text-gray-700 font-medium" x-text="t('pricing.subheadline')"></p>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-4 max-w-7xl mx-auto">
+            <!-- Enhanced Billing Period Toggle -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+                <div class="inline-flex items-center bg-white rounded-full p-1 shadow-lg border-2 border-gray-200">
+                    <button @click="billingPeriod = 'monthly'" class="px-4 py-1.5 rounded-full font-bold text-sm transition-all duration-300" :class="billingPeriod === 'monthly' ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-md' : 'text-gray-600 hover:text-gray-900'" x-text="t('pricing.monthly')"></button>
+                    <button @click="billingPeriod = 'yearly'" class="px-4 py-1.5 rounded-full font-bold text-sm transition-all duration-300" :class="billingPeriod === 'yearly' ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white shadow-md' : 'text-gray-600 hover:text-gray-900'" x-text="t('pricing.yearly')"></button>
+                </div>
+
+                <div :class="billingPeriod === 'yearly' ? 'animate-pulse' : ''">
+                    <span class="inline-flex items-center gap-2 bg-gradient-to-r from-green-400 to-emerald-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
+                        <span>🎉</span>
+                        <span x-text="t('pricing.save')"></span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Pricing Cards -->
+            <div class="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto">
                 <!-- Basic Plan -->
-                <div class="bg-white rounded-lg p-3 shadow-xl hover:shadow-2xl transition border border-gray-200">
-                    <div class="text-center mb-2">
-                        <h3 class="text-lg font-bold mb-1" x-text="t('pricing.basic.name')"></h3>
-                        <div class="inline-block bg-gray-200 text-gray-700 px-2 py-0.5 rounded-full text-xs font-semibold" x-text="t('pricing.basic.badge')"></div>
+                <div class="group bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-gray-200 hover:border-cyan-300 transform hover:scale-105 relative overflow-hidden">
+                    <!-- Decorative gradient overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="relative">
+                        <div class="text-center mb-4">
+                            <h3 class="text-xl font-black mb-2 text-gray-900" x-text="t('pricing.basic.name')"></h3>
+                            <div class="inline-block bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 px-3 py-1 rounded-full text-xs font-bold shadow-sm" x-text="t('pricing.basic.badge')"></div>
+                        </div>
+
+                        <div class="text-center mb-6 py-4 bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl">
+                            <div class="text-3xl font-black text-gray-900 mb-1" x-text="billingPeriod === 'monthly' ? '$99' : '$84'"></div>
+                            <div class="text-sm text-gray-600 font-medium" x-text="'/ ' + t('pricing.month')"></div>
+                            <div class="text-xs text-gray-500 mt-2 font-semibold" x-show="billingPeriod === 'yearly'" x-text="'$1,010 ' + t('pricing.billedYearly')"></div>
+                        </div>
+
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.basic.feature1')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.basic.feature2')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.basic.feature3')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.basic.feature4')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.basic.feature5')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.basic.feature6')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.basic.feature7')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.basic.feature8')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.basic.feature9')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.basic.feature10')"></span>
+                            </li>
+                        </ul>
+
+                        <a href="mailto:hi@ringtide.ai?subject=RingTide Basic Plan" class="block w-full text-center bg-gradient-to-r from-gray-600 to-gray-700 text-white py-3 rounded-xl font-bold text-sm hover:shadow-lg transition-all duration-300 transform hover:scale-105" x-text="t('pricing.cta')"></a>
                     </div>
-                    <div class="text-center mb-3">
-                        <div class="text-3xl font-bold text-gray-900" x-text="billingPeriod === 'monthly' ? '$99' : '$84'"></div>
-                        <div class="text-xs text-gray-600" x-text="'/ ' + t('pricing.month')"></div>
-                        <div class="text-xs text-gray-500 mt-1" x-show="billingPeriod === 'yearly'" x-text="'$1,010 ' + t('pricing.billedYearly')"></div>
-                    </div>
-                    <ul class="space-y-1.5 mb-4">
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-xs text-gray-700" x-text="t('pricing.basic.feature1')"></span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-xs text-gray-700" x-text="t('pricing.basic.feature2')"></span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-xs text-gray-700" x-text="t('pricing.basic.feature3')"></span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-xs text-gray-700" x-text="t('pricing.basic.feature4')"></span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-xs text-gray-700" x-text="t('pricing.basic.feature5')"></span>
-                        </li>
-                    </ul>
-                    <a href="mailto:hi@ringtide.ai?subject=RingTide Basic Plan" class="block w-full text-center bg-gray-200 text-gray-800 py-1.5 rounded-lg font-bold text-xs hover:bg-gray-300 transition" x-text="t('pricing.cta')"></a>
                 </div>
 
                 <!-- Professional Plan (Featured) -->
-                <div class="bg-white rounded-lg p-3 shadow-2xl border-4 border-cyan-500 transform lg:scale-105 relative">
-                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                        <div class="bg-cyan-500 text-white px-3 py-0.5 rounded-full text-xs font-bold" x-text="t('pricing.professional.featured')"></div>
+                <div class="group bg-gradient-to-br from-white to-cyan-50 rounded-3xl p-6 shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 border-4 border-cyan-500 transform lg:scale-110 hover:scale-115 relative overflow-visible">
+                    <!-- Glow Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/10 to-blue-500/10 opacity-50 rounded-3xl"></div>
+
+                    <!-- Featured Badge -->
+                    <div class="absolute -top-5 left-1/2 transform -translate-x-1/2 z-20">
+                        <div class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-1.5 rounded-full text-sm font-black shadow-lg animate-pulse flex items-center gap-2 whitespace-nowrap">
+                            <span>⭐</span>
+                            <span x-text="t('pricing.professional.featured')"></span>
+                        </div>
                     </div>
-                    <div class="text-center mb-2 mt-2">
-                        <h3 class="text-lg font-bold mb-1" x-text="t('pricing.professional.name')"></h3>
-                        <div class="inline-block bg-cyan-100 text-cyan-700 px-2 py-0.5 rounded-full text-xs font-semibold" x-text="t('pricing.professional.badge')"></div>
+
+                    <div class="relative">
+                        <div class="text-center mb-4 mt-4">
+                            <h3 class="text-xl font-black mb-2 bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent" x-text="t('pricing.professional.name')"></h3>
+                            <div class="inline-block bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-3 py-1 rounded-full text-xs font-bold shadow-md" x-text="t('pricing.professional.badge')"></div>
+                        </div>
+
+                        <div class="text-center mb-6 py-4 bg-gradient-to-br from-cyan-50 to-blue-100 rounded-2xl shadow-inner">
+                            <div class="text-3xl font-black bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent mb-1" x-text="billingPeriod === 'monthly' ? '$299' : '$254'"></div>
+                            <div class="text-sm text-gray-600 font-medium" x-text="'/ ' + t('pricing.month')"></div>
+                            <div class="text-xs text-gray-500 mt-2 font-semibold" x-show="billingPeriod === 'yearly'" x-text="'$3,050 ' + t('pricing.billedYearly')"></div>
+                        </div>
+
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start gap-3">
+                                <span class="text-sm text-gray-900 font-bold" x-text="t('pricing.professional.feature1')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-sm">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700 font-semibold" x-text="t('pricing.professional.feature2')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-sm">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.professional.feature3')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-sm">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700 font-semibold" x-text="t('pricing.professional.feature4')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-sm">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.professional.feature5')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-sm">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.professional.feature6')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-sm">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.professional.feature7')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-sm">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.professional.feature8')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-sm">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.professional.feature9')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-sm">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.professional.feature10')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-sm">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700 font-semibold" x-text="t('pricing.professional.feature11')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-sm">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.professional.feature12')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-sm">
+                                    <svg class="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.professional.feature13')"></span>
+                            </li>
+                        </ul>
+
+                        <a href="mailto:hi@ringtide.ai?subject=RingTide Professional Plan" class="block w-full text-center bg-gradient-to-r from-cyan-600 to-blue-600 text-white py-3 rounded-xl font-black text-sm hover:shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105" x-text="t('pricing.cta')"></a>
                     </div>
-                    <div class="text-center mb-3">
-                        <div class="text-3xl font-bold gradient-text" x-text="billingPeriod === 'monthly' ? '$299' : '$254'"></div>
-                        <div class="text-xs text-gray-600" x-text="'/ ' + t('pricing.month')"></div>
-                        <div class="text-xs text-gray-500 mt-1" x-show="billingPeriod === 'yearly'" x-text="'$3,050 ' + t('pricing.billedYearly')"></div>
-                    </div>
-                    <ul class="space-y-1.5 mb-4">
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-xs text-gray-700" x-text="t('pricing.professional.feature1')"></span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-xs text-gray-700 font-semibold" x-text="t('pricing.professional.feature2')"></span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-xs text-gray-700" x-text="t('pricing.professional.feature3')"></span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-xs text-gray-700" x-text="t('pricing.professional.feature4')"></span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-xs text-gray-700" x-text="t('pricing.professional.feature5')"></span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-xs text-gray-700 font-semibold" x-text="t('pricing.professional.feature6')"></span>
-                        </li>
-                    </ul>
-                    <a href="mailto:hi@ringtide.ai?subject=RingTide Professional Plan" class="block w-full text-center gradient-bg text-white py-1.5 rounded-lg font-bold text-xs hover:shadow-cyan transition transform hover:-translate-y-0.5" x-text="t('pricing.cta')"></a>
                 </div>
 
                 <!-- Growth Plan -->
-                <div class="bg-white rounded-lg p-3 shadow-xl hover:shadow-2xl transition border border-gray-200">
-                    <div class="text-center mb-2">
-                        <h3 class="text-lg font-bold mb-1" x-text="t('pricing.growth.name')"></h3>
-                        <div class="inline-block bg-gray-200 text-gray-700 px-2 py-0.5 rounded-full text-xs font-semibold" x-text="t('pricing.growth.badge')"></div>
+                <div class="group bg-white rounded-3xl p-6 shadow-xl hover:shadow-2xl transition-all duration-300 border-2 border-gray-200 hover:border-cyan-300 transform hover:scale-105 relative overflow-hidden">
+                    <!-- Decorative gradient overlay -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-gray-50 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div class="relative">
+                        <div class="text-center mb-4">
+                            <h3 class="text-xl font-black mb-2 text-gray-900" x-text="t('pricing.growth.name')"></h3>
+                            <div class="inline-block bg-gradient-to-r from-gray-100 to-gray-200 text-gray-700 px-3 py-1 rounded-full text-xs font-bold shadow-sm" x-text="t('pricing.growth.badge')"></div>
+                        </div>
+
+                        <div class="text-center mb-6 py-4 bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl">
+                            <div class="text-3xl font-black text-gray-900 mb-1" x-text="billingPeriod === 'monthly' ? '$599' : '$509'"></div>
+                            <div class="text-sm text-gray-600 font-medium" x-text="'/ ' + t('pricing.month')"></div>
+                            <div class="text-xs text-gray-500 mt-2 font-semibold" x-show="billingPeriod === 'yearly'" x-text="'$6,110 ' + t('pricing.billedYearly')"></div>
+                        </div>
+
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start gap-3">
+                                <span class="text-sm text-gray-900 font-bold" x-text="t('pricing.growth.feature1')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700 font-semibold" x-text="t('pricing.growth.feature2')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.growth.feature3')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700 font-semibold" x-text="t('pricing.growth.feature4')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.growth.feature5')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.growth.feature6')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.growth.feature7')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.growth.feature8')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.growth.feature9')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700 font-semibold" x-text="t('pricing.growth.feature10')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700 font-semibold" x-text="t('pricing.growth.feature11')"></span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-100 flex items-center justify-center">
+                                    <svg class="w-3 h-3 text-cyan-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <span class="text-sm text-gray-700" x-text="t('pricing.growth.feature12')"></span>
+                            </li>
+                        </ul>
+
+                        <a href="mailto:hi@ringtide.ai?subject=RingTide Growth Plan" class="block w-full text-center bg-gradient-to-r from-gray-600 to-gray-700 text-white py-3 rounded-xl font-bold text-sm hover:shadow-lg transition-all duration-300 transform hover:scale-105" x-text="t('pricing.cta')"></a>
                     </div>
-                    <div class="text-center mb-3">
-                        <div class="text-3xl font-bold text-gray-900" x-text="billingPeriod === 'monthly' ? '$599' : '$509'"></div>
-                        <div class="text-xs text-gray-600" x-text="'/ ' + t('pricing.month')"></div>
-                        <div class="text-xs text-gray-500 mt-1" x-show="billingPeriod === 'yearly'" x-text="'$6,110 ' + t('pricing.billedYearly')"></div>
-                    </div>
-                    <ul class="space-y-1.5 mb-4">
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-xs text-gray-700" x-text="t('pricing.growth.feature1')"></span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-xs text-gray-700 font-semibold" x-text="t('pricing.growth.feature2')"></span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-xs text-gray-700" x-text="t('pricing.growth.feature3')"></span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-xs text-gray-700" x-text="t('pricing.growth.feature4')"></span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-xs text-gray-700" x-text="t('pricing.growth.feature5')"></span>
-                        </li>
-                        <li class="flex items-start gap-2">
-                            <svg class="w-4 h-4 text-cyan-600 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                            </svg>
-                            <span class="text-xs text-gray-700" x-text="t('pricing.growth.feature6')"></span>
-                        </li>
-                    </ul>
-                    <a href="mailto:hi@ringtide.ai?subject=RingTide Growth Plan" class="block w-full text-center bg-gray-200 text-gray-800 py-1.5 rounded-lg font-bold text-xs hover:bg-gray-300 transition" x-text="t('pricing.cta')"></a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Industry Use Cases -->
-    <section id="solution" class="py-10 lg:py-16 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-2xl lg:text-4xl font-bold text-center mb-8" x-text="t('industries.headline')"></h2>
+    <section id="solution" class="py-10 lg:py-16 bg-gradient-to-br from-gray-50 via-white to-cyan-50 relative overflow-hidden">
+        <!-- Decorative Background Elements -->
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-0 left-0 w-96 h-96 bg-cyan-200 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-200 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <!-- Section Title -->
+            <div class="text-center mb-10">
+                <h2 class="text-2xl lg:text-3xl font-black mb-2 bg-gradient-to-r from-cyan-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent" x-text="t('industries.headline')"></h2>
+                <p class="text-sm lg:text-base text-gray-600 max-w-2xl mx-auto">Discover how RingTide transforms businesses across Canada</p>
+            </div>
 
             <!-- Industry Tabs -->
-            <div class="flex flex-wrap justify-center gap-4 mb-12" x-data="{activeIndustry: 'home'}">
-                <button @click="activeIndustry = 'home'" :class="activeIndustry === 'home' ? 'gradient-bg text-white' : 'bg-gray-200 text-gray-700'" class="px-6 py-3 rounded-lg font-semibold transition" x-text="t('industries.home.tab')"></button>
-                <button @click="activeIndustry = 'medical'" :class="activeIndustry === 'medical' ? 'gradient-bg text-white' : 'bg-gray-200 text-gray-700'" class="px-6 py-3 rounded-lg font-semibold transition" x-text="t('industries.medical.tab')"></button>
-                <button @click="activeIndustry = 'legal'" :class="activeIndustry === 'legal' ? 'gradient-bg text-white' : 'bg-gray-200 text-gray-700'" class="px-6 py-3 rounded-lg font-semibold transition" x-text="t('industries.legal.tab')"></button>
-                <button @click="activeIndustry = 'realestate'" :class="activeIndustry === 'realestate' ? 'gradient-bg text-white' : 'bg-gray-200 text-gray-700'" class="px-6 py-3 rounded-lg font-semibold transition" x-text="t('industries.realestate.tab')"></button>
+            <div x-data="{activeIndustry: 'home'}">
+                <div class="flex flex-wrap justify-center gap-3 mb-10">
+                    <!-- Home Services Tab -->
+                    <button @click="activeIndustry = 'home'" :class="activeIndustry === 'home' ? 'gradient-bg text-white shadow-lg shadow-cyan-500/50 scale-105' : 'bg-white text-gray-700 hover:shadow-md border-2 border-gray-200'" class="px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                        </svg>
+                        <span x-text="t('industries.home.tab')"></span>
+                    </button>
+
+                    <!-- Medical Tab -->
+                    <button @click="activeIndustry = 'medical'" :class="activeIndustry === 'medical' ? 'gradient-bg text-white shadow-lg shadow-cyan-500/50 scale-105' : 'bg-white text-gray-700 hover:shadow-md border-2 border-gray-200'" class="px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                        </svg>
+                        <span x-text="t('industries.medical.tab')"></span>
+                    </button>
+
+                    <!-- Legal Tab -->
+                    <button @click="activeIndustry = 'legal'" :class="activeIndustry === 'legal' ? 'gradient-bg text-white shadow-lg shadow-cyan-500/50 scale-105' : 'bg-white text-gray-700 hover:shadow-md border-2 border-gray-200'" class="px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1zm-5 8.274l-.818 2.552c.25.112.526.174.818.174.292 0 .569-.062.818-.174L5 10.274zm10 0l-.818 2.552c.25.112.526.174.818.174.292 0 .569-.062.818-.174L15 10.274z" clip-rule="evenodd"/>
+                        </svg>
+                        <span x-text="t('industries.legal.tab')"></span>
+                    </button>
+
+                    <!-- Real Estate Tab -->
+                    <button @click="activeIndustry = 'realestate'" :class="activeIndustry === 'realestate' ? 'gradient-bg text-white shadow-lg shadow-cyan-500/50 scale-105' : 'bg-white text-gray-700 hover:shadow-md border-2 border-gray-200'" class="px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                        </svg>
+                        <span x-text="t('industries.realestate.tab')"></span>
+                    </button>
+
+                    <!-- Automotive Tab -->
+                    <button @click="activeIndustry = 'automotive'" :class="activeIndustry === 'automotive' ? 'gradient-bg text-white shadow-lg shadow-cyan-500/50 scale-105' : 'bg-white text-gray-700 hover:shadow-md border-2 border-gray-200'" class="px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
+                            <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z"/>
+                        </svg>
+                        <span x-text="t('industries.automotive.tab')"></span>
+                    </button>
+
+                    <!-- Restaurants Tab -->
+                    <button @click="activeIndustry = 'restaurants'" :class="activeIndustry === 'restaurants' ? 'gradient-bg text-white shadow-lg shadow-cyan-500/50 scale-105' : 'bg-white text-gray-700 hover:shadow-md border-2 border-gray-200'" class="px-5 py-2.5 rounded-full font-bold text-sm transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM14 11a1 1 0 011 1v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1h-1a1 1 0 110-2h1v-1a1 1 0 011-1z"/>
+                        </svg>
+                        <span x-text="t('industries.restaurants.tab')"></span>
+                    </button>
+                </div>
 
                 <!-- Industry Content -->
-                <div class="w-full mt-8">
+                <div class="w-full">
                     <!-- Home Services -->
-                    <div x-show="activeIndustry === 'home'" x-transition class="grid lg:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <h3 class="text-3xl font-bold mb-4" x-text="t('industries.home.title')"></h3>
-                            <p class="text-lg text-gray-700 mb-6" x-text="t('industries.home.description')"></p>
+                    <div x-show="activeIndustry === 'home'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100" class="grid lg:grid-cols-2 gap-8 items-center">
+                        <div class="bg-white rounded-3xl p-6 lg:p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+                                    <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl lg:text-2xl font-black text-gray-900" x-text="t('industries.home.title')"></h3>
+                            </div>
+                            <p class="text-sm lg:text-base text-gray-600 mb-6 leading-relaxed" x-text="t('industries.home.description')"></p>
                             <ul class="space-y-3">
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span x-text="t('industries.home.benefit1')"></span>
+                                <li class="flex items-start gap-3 group">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm lg:text-base text-gray-700 font-medium" x-text="t('industries.home.benefit1')"></span>
                                 </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span x-text="t('industries.home.benefit2')"></span>
+                                <li class="flex items-start gap-3 group">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm lg:text-base text-gray-700 font-medium" x-text="t('industries.home.benefit2')"></span>
                                 </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span x-text="t('industries.home.benefit3')"></span>
+                                <li class="flex items-start gap-3 group">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm lg:text-base text-gray-700 font-medium" x-text="t('industries.home.benefit3')"></span>
                                 </li>
                             </ul>
                         </div>
-                        <div class="bg-gradient-to-br from-cyan-100 to-blue-100 rounded-2xl p-8 text-center">
-                            <div class="text-6xl mb-4">🔧</div>
-                            <p class="text-gray-700 italic" x-text="t('industries.home.testimonial')"></p>
+                        <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-3xl p-6 lg:p-8 shadow-xl border border-cyan-100 relative overflow-hidden group hover:shadow-2xl transition-all duration-300">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-200 rounded-full blur-2xl opacity-50 group-hover:opacity-70 transition-opacity"></div>
+                            <div class="relative">
+                                <div class="flex items-center justify-center mb-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all">
+                                        <svg class="w-9 h-9 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-5 shadow-md">
+                                    <p class="text-sm lg:text-base text-gray-800 italic leading-relaxed" x-text="t('industries.home.testimonial')"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Medical -->
-                    <div x-show="activeIndustry === 'medical'" x-transition class="grid lg:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <h3 class="text-3xl font-bold mb-4" x-text="t('industries.medical.title')"></h3>
-                            <p class="text-lg text-gray-700 mb-6" x-text="t('industries.medical.description')"></p>
+                    <div x-show="activeIndustry === 'medical'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100" class="grid lg:grid-cols-2 gap-8 items-center">
+                        <div class="bg-white rounded-3xl p-6 lg:p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+                                    <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl lg:text-2xl font-black text-gray-900" x-text="t('industries.medical.title')"></h3>
+                            </div>
+                            <p class="text-sm lg:text-base text-gray-600 mb-6 leading-relaxed" x-text="t('industries.medical.description')"></p>
                             <ul class="space-y-3">
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span x-text="t('industries.medical.benefit1')"></span>
+                                <li class="flex items-start gap-3 group">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm lg:text-base text-gray-700 font-medium" x-text="t('industries.medical.benefit1')"></span>
                                 </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span x-text="t('industries.medical.benefit2')"></span>
+                                <li class="flex items-start gap-3 group">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm lg:text-base text-gray-700 font-medium" x-text="t('industries.medical.benefit2')"></span>
                                 </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span x-text="t('industries.medical.benefit3')"></span>
+                                <li class="flex items-start gap-3 group">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm lg:text-base text-gray-700 font-medium" x-text="t('industries.medical.benefit3')"></span>
                                 </li>
                             </ul>
                         </div>
-                        <div class="bg-gradient-to-br from-cyan-100 to-blue-100 rounded-2xl p-8 text-center">
-                            <div class="text-6xl mb-4">🏥</div>
-                            <p class="text-gray-700 italic" x-text="t('industries.medical.testimonial')"></p>
+                        <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-3xl p-6 lg:p-8 shadow-xl border border-cyan-100 relative overflow-hidden group hover:shadow-2xl transition-all duration-300">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-200 rounded-full blur-2xl opacity-50 group-hover:opacity-70 transition-opacity"></div>
+                            <div class="relative">
+                                <div class="flex items-center justify-center mb-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all">
+                                        <svg class="w-9 h-9 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-5 shadow-md">
+                                    <p class="text-sm lg:text-base text-gray-800 italic leading-relaxed" x-text="t('industries.medical.testimonial')"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Legal -->
-                    <div x-show="activeIndustry === 'legal'" x-transition class="grid lg:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <h3 class="text-3xl font-bold mb-4" x-text="t('industries.legal.title')"></h3>
-                            <p class="text-lg text-gray-700 mb-6" x-text="t('industries.legal.description')"></p>
+                    <div x-show="activeIndustry === 'legal'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100" class="grid lg:grid-cols-2 gap-8 items-center">
+                        <div class="bg-white rounded-3xl p-6 lg:p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+                                    <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1zm-5 8.274l-.818 2.552c.25.112.526.174.818.174.292 0 .569-.062.818-.174L5 10.274zm10 0l-.818 2.552c.25.112.526.174.818.174.292 0 .569-.062.818-.174L15 10.274z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl lg:text-2xl font-black text-gray-900" x-text="t('industries.legal.title')"></h3>
+                            </div>
+                            <p class="text-sm lg:text-base text-gray-600 mb-6 leading-relaxed" x-text="t('industries.legal.description')"></p>
                             <ul class="space-y-3">
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span x-text="t('industries.legal.benefit1')"></span>
+                                <li class="flex items-start gap-3 group">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm lg:text-base text-gray-700 font-medium" x-text="t('industries.legal.benefit1')"></span>
                                 </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span x-text="t('industries.legal.benefit2')"></span>
+                                <li class="flex items-start gap-3 group">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm lg:text-base text-gray-700 font-medium" x-text="t('industries.legal.benefit2')"></span>
                                 </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span x-text="t('industries.legal.benefit3')"></span>
+                                <li class="flex items-start gap-3 group">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm lg:text-base text-gray-700 font-medium" x-text="t('industries.legal.benefit3')"></span>
                                 </li>
                             </ul>
                         </div>
-                        <div class="bg-gradient-to-br from-cyan-100 to-blue-100 rounded-2xl p-8 text-center">
-                            <div class="text-6xl mb-4">⚖️</div>
-                            <p class="text-gray-700 italic" x-text="t('industries.legal.testimonial')"></p>
+                        <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-3xl p-6 lg:p-8 shadow-xl border border-cyan-100 relative overflow-hidden group hover:shadow-2xl transition-all duration-300">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-200 rounded-full blur-2xl opacity-50 group-hover:opacity-70 transition-opacity"></div>
+                            <div class="relative">
+                                <div class="flex items-center justify-center mb-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all">
+                                        <svg class="w-9 h-9 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1zm-5 8.274l-.818 2.552c.25.112.526.174.818.174.292 0 .569-.062.818-.174L5 10.274zm10 0l-.818 2.552c.25.112.526.174.818.174.292 0 .569-.062.818-.174L15 10.274z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-5 shadow-md">
+                                    <p class="text-sm lg:text-base text-gray-800 italic leading-relaxed" x-text="t('industries.legal.testimonial')"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <!-- Real Estate -->
-                    <div x-show="activeIndustry === 'realestate'" x-transition class="grid lg:grid-cols-2 gap-12 items-center">
-                        <div>
-                            <h3 class="text-3xl font-bold mb-4" x-text="t('industries.realestate.title')"></h3>
-                            <p class="text-lg text-gray-700 mb-6" x-text="t('industries.realestate.description')"></p>
+                    <div x-show="activeIndustry === 'realestate'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100" class="grid lg:grid-cols-2 gap-8 items-center">
+                        <div class="bg-white rounded-3xl p-6 lg:p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+                                    <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl lg:text-2xl font-black text-gray-900" x-text="t('industries.realestate.title')"></h3>
+                            </div>
+                            <p class="text-sm lg:text-base text-gray-600 mb-6 leading-relaxed" x-text="t('industries.realestate.description')"></p>
                             <ul class="space-y-3">
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span x-text="t('industries.realestate.benefit1')"></span>
+                                <li class="flex items-start gap-3 group">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm lg:text-base text-gray-700 font-medium" x-text="t('industries.realestate.benefit1')"></span>
                                 </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span x-text="t('industries.realestate.benefit2')"></span>
+                                <li class="flex items-start gap-3 group">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm lg:text-base text-gray-700 font-medium" x-text="t('industries.realestate.benefit2')"></span>
                                 </li>
-                                <li class="flex items-start gap-3">
-                                    <svg class="w-5 h-5 text-green-600 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-                                    </svg>
-                                    <span x-text="t('industries.realestate.benefit3')"></span>
+                                <li class="flex items-start gap-3 group">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm lg:text-base text-gray-700 font-medium" x-text="t('industries.realestate.benefit3')"></span>
                                 </li>
                             </ul>
                         </div>
-                        <div class="bg-gradient-to-br from-cyan-100 to-blue-100 rounded-2xl p-8 text-center">
-                            <div class="text-6xl mb-4">🏠</div>
-                            <p class="text-gray-700 italic" x-text="t('industries.realestate.testimonial')"></p>
+                        <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-3xl p-6 lg:p-8 shadow-xl border border-cyan-100 relative overflow-hidden group hover:shadow-2xl transition-all duration-300">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-200 rounded-full blur-2xl opacity-50 group-hover:opacity-70 transition-opacity"></div>
+                            <div class="relative">
+                                <div class="flex items-center justify-center mb-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all">
+                                        <svg class="w-9 h-9 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-5 shadow-md">
+                                    <p class="text-sm lg:text-base text-gray-800 italic leading-relaxed" x-text="t('industries.realestate.testimonial')"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Automotive -->
+                    <div x-show="activeIndustry === 'automotive'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100" class="grid lg:grid-cols-2 gap-8 items-center">
+                        <div class="bg-white rounded-3xl p-6 lg:p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+                                    <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
+                                        <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z"/>
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl lg:text-2xl font-black text-gray-900" x-text="t('industries.automotive.title')"></h3>
+                            </div>
+                            <p class="text-sm lg:text-base text-gray-600 mb-6 leading-relaxed" x-text="t('industries.automotive.description')"></p>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3 group">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm lg:text-base text-gray-700 font-medium" x-text="t('industries.automotive.benefit1')"></span>
+                                </li>
+                                <li class="flex items-start gap-3 group">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm lg:text-base text-gray-700 font-medium" x-text="t('industries.automotive.benefit2')"></span>
+                                </li>
+                                <li class="flex items-start gap-3 group">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm lg:text-base text-gray-700 font-medium" x-text="t('industries.automotive.benefit3')"></span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-3xl p-6 lg:p-8 shadow-xl border border-cyan-100 relative overflow-hidden group hover:shadow-2xl transition-all duration-300">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-200 rounded-full blur-2xl opacity-50 group-hover:opacity-70 transition-opacity"></div>
+                            <div class="relative">
+                                <div class="flex items-center justify-center mb-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all">
+                                        <svg class="w-9 h-9 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/>
+                                            <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-5 shadow-md">
+                                    <p class="text-sm lg:text-base text-gray-800 italic leading-relaxed" x-text="t('industries.automotive.testimonial')"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Restaurants -->
+                    <div x-show="activeIndustry === 'restaurants'" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 transform scale-95" x-transition:enter-end="opacity-100 transform scale-100" class="grid lg:grid-cols-2 gap-8 items-center">
+                        <div class="bg-white rounded-3xl p-6 lg:p-8 shadow-xl border border-gray-100 hover:shadow-2xl transition-all duration-300">
+                            <div class="flex items-center gap-3 mb-4">
+                                <div class="w-12 h-12 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg">
+                                    <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM14 11a1 1 0 011 1v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1h-1a1 1 0 110-2h1v-1a1 1 0 011-1z"/>
+                                    </svg>
+                                </div>
+                                <h3 class="text-xl lg:text-2xl font-black text-gray-900" x-text="t('industries.restaurants.title')"></h3>
+                            </div>
+                            <p class="text-sm lg:text-base text-gray-600 mb-6 leading-relaxed" x-text="t('industries.restaurants.description')"></p>
+                            <ul class="space-y-3">
+                                <li class="flex items-start gap-3 group">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm lg:text-base text-gray-700 font-medium" x-text="t('industries.restaurants.benefit1')"></span>
+                                </li>
+                                <li class="flex items-start gap-3 group">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm lg:text-base text-gray-700 font-medium" x-text="t('industries.restaurants.benefit2')"></span>
+                                </li>
+                                <li class="flex items-start gap-3 group">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                                        <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </div>
+                                    <span class="text-sm lg:text-base text-gray-700 font-medium" x-text="t('industries.restaurants.benefit3')"></span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="bg-gradient-to-br from-cyan-50 to-blue-50 rounded-3xl p-6 lg:p-8 shadow-xl border border-cyan-100 relative overflow-hidden group hover:shadow-2xl transition-all duration-300">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-200 rounded-full blur-2xl opacity-50 group-hover:opacity-70 transition-opacity"></div>
+                            <div class="relative">
+                                <div class="flex items-center justify-center mb-4">
+                                    <div class="w-16 h-16 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg transform group-hover:scale-110 group-hover:rotate-6 transition-all">
+                                        <svg class="w-9 h-9 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM14 11a1 1 0 011 1v1h1a1 1 0 110 2h-1v1a1 1 0 11-2 0v-1h-1a1 1 0 110-2h1v-1a1 1 0 011-1z"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-5 shadow-md">
+                                    <p class="text-sm lg:text-base text-gray-800 italic leading-relaxed" x-text="t('industries.restaurants.testimonial')"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -799,7 +1601,7 @@
     <!-- FAQ Section -->
     <section id="faq" class="py-10 lg:py-16 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-2xl lg:text-4xl font-bold text-center mb-8" x-text="t('faq.headline')"></h2>
+            <h2 class="text-2xl lg:text-3xl font-bold text-center mb-8" x-text="t('faq.headline')"></h2>
 
             <div class="max-w-3xl mx-auto space-y-4" x-data="{openFaq: null}">
                 <!-- FAQ 1 -->
@@ -883,8 +1685,8 @@
         </div>
 
         <div class="container mx-auto px-4 relative z-10 text-center">
-            <h2 class="text-2xl lg:text-4xl font-bold mb-4" x-text="t('finalCta.headline')"></h2>
-            <p class="text-base lg:text-lg mb-6 opacity-95" x-text="t('finalCta.subheadline')"></p>
+            <h2 class="text-2xl lg:text-3xl font-bold mb-4" x-text="t('finalCta.headline')"></h2>
+            <p class="text-sm lg:text-base mb-6 opacity-95" x-text="t('finalCta.subheadline')"></p>
 
             <div class="flex flex-col sm:flex-row gap-3 justify-center mb-6">
                 <a href="mailto:hi@ringtide.ai?subject=RingTide Demo Request" class="bg-white text-cyan-600 px-6 py-3 rounded-lg font-bold text-base hover:shadow-xl transition transform hover:-translate-y-1" x-text="t('finalCta.ctaPrimary')"></a>
@@ -939,7 +1741,7 @@
                 </div>
             </div>
 
-            <div class="border-t border-gray-800 pt-6 text-center text-sm">
+            <div class="border-t border-gray-800 pt-2 text-center text-sm">
                 <p x-text="t('footer.copyright')"></p>
             </div>
         </div>
@@ -953,8 +1755,9 @@
 
                 roiCalc: {
                     callsPerDay: 50,
-                    missedPercent: 30,
-                    avgCustomerValue: 400
+                    missedPercent: 20,
+                    avgCustomerValue: 400,
+                    selectedPlan: 299
                 },
 
                 toggleLanguage() {
@@ -969,7 +1772,7 @@
                 },
 
                 calculateSavings() {
-                    return Math.max(0, this.calculateLostRevenue() - 299);
+                    return Math.max(0, this.calculateLostRevenue() - this.roiCalc.selectedPlan);
                 },
 
                 t(key) {
@@ -1014,6 +1817,10 @@
                                     outcome: "Calendar sync + confirmation SMS"
                                 }
                             },
+                            problemSolution: {
+                                headline: "The Problem vs The Solution",
+                                subheadline: "See how RingTide transforms your call handling"
+                            },
                             problem: {
                                 headline: "The Hidden Cost of Missed Calls",
                                 point1: "Lose $6,000+/year from unanswered calls",
@@ -1035,48 +1842,71 @@
                                 callsPerDayUnit: "calls/day",
                                 missedPercent: "What % currently go to voicemail?",
                                 avgValue: "Average value per customer?",
+                                selectPlan: "Select Plan",
+                                planBasic: "Basic - $99/month",
+                                planGrowth: "Growth - $599/month",
+                                planProfessional: "Pro - $299/month",
                                 lostRevenue: "Monthly Lost Revenue",
-                                ringtideCost: "With RingTide (Professional)",
-                                savings: "Your Monthly Savings"
+                                ringtideCost: "With RingTide",
+                                savings: "Your Monthly Savings",
+                                focusNote: "Save money and focus on your business",
+                                conversionNote: "Assuming 10% conversion rate"
                             },
                             pricing: {
                                 headline: "Simple, Transparent Pricing",
                                 subheadline: "No setup fees. No contracts. Cancel anytime.",
                                 monthly: "Monthly",
                                 yearly: "Yearly",
-                                save: "Save 15%",
+                                save: "Pay yearly and save 15%",
                                 month: "month",
                                 billedYearly: "billed yearly",
                                 cta: "Start Free Trial",
                                 basic: {
                                     name: "Basic",
                                     badge: "Small Businesses",
-                                    feature1: "300 minutes/month",
-                                    feature2: "English OR French",
-                                    feature3: "24/7 answering",
-                                    feature4: "Message taking",
-                                    feature5: "Email/SMS notifications"
+                                    feature1: "300 minutes included",
+                                    feature2: "24/7 coverage",
+                                    feature3: "Choose English or French",
+                                    feature4: "FAQ answering",
+                                    feature5: "Message taking",
+                                    feature6: "Email/SMS notifications",
+                                    feature7: "Basic calendar integration (Google/Outlook)",
+                                    feature8: "Call recording & transcription",
+                                    feature9: "Community support (email)",
+                                    feature10: "Overage: $0.50/min"
                                 },
                                 professional: {
                                     name: "Professional",
                                     badge: "Growing Businesses",
                                     featured: "MOST POPULAR",
-                                    feature1: "800 minutes/month",
-                                    feature2: "Bilingual (EN + FR)",
-                                    feature3: "Appointment booking",
-                                    feature4: "Call routing to team",
-                                    feature5: "CRM webhooks",
-                                    feature6: "White-glove setup (<48hrs)"
+                                    feature1: "Everything in Basic PLUS:",
+                                    feature2: "800 minutes included",
+                                    feature3: "Bilingual (EN + FR)",
+                                    feature4: "Appointment booking",
+                                    feature5: "Calendar sync (Google/Outlook/Calendly)",
+                                    feature6: "Call routing to team",
+                                    feature7: "CRM integration (Zapier, HubSpot)",
+                                    feature8: "Custom script adjustments",
+                                    feature9: "Analytics dashboard",
+                                    feature10: "WHITE-GLOVE SETUP: we handle complete setup (<48hrs)",
+                                    feature11: "Priority email support",
+                                    feature12: "Monthly check-in calls",
+                                    feature13: "Overage: $0.45/min"
                                 },
                                 growth: {
                                     name: "Growth",
                                     badge: "Multi-Location",
-                                    feature1: "2,000 minutes/month",
-                                    feature2: "Outbound calling",
-                                    feature3: "Multi-location (up to 5)",
-                                    feature4: "Advanced CRM integration",
-                                    feature5: "Lead qualification",
-                                    feature6: "Waitlist management"
+                                    feature1: "Everything in Professional PLUS:",
+                                    feature2: "2,000 minutes included",
+                                    feature3: "Outbound calling (reminders, follow-ups, campaigns)",
+                                    feature4: "Multi-location support (up to 5)",
+                                    feature5: "Advanced CRM integration",
+                                    feature6: "Lead qualification workflows",
+                                    feature7: "Waitlist management",
+                                    feature8: "Missed call recovery",
+                                    feature9: "Priority phone support",
+                                    feature10: "Ongoing optimization calls (monthly)",
+                                    feature11: "Overage: $0.40/min",
                                 },
                                 footer: {
                                     discount: "Annual Discount:",
@@ -1120,6 +1950,24 @@
                                     benefit2: "Qualify buyers before wasting time",
                                     benefit3: "Instant viewing appointments",
                                     testimonial: "\"I closed 3 deals last month from calls RingTide answered while I was with other clients.\" — James L., Real Estate Agent"
+                                },
+                                automotive: {
+                                    tab: "Automotive",
+                                    title: "Turn Every Call Into a Service Appointment",
+                                    description: "Customers call when their car breaks down, not during your business hours. RingTide books service appointments, provides quotes, and routes urgent repairs 24/7.",
+                                    benefit1: "24/7 service appointment booking",
+                                    benefit2: "Emergency roadside assistance routing",
+                                    benefit3: "Automatic quote requests and follow-up",
+                                    testimonial: "\"We capture 20+ service appointments per week after hours. RingTide pays for itself every month.\" — Tom R., Auto Repair Shop Owner"
+                                },
+                                restaurants: {
+                                    tab: "Restaurants",
+                                    title: "Never Miss a Reservation Again",
+                                    description: "Phone ringing during dinner rush? RingTide handles reservations, takeout orders, and inquiries so your staff can focus on serving guests.",
+                                    benefit1: "24/7 reservation booking",
+                                    benefit2: "Takeout order capture and confirmation",
+                                    benefit3: "Bilingual service for all customers",
+                                    testimonial: "\"RingTide handles our phone during peak hours. We've seen a 30% increase in reservations.\" — Marie D., Restaurant Manager"
                                 }
                             },
                             faq: {
@@ -1208,6 +2056,10 @@
                                     outcome: "Sync calendrier + SMS de confirmation"
                                 }
                             },
+                            problemSolution: {
+                                headline: "Le Problème vs La Solution",
+                                subheadline: "Découvrez comment RingTide transforme la gestion de vos appels"
+                            },
                             problem: {
                                 headline: "Le Coût Caché des Appels Manqués",
                                 point1: "Perdez 6 000$+/an en appels sans réponse",
@@ -1229,48 +2081,72 @@
                                 callsPerDayUnit: "appels/jour",
                                 missedPercent: "Quel % va actuellement à la messagerie vocale?",
                                 avgValue: "Valeur moyenne par client?",
+                                selectPlan: "Sélectionner un Plan",
+                                planBasic: "Basique - 99$/mois",
+                                planGrowth: "Croissance - 599$/mois",
+                                planProfessional: "Pro - 299$/mois",
                                 lostRevenue: "Revenus Mensuels Perdus",
-                                ringtideCost: "Avec RingTide (Professionnel)",
-                                savings: "Vos Économies Mensuelles"
+                                ringtideCost: "Avec RingTide",
+                                savings: "Vos Économies Mensuelles",
+                                focusNote: "Économisez de l'argent et concentrez-vous sur votre entreprise",
+                                conversionNote: "En supposant un taux de conversion de 10%"
                             },
                             pricing: {
                                 headline: "Tarification Simple et Transparente",
                                 subheadline: "Aucuns frais d'installation. Sans engagement. Annulez à tout moment.",
                                 monthly: "Mensuel",
                                 yearly: "Annuel",
-                                save: "Économisez 15%",
+                                save: "Payez annuellement et économisez 15%",
                                 month: "mois",
                                 billedYearly: "facturé annuellement",
                                 cta: "Essai Gratuit",
                                 basic: {
                                     name: "Basique",
                                     badge: "Petites Entreprises",
-                                    feature1: "300 minutes/mois (~15-20 appels/jour)",
-                                    feature2: "Anglais OU Français",
-                                    feature3: "Réponse 24/7",
-                                    feature4: "Prise de messages",
-                                    feature5: "Notifications courriel/SMS"
+                                    feature1: "300 minutes incluses",
+                                    feature2: "Couverture 24/7",
+                                    feature3: "Choisissez anglais ou français",
+                                    feature4: "Réponses aux FAQ",
+                                    feature5: "Prise de messages",
+                                    feature6: "Notifications courriel/SMS",
+                                    feature7: "Intégration calendrier de base (Google/Outlook)",
+                                    feature8: "Enregistrement et transcription d'appels",
+                                    feature9: "Support communautaire (courriel)",
+                                    feature10: "Dépassement: 0,50$/min"
                                 },
                                 professional: {
                                     name: "Professionnel",
                                     badge: "Entreprises en Croissance",
                                     featured: "LE PLUS POPULAIRE",
-                                    feature1: "800 minutes/mois (~40-50 appels/jour)",
-                                    feature2: "Bilingue (EN + FR)",
-                                    feature3: "Réservation de rendez-vous",
-                                    feature4: "Routage d'appels vers l'équipe",
-                                    feature5: "Webhooks CRM",
-                                    feature6: "Installation premium (<48h)"
+                                    feature1: "Tout le plan Basique PLUS:",
+                                    feature2: "800 minutes incluses (~40-50 appels/jour)",
+                                    feature3: "Dépassement: 0,45$/min",
+                                    feature4: "Bilingue (EN + FR)",
+                                    feature5: "Réservation de rendez-vous",
+                                    feature6: "Synchronisation calendrier (Google/Outlook/Calendly)",
+                                    feature7: "Routage d'appels vers l'équipe",
+                                    feature8: "Intégration CRM (Zapier, HubSpot)",
+                                    feature9: "Ajustements de script personnalisés",
+                                    feature10: "Tableau de bord analytique",
+                                    feature11: "INSTALLATION CLÉS EN MAIN: nous gérons la configuration complète (<48h)",
+                                    feature12: "Support courriel prioritaire",
+                                    feature13: "Appels de suivi mensuels"
                                 },
                                 growth: {
                                     name: "Croissance",
                                     badge: "Multi-Emplacements",
-                                    feature1: "2 000 minutes/mois (~100-130 appels/jour)",
-                                    feature2: "Appels sortants",
-                                    feature3: "Multi-emplacements (jusqu'à 5)",
-                                    feature4: "Intégration CRM avancée",
-                                    feature5: "Qualification des prospects",
-                                    feature6: "Gestion des listes d'attente"
+                                    feature1: "Tout le plan Professionnel PLUS:",
+                                    feature2: "2 000 minutes incluses",
+                                    feature3: "Dépassement: 0,40$/min",
+                                    feature4: "Appels sortants (rappels, suivis, campagnes)",
+                                    feature5: "Support multi-emplacements (jusqu'à 5)",
+                                    feature6: "Intégration CRM avancée",
+                                    feature7: "Workflows de qualification des prospects",
+                                    feature8: "Gestion des listes d'attente",
+                                    feature9: "Récupération d'appels manqués",
+                                    feature10: "INSTALLATION CLÉS EN MAIN: Nous gérons la configuration complète (<48h)",
+                                    feature11: "Support téléphonique prioritaire",
+                                    feature12: "Appels d'optimisation continus (mensuels)"
                                 },
                                 footer: {
                                     discount: "Rabais Annuel:",
@@ -1314,6 +2190,24 @@
                                     benefit2: "Qualifiez les acheteurs avant de perdre du temps",
                                     benefit3: "Rendez-vous de visite instantanés",
                                     testimonial: "\"J'ai conclu 3 ventes le mois dernier grâce à des appels que RingTide a répondu pendant que j'étais avec d'autres clients.\" — James L., Agent Immobilier"
+                                },
+                                automotive: {
+                                    tab: "Automobile",
+                                    title: "Transformez Chaque Appel en Rendez-vous",
+                                    description: "Les clients appellent quand leur voiture tombe en panne, pas pendant vos heures d'ouverture. RingTide réserve les rendez-vous de service, fournit des devis et route les réparations urgentes 24/7.",
+                                    benefit1: "Réservation de service 24/7",
+                                    benefit2: "Routage d'assistance routière d'urgence",
+                                    benefit3: "Demandes de devis automatiques et suivi",
+                                    testimonial: "\"Nous capturons 20+ rendez-vous de service par semaine après les heures. RingTide se paie chaque mois.\" — Tom R., Propriétaire d'Atelier Auto"
+                                },
+                                restaurants: {
+                                    tab: "Restaurants",
+                                    title: "Ne Manquez Plus Jamais une Réservation",
+                                    description: "Le téléphone sonne pendant le service? RingTide gère les réservations, les commandes à emporter et les demandes pour que votre personnel puisse se concentrer sur servir les clients.",
+                                    benefit1: "Réservation 24/7",
+                                    benefit2: "Capture et confirmation de commandes à emporter",
+                                    benefit3: "Service bilingue pour tous les clients",
+                                    testimonial: "\"RingTide gère notre téléphone pendant les heures de pointe. Nous avons vu une augmentation de 30% des réservations.\" — Marie D., Gestionnaire de Restaurant"
                                 }
                             },
                             faq: {
