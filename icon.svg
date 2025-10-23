@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#0891B2;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+
+    <!-- Background circle -->
+    <circle cx="256" cy="256" r="240" fill="url(#iconGradient)"/>
+
+    <!-- Wave patterns (scaled for icon) -->
+    <path d="M100 220 Q150 180 200 220 T300 220 T400 220" stroke="white" stroke-width="20" fill="none" stroke-linecap="round"/>
+    <path d="M100 275 Q150 235 200 275 T300 275 T400 275" stroke="white" stroke-width="20" fill="none" stroke-linecap="round" opacity="0.7"/>
+    <path d="M100 330 Q150 290 200 330 T300 330 T400 330" stroke="white" stroke-width="20" fill="none" stroke-linecap="round" opacity="0.4"/>
+</svg>

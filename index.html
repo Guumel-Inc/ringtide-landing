@@ -31,7 +31,8 @@
     <link rel="alternate" hreflang="x-default" href="https://ringtide.ai">
 
     <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><linearGradient id=%22g%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 style=%22stop-color:%230891B2%22/><stop offset=%22100%25%22 style=%22stop-color:%2306B6D4%22/></linearGradient></defs><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22url(%23g)%22/><path d=%22M20 45 Q30 35 40 45 T60 45 T80 45%22 stroke=%22white%22 stroke-width=%224%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M20 55 Q30 45 40 55 T60 55 T80 55%22 stroke=%22white%22 stroke-width=%224%22 fill=%22none%22 stroke-linecap=%22round%22 opacity=%220.7%22/><path d=%22M20 65 Q30 55 40 65 T60 65 T80 65%22 stroke=%22white%22 stroke-width=%224%22 fill=%22none%22 stroke-linecap=%22round%22 opacity=%220.4%22/></svg>">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><linearGradient id=%22g%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 style=%22stop-color:%230891B2%22/><stop offset=%22100%25%22 style=%22stop-color:%2306B6D4%22/></linearGradient></defs><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22url(%23g)%22/><path d=%22M20 45 Q30 35 40 45 T60 45 T80 45%22 stroke=%22white%22 stroke-width=%224%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M20 55 Q30 45 40 55 T60 55 T80 55%22 stroke=%22white%22 stroke-width=%224%22 fill=%22none%22 stroke-linecap=%22round%22 opacity=%220.7%22/><path d=%22M20 65 Q30 55 40 65 T60 65 T80 65%22 stroke=%22white%22 stroke-width=%224%22 fill=%22none%22 stroke-linecap=%22round%22 opacity=%220.4%22/></svg>">
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -156,7 +157,7 @@
 
 <body class="bg-gray-50 font-sans antialiased" x-data="appData()">
     <!-- Header -->
-    <header class="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-100">
+    <header x-show="!showThankYou" class="bg-white/95 backdrop-blur-md shadow-lg sticky top-0 z-50 border-b border-gray-100">
         <nav class="container mx-auto px-4 lg:px-6">
             <div class="flex justify-between items-center py-3 lg:py-4">
                 <!-- Logo -->
@@ -225,6 +226,8 @@
         </nav>
     </header>
 
+    <!-- Main Content (hidden when thank you page is shown) -->
+    <div x-show="!showThankYou">
     <!-- Hero Section -->
     <section class="gradient-bg text-white py-6 lg:py-10 relative overflow-hidden">
         <!-- Animated Background Elements -->
@@ -934,7 +937,7 @@
                             </li>
                         </ul>
 
-                        <a href="mailto:hi@ringtide.ai?subject=RingTide Basic Plan" class="block w-full text-center bg-gradient-to-r from-gray-600 to-gray-700 text-white py-3 rounded-xl font-bold text-sm hover:shadow-lg transition-all duration-300 transform hover:scale-105" x-text="t('pricing.cta')"></a>
+                        <a href="https://buy.stripe.com/eVq5kF8dJ3Prexi4Rd0Jq00" class="block w-full text-center bg-gradient-to-r from-gray-600 to-gray-700 text-white py-3 rounded-xl font-bold text-sm hover:shadow-lg transition-all duration-300 transform hover:scale-105" x-text="t('pricing.cta')"></a>
                     </div>
                 </div>
 
@@ -1065,7 +1068,7 @@
                             </li>
                         </ul>
 
-                        <a href="mailto:hi@ringtide.ai?subject=RingTide Professional Plan" class="block w-full text-center bg-gradient-to-r from-cyan-600 to-blue-600 text-white py-3 rounded-xl font-bold text-sm hover:shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105" x-text="t('pricing.cta')"></a>
+                        <a href="https://buy.stripe.com/6oU5kF2Tpfy94WIerN0Jq01" class="block w-full text-center bg-gradient-to-r from-cyan-600 to-blue-600 text-white py-3 rounded-xl font-bold text-sm hover:shadow-2xl hover:shadow-cyan-500/50 transition-all duration-300 transform hover:scale-105" x-text="t('pricing.cta')"></a>
                     </div>
                 </div>
 
@@ -1179,7 +1182,7 @@
                             </li>
                         </ul>
 
-                        <a href="mailto:hi@ringtide.ai?subject=RingTide Growth Plan" class="block w-full text-center bg-gradient-to-r from-gray-600 to-gray-700 text-white py-3 rounded-xl font-bold text-sm hover:shadow-lg transition-all duration-300 transform hover:scale-105" x-text="t('pricing.cta')"></a>
+                        <a href="https://buy.stripe.com/00w5kFfGb85Hdte2J50Jq02" class="block w-full text-center bg-gradient-to-r from-gray-600 to-gray-700 text-white py-3 rounded-xl font-bold text-sm hover:shadow-lg transition-all duration-300 transform hover:scale-105" x-text="t('pricing.cta')"></a>
                     </div>
                 </div>
             </div>
@@ -1803,9 +1806,188 @@
             </div>
         </div>
     </section>
+    </div>
+    <!-- End Main Content -->
+
+    <!-- Thank You Section (Shown after successful payment) -->
+    <section id="thank-you" x-show="showThankYou" x-transition:enter="transition ease-out duration-500" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" class="min-h-screen gradient-bg text-white py-8 lg:py-12 relative overflow-hidden flex items-center" style="display: none;">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 opacity-20">
+            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <pattern id="thank-you-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                    <circle cx="50" cy="50" r="2" fill="white" opacity="0.5">
+                        <animate attributeName="r" values="1;3;1" dur="3s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="0" cy="0" r="1" fill="white" opacity="0.3"/>
+                    <circle cx="100" cy="100" r="1" fill="white" opacity="0.3"/>
+                </pattern>
+                <rect width="100%" height="100%" fill="url(#thank-you-pattern)"/>
+            </svg>
+        </div>
+
+        <!-- Floating Celebration Elements -->
+        <div class="absolute top-20 left-10 w-32 h-32 bg-white/10 rounded-full blur-2xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl animate-pulse" style="animation-delay: 1s;"></div>
+        <div class="absolute top-1/3 right-1/4 w-24 h-24 bg-white/10 rounded-full blur-2xl animate-pulse" style="animation-delay: 2s;"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <!-- RingTide Logo -->
+                <div class="mb-6 flex justify-center">
+                    <a href="/" class="inline-block">
+                        <svg class="h-10 lg:h-12 w-auto" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="thankYouLogoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#e0f2fe;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <g transform="translate(10, 10)">
+                                <circle cx="50" cy="50" r="48" fill="url(#thankYouLogoGradient)"/>
+                                <path d="M20 45 Q30 35 40 45 T60 45 T80 45" stroke="#0891B2" stroke-width="4" fill="none" stroke-linecap="round"/>
+                                <path d="M20 55 Q30 45 40 55 T60 55 T80 55" stroke="#0891B2" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.7"/>
+                                <path d="M20 65 Q30 55 40 65 T60 65 T80 65" stroke="#0891B2" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.4"/>
+                            </g>
+                            <text x="120" y="70" font-family="Inter, sans-serif" font-size="42" font-weight="700" fill="white">RingTide</text>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Success Icon with Animation -->
+                <div class="mb-5 flex justify-center">
+                    <div class="relative">
+                        <!-- Outer ring animation -->
+                        <div class="absolute inset-0 bg-white/20 rounded-full animate-ping"></div>
+                        <div class="absolute inset-0 bg-white/10 rounded-full animate-pulse"></div>
+
+                        <!-- Success checkmark -->
+                        <div class="relative bg-white text-cyan-600 w-20 h-20 lg:w-24 lg:h-24 rounded-full flex items-center justify-center shadow-2xl transform hover:scale-110 transition-transform duration-300">
+                            <svg class="w-10 h-10 lg:w-12 lg:h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Heading -->
+                <div class="mb-6">
+                    <h1 class="text-2xl lg:text-4xl font-black mb-3 leading-tight">
+                        <span class="block mb-1">🎉 Welcome to RingTide!</span>
+                        <span class="block text-xl lg:text-2xl font-bold opacity-95">Your Payment Was Successful</span>
+                    </h1>
+                    <p class="text-sm lg:text-base opacity-90 max-w-2xl mx-auto leading-relaxed">
+                        Thank you for choosing RingTide! We're excited to help you capture every call and grow your business.
+                    </p>
+                </div>
+
+                <!-- What Happens Next -->
+                <div class="mb-8">
+                    <div class="bg-white/10 backdrop-blur-md rounded-2xl p-6 lg:p-8 border-2 border-white/20 shadow-2xl">
+                        <h2 class="text-xl lg:text-2xl font-black mb-5">What Happens Next?</h2>
+
+                        <div class="grid md:grid-cols-3 gap-4 mb-6">
+                            <!-- Step 1 -->
+                            <div class="relative group">
+                                <div class="absolute -inset-1 bg-white/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-300"></div>
+                                <div class="relative bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/20 hover:border-white/40 transition-all duration-300">
+                                    <div class="bg-white text-cyan-600 w-10 h-10 rounded-full flex items-center justify-center font-black text-lg mb-3 mx-auto shadow-lg">1</div>
+                                    <h3 class="text-base font-black mb-1.5">Check Your Email</h3>
+                                    <p class="text-xs opacity-90">We've sent your receipt and onboarding instructions to your email.</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 2 -->
+                            <div class="relative group">
+                                <div class="absolute -inset-1 bg-white/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-300"></div>
+                                <div class="relative bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/20 hover:border-white/40 transition-all duration-300">
+                                    <div class="bg-white text-cyan-600 w-10 h-10 rounded-full flex items-center justify-center font-black text-lg mb-3 mx-auto shadow-lg">2</div>
+                                    <h3 class="text-base font-black mb-1.5">We'll Contact You</h3>
+                                    <p class="text-xs opacity-90">Our team will reach out within 24 hours to start your setup.</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 3 -->
+                            <div class="relative group">
+                                <div class="absolute -inset-1 bg-white/20 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-300"></div>
+                                <div class="relative bg-white/5 backdrop-blur-sm p-4 rounded-xl border border-white/20 hover:border-white/40 transition-all duration-300">
+                                    <div class="bg-white text-cyan-600 w-10 h-10 rounded-full flex items-center justify-center font-black text-lg mb-3 mx-auto shadow-lg">3</div>
+                                    <h3 class="text-base font-black mb-1.5">Go Live in 48h</h3>
+                                    <p class="text-xs opacity-90">Your AI receptionist will be answering calls in 48-72 hours.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Order Details -->
+                        <div class="bg-white/10 rounded-xl p-4 mb-5 border border-white/20">
+                            <div class="flex flex-col md:flex-row justify-between items-center gap-3">
+                                <div>
+                                    <p class="text-xs opacity-75 mb-1">Order Confirmation</p>
+                                    <p class="font-black text-base" x-text="'Order #' + orderNumber"></p>
+                                </div>
+                                <div>
+                                    <p class="text-xs opacity-75 mb-1">Plan Selected</p>
+                                    <p class="font-black text-base" x-text="selectedPlan"></p>
+                                </div>
+                                <div>
+                                    <p class="text-xs opacity-75 mb-1">Setup Time</p>
+                                    <p class="font-black text-base">48-72 Hours</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Info -->
+                        <div class="flex flex-col sm:flex-row gap-3 justify-center items-center">
+                            <a href="mailto:hi@ringtide.ai" class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2.5 rounded-lg transition-all duration-300 transform hover:scale-105 border border-white/20 text-sm">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                                </svg>
+                                <span class="font-bold">hi@ringtide.ai</span>
+                            </a>
+                            <a href="tel:+16138018291" class="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2.5 rounded-lg transition-all duration-300 transform hover:scale-105 border border-white/20 text-sm">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                                </svg>
+                                <span class="font-bold">613-801-8291</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resources -->
+                <div class="mb-8">
+                    <h2 class="text-xl lg:text-2xl font-black mb-4">While You Wait...</h2>
+                    <div class="grid md:grid-cols-3 gap-3">
+                        <button @click="showThankYou = false; setTimeout(() => document.getElementById('faq').scrollIntoView({ behavior: 'smooth', block: 'start' }), 100)" class="group bg-white/10 backdrop-blur-sm hover:bg-white/20 p-4 rounded-xl border border-white/20 hover:border-white/40 transition-all duration-300 transform hover:scale-105 text-left w-full cursor-pointer">
+                            <div class="text-3xl mb-2">📚</div>
+                            <h3 class="font-black mb-1 text-sm">Read Our FAQ</h3>
+                            <p class="text-xs opacity-90">Learn more about how RingTide works</p>
+                        </button>
+                        <button @click="showThankYou = false; setTimeout(() => document.getElementById('demo').scrollIntoView({ behavior: 'smooth', block: 'start' }), 100)" class="group bg-white/10 backdrop-blur-sm hover:bg-white/20 p-4 rounded-xl border border-white/20 hover:border-white/40 transition-all duration-300 transform hover:scale-105 text-left w-full cursor-pointer">
+                            <div class="text-3xl mb-2">🎧</div>
+                            <h3 class="font-black mb-1 text-sm">Listen to Demos</h3>
+                            <p class="text-xs opacity-90">Hear how natural our AI sounds</p>
+                        </button>
+                        <a href="tel:+16138018291" class="group bg-white/10 backdrop-blur-sm hover:bg-white/20 p-4 rounded-xl border border-white/20 hover:border-white/40 transition-all duration-300 transform hover:scale-105">
+                            <div class="text-3xl mb-2">📞</div>
+                            <h3 class="font-black mb-1 text-sm">Try Our Demo Line</h3>
+                            <p class="text-xs opacity-90">Call and test the AI yourself</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Return to Home -->
+                <div>
+                    <a href="/" class="inline-block bg-white text-cyan-600 px-6 py-3 rounded-lg font-bold text-sm hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                        Return to Homepage
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-b from-gray-900 to-gray-950 text-gray-300 py-10 lg:py-12 relative overflow-hidden">
+    <footer x-show="!showThankYou" class="bg-gradient-to-b from-gray-900 to-gray-950 text-gray-300 py-10 lg:py-12 relative overflow-hidden">
         <!-- Subtle Background Pattern -->
         <div class="absolute inset-0 opacity-5">
             <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
@@ -1927,6 +2109,44 @@
         function appData() {
             return {
                 language: localStorage.getItem('language') || (navigator.language.startsWith('fr') ? 'fr' : 'en'),
+
+                // Thank you page visibility - checks URL parameters for payment success
+                showThankYou: (() => {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    return urlParams.get('payment') === 'success' ||
+                           urlParams.get('success') === 'true' ||
+                           urlParams.has('session_id');
+                })(),
+
+                // Capture plan from URL and format it
+                selectedPlan: (() => {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const plan = urlParams.get('plan');
+                    if (plan) {
+                        // Capitalize first letter and add "Plan" suffix
+                        return plan.charAt(0).toUpperCase() + plan.slice(1) + ' Plan';
+                    }
+                    return 'Professional Plan'; // Default fallback
+                })(),
+
+                // Capture Stripe session ID for order confirmation
+                orderNumber: (() => {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const sessionId = urlParams.get('session_id');
+                    if (sessionId) {
+                        // Use last 9 characters of session ID for readability
+                        return sessionId.slice(-9).toUpperCase();
+                    }
+                    // Fallback to random if no session_id
+                    return Math.random().toString(36).substr(2, 9).toUpperCase();
+                })(),
+
+                // Initialize - scroll to top if showing thank you page
+                init() {
+                    if (this.showThankYou) {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                },
 
                 roiCalc: {
                     callsPerDay: 50,
@@ -2182,7 +2402,7 @@
                                 badge3: "✓ PIPEDA compliant"
                             },
                             footer: {
-                                description: "AI Voice Receptionists for Canadian Businesses",
+                                description: "AI Voice Solutions for Canadian Businesses",
                                 company: "A Guumel Inc. Product\nOttawa, ON | Montreal, QC",
                                 product: "Product",
                                 companySection: "Company",
