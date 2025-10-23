@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="120" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#0891B2;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#06B6D4;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+
+    <!-- Wave circle icon -->
+    <g transform="translate(10, 10)">
+        <circle cx="50" cy="50" r="48" fill="url(#logoGradient)"/>
+        <path d="M20 45 Q30 35 40 45 T60 45 T80 45" stroke="white" stroke-width="4" fill="none" stroke-linecap="round"/>
+        <path d="M20 55 Q30 45 40 55 T60 55 T80 55" stroke="white" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.7"/>
+        <path d="M20 65 Q30 55 40 65 T60 65 T80 65" stroke="white" stroke-width="4" fill="none" stroke-linecap="round" opacity="0.4"/>
+    </g>
+
+    <!-- RingTide text -->
+    <text x="120" y="70" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700" fill="#1F2937">RingTide</text>
+</svg>
