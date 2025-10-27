@@ -266,49 +266,24 @@
                                 <p class="text-xs opacity-90 font-medium" x-text="t('hero.tryItLive.subheadline')"></p>
                             </div>
 
-                            <div class="grid sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
-                                <!-- English Number - Enhanced Card -->
-                                <a :href="'tel:' + contact.phone.demoEnglish" class="bg-white text-gray-900 rounded-2xl p-2 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-rotate-1 group relative overflow-hidden">
+                            <div class="flex justify-center max-w-md mx-auto">
+                                <!-- Demo Number - Enhanced Card (English Only) -->
+                                <a :href="'tel:' + contact.phone.demoEnglish" class="w-full bg-white text-gray-900 rounded-2xl p-3 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 group relative overflow-hidden">
                                     <div class="absolute inset-0 bg-gradient-to-br from-cyan-50 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                                     <div class="relative text-center">
-                                        <div class="flex items-center justify-center gap-2 mb-1">
-                                            <span class="text-lg">🇬🇧</span>
-                                            <span class="font-black text-sm uppercase tracking-wide" x-text="t('hero.tryItLive.english')"></span>
+                                        <div class="flex items-center justify-center gap-2 mb-2">
+                                            <span class="text-lg">📞</span>
+                                            <span class="font-black text-base uppercase tracking-wide" x-text="language === 'en' ? 'Call Now' : 'Appelez Maintenant'"></span>
                                         </div>
-                                        <div class="text-base lg:text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600 mb-1" x-text="contact.phone.demoEnglish.replace(/(\+1)(\d{3})(\d{3})(\d{4})/, '$1 $2-$3-$4')">
-                                        </div>
-                                        <div class="flex justify-center">
-                                            <div class="inline-flex items-center gap-1 text-xs font-semibold text-gray-600 bg-gray-100 px-2 py-0.5 rounded-full">
-                                                <span>📞</span>
-                                                <span x-text="t('hero.tryItLive.tapToCall')"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <!-- French Number - Enhanced Card -->
-                                <a :href="'tel:' + contact.phone.demoFrench" class="bg-white text-gray-900 rounded-2xl p-2 hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:rotate-1 group relative overflow-hidden">
-                                    <div class="absolute inset-0 bg-gradient-to-br from-cyan-50 to-blue-50 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                                    <div class="relative text-center">
-                                        <div class="flex items-center justify-center gap-2 mb-1">
-                                            <svg class="w-4 h-4" viewBox="0 0 48 36" xmlns="http://www.w3.org/2000/svg">
-                                                <rect width="48" height="36" fill="#003F87"/>
-                                                <rect x="0" y="14" width="48" height="8" fill="white"/>
-                                                <rect x="20" y="0" width="8" height="36" fill="white"/>
-                                                <text x="7" y="10" font-size="8" fill="white">⚜</text>
-                                                <text x="33" y="10" font-size="8" fill="white">⚜</text>
-                                                <text x="7" y="30" font-size="8" fill="white">⚜</text>
-                                                <text x="33" y="30" font-size="8" fill="white">⚜</text>
-                                            </svg>
-                                            <span class="font-black text-sm uppercase tracking-wide" x-text="t('hero.tryItLive.french')"></span>
-                                        </div>
-                                        <div class="text-base lg:text-lg font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600 mb-1" x-text="contact.phone.demoFrench.replace(/(\+1)(\d{3})(\d{3})(\d{4})/, '$1 $2-$3-$4')">
+                                        <div class="text-xl lg:text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-blue-600 mb-2" x-text="contact.phone.demoEnglish.replace(/(\+1)(\d{3})(\d{3})(\d{4})/, '$1 $2-$3-$4')">
                                         </div>
                                         <div class="flex justify-center">
-                                            <div class="inline-flex items-center gap-1 text-xs font-semibold text-gray-600 bg-gray-100 px-2 py-0.5 rounded-full">
-                                                <span>📞</span>
-                                                <span x-text="t('hero.tryItLive.tapToCall')"></span>
+                                            <div class="inline-flex items-center gap-1 text-xs font-semibold text-gray-600 bg-gray-100 px-3 py-1 rounded-full">
+                                                <span x-text="language === 'en' ? 'Try our AI receptionist now' : 'Essayez notre réceptionniste IA maintenant'"></span>
                                             </div>
+                                        </div>
+                                        <div class="mt-2 text-xs text-gray-500 italic">
+                                            <span x-text="language === 'en' ? '(English service)' : '(Service en anglais)'"></span>
                                         </div>
                                     </div>
                                 </a>
@@ -2464,7 +2439,7 @@
                             },
                             hero: {
                                 headline: "Ne Manquez Plus Jamais un Appel",
-                                subheadline: "Réceptionniste vocale IA pour entreprises canadiennes. Répond en anglais ou français. En ligne en 48 heures.",
+                                subheadline: "Réceptionniste vocale IA pour entreprises canadiennes. Service en anglais. En ligne en 48 heures.",
                                 tryItLive: {
                                     headline: "🎯 Essayez-le Maintenant",
                                     subheadline: "Appelez notre réceptionniste IA et expérimentez par vous-même - c'est en direct!",
@@ -2513,7 +2488,7 @@
                                 point1: "Répond à chaque appel, 24/7/365",
                                 point2: "Pour 99$/mois (moins de 3 heures de réceptionniste)",
                                 point3: "En ligne en 48 heures (pas des semaines)",
-                                point4: "Bilingue par défaut"
+                                point4: "Voix IA anglaise naturelle"
                             },
                             roi: {
                                 headline: "Calculez Vos Économies",
@@ -2546,7 +2521,7 @@
                                     badge: "Petites Entreprises",
                                     feature1: "300 minutes incluses",
                                     feature2: "Couverture 24/7",
-                                    feature3: "Choisissez anglais ou français",
+                                    feature3: "Voix anglaise naturelle",
                                     feature4: "Réponses aux FAQ",
                                     feature5: "Prise de messages",
                                     feature6: "Notifications courriel/SMS",
@@ -2562,7 +2537,7 @@
                                     feature1: "Tout le plan Basique PLUS:",
                                     feature2: "800 minutes incluses (~40-50 appels/jour)",
                                     feature3: "Dépassement: 0,45$/min",
-                                    feature4: "Bilingue (EN + FR)",
+                                    feature4: "Capacités IA avancées",
                                     feature5: "Réservation de rendez-vous",
                                     feature6: "Synchronisation calendrier (Google/Outlook/Calendly)",
                                     feature7: "Routage d'appels vers l'équipe",
@@ -2616,9 +2591,9 @@
                                 legal: {
                                     tab: "Cabinets Juridiques",
                                     title: "Première Impression Professionnelle, Toujours",
-                                    description: "Les nouveaux clients jugent votre cabinet dans les 30 premières secondes. RingTide offre une réception professionnelle bilingue qui filtre les appels et réserve des consultations 24/7.",
+                                    description: "Les nouveaux clients jugent votre cabinet dans les 30 premières secondes. RingTide offre une réception professionnelle qui filtre les appels et réserve des consultations 24/7.",
                                     benefit1: "Filtrage et qualification des nouveaux prospects",
-                                    benefit2: "Accueil bilingue pour clients québécois",
+                                    benefit2: "Accueil professionnel pour tous les clients",
                                     benefit3: "Gestion d'appels confidentielle et sécurisée",
                                     testimonial: "\"Chaque appel manqué est un cas potentiel de 5K$+. RingTide assure que nous ne perdons plus jamais un prospect.\" — Sarah M., Cabinet Ottawa"
                                 },
@@ -2646,7 +2621,7 @@
                                     description: "Le téléphone sonne pendant le service? RingTide gère les réservations, les commandes à emporter et les demandes pour que votre personnel puisse se concentrer sur servir les clients.",
                                     benefit1: "Réservation 24/7",
                                     benefit2: "Capture et confirmation de commandes à emporter",
-                                    benefit3: "Service bilingue pour tous les clients",
+                                    benefit3: "Service professionnel pour tous les clients",
                                     testimonial: "\"RingTide gère notre téléphone pendant les heures de pointe. Nous avons vu une augmentation de 30% des réservations.\" — Marie D., Gestionnaire de Restaurant"
                                 }
                             },
@@ -2665,16 +2640,16 @@
                                     answer: "Deux options: (1) Prendre un message détaillé et vous notifier immédiatement, ou (2) Transférer vers votre téléphone (plan Professionnel). Vous choisissez."
                                 },
                                 q4: {
-                                    question: "Est-ce vraiment bilingue?",
-                                    answer: "Oui, sur les plans Professionnel et Croissance. RingTide détecte automatiquement la langue de l'appelant et répond en français ou anglais. Pas une traduction — fluidité native dans les deux langues."
-                                },
-                                q5: {
                                     question: "Dois-je changer mon système téléphonique?",
                                     answer: "Non. RingTide fonctionne avec tout système téléphonique. Vous pouvez transférer tous les appels, seulement les appels après les heures, ou seulement quand les lignes sont occupées. Configuration en 5 minutes."
                                 },
-                                q6: {
+                                q5: {
                                     question: "Et si je reçois plus d'appels que mon plan inclut?",
                                     answer: "Aucun problème — nous facturons juste le tarif de dépassement (0,40$-0,50$/min selon le plan). Vous verrez l'utilisation dans votre tableau de bord et nous vous notifierons à 80% de capacité."
+                                },
+                                q6: {
+                                    question: "À quel point l'IA sonne-t-elle naturelle?",
+                                    answer: "Extrêmement naturelle. Notre IA utilise la même technologie qui alimente le service client des entreprises Fortune 500. Le temps de réponse est inférieur à 1 seconde, et la plupart des appelants ne réalisent pas qu'ils parlent avec une IA. Écoutez nos démos pour entendre par vous-même."
                                 }
                             },
                             finalCta: {
