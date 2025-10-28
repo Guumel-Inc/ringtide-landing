@@ -1,0 +1,8 @@
+# robots.txt for RingTide (ringtide.ai)
+# Allow all search engines to crawl the entire site
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://ringtide.ai/sitemap.xml
