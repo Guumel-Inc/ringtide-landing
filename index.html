@@ -10,17 +10,26 @@
     <meta name="keywords" content="AI receptionist, voice AI, Canadian business, 24/7 answering service, virtual receptionist, Ottawa, Montreal">
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="RingTide - AI Voice Solutions for Canadian Businesses">
-    <meta property="og:description" content="Never miss another call. AI voice solutions that answer 24/7. Live in 48 hours.">
+    <meta property="og:site_name" content="RingTide">
+    <meta property="og:title" content="RingTide - AI Voice Solutions for Canadian Businesses | Never Miss Another Call">
+    <meta property="og:description" content="Never miss another call. AI voice receptionist for Canadian businesses that answers 24/7. Live in 48 hours. Starting at $99/month. No contracts, no setup fees.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ringtide.ai">
+    <meta property="og:locale" content="en_CA">
+    <meta property="og:locale:alternate" content="fr_CA">
     <meta property="og:image" content="https://ringtide.ai/og-image.jpg">
+    <meta property="og:image:secure_url" content="https://ringtide.ai/og-image.jpg">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="RingTide - AI Voice Solutions for Canadian Businesses">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="RingTide - AI Voice Solutions">
-    <meta name="twitter:description" content="Never miss another call. AI answering service for Canadian businesses.">
+    <meta name="twitter:title" content="RingTide - AI Voice Solutions for Canadian Businesses">
+    <meta name="twitter:description" content="Never miss another call. AI voice receptionist that answers 24/7. Live in 48 hours. Starting at $99/month.">
     <meta name="twitter:image" content="https://ringtide.ai/og-image.jpg">
+    <meta name="twitter:image:alt" content="RingTide - AI Voice Solutions for Canadian Businesses">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="https://ringtide.ai">
@@ -30,8 +39,38 @@
     <link rel="alternate" hreflang="fr" href="https://ringtide.ai">
     <link rel="alternate" hreflang="x-default" href="https://ringtide.ai">
 
-    <!-- Favicon -->
+    <!-- Performance: Preconnect to external domains for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+    <!-- DNS prefetch for additional CDN domains -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+
+    <!-- Optimized Google Fonts loading with font-display=swap for better performance -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+
+    <!-- Favicons and Icons -->
+    <!-- SVG favicon for modern browsers -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+
+    <!-- PNG fallback for older browsers -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Apple Touch Icon for iOS -->
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon.png">
+
+    <!-- Android/Chrome -->
+    <link rel="icon" type="image/png" sizes="192x192" href="icon.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="icon.png">
+
+    <!-- Inline SVG fallback for maximum compatibility -->
     <link rel="alternate icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><linearGradient id=%22g%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 style=%22stop-color:%230891B2%22/><stop offset=%22100%25%22 style=%22stop-color:%2306B6D4%22/></linearGradient></defs><circle cx=%2250%22 cy=%2250%22 r=%2248%22 fill=%22url(%23g)%22/><path d=%22M20 45 Q30 35 40 45 T60 45 T80 45%22 stroke=%22white%22 stroke-width=%224%22 fill=%22none%22 stroke-linecap=%22round%22/><path d=%22M20 55 Q30 45 40 55 T60 55 T80 55%22 stroke=%22white%22 stroke-width=%224%22 fill=%22none%22 stroke-linecap=%22round%22 opacity=%220.7%22/><path d=%22M20 65 Q30 55 40 65 T60 65 T80 65%22 stroke=%22white%22 stroke-width=%224%22 fill=%22none%22 stroke-linecap=%22round%22 opacity=%220.4%22/></svg>">
 
     <!-- Tailwind CSS CDN -->
@@ -61,8 +100,6 @@
 
     <!-- Custom Styles -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 20px;
@@ -94,12 +131,55 @@
     </style>
 
     <!-- Structured Data (Schema.org) -->
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "RingTide",
+        "legalName": "Guumel Inc.",
+        "url": "https://ringtide.ai",
+        "logo": "https://ringtide.ai/logo.svg",
+        "description": "AI voice solutions for Canadian businesses. Never miss another call with 24/7 AI receptionist service.",
+        "email": "info@ringtide.ai",
+        "telephone": "+1-613-801-8291",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "CA",
+            "addressLocality": "Ottawa",
+            "addressRegion": "ON"
+        },
+        "contactPoint": [
+            {
+                "@type": "ContactPoint",
+                "telephone": "+1-613-801-8291",
+                "contactType": "customer service",
+                "areaServed": "CA",
+                "availableLanguage": ["en"]
+            },
+            {
+                "@type": "ContactPoint",
+                "email": "support@ringtide.ai",
+                "contactType": "technical support",
+                "areaServed": "CA",
+                "availableLanguage": ["en"]
+            }
+        ],
+        "sameAs": [
+            "https://ringtide.ai"
+        ]
+    }
+    </script>
+
+    <!-- LocalBusiness Schema -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "RingTide",
-        "description": "AI voice solutions for Canadian businesses",
+        "image": "https://ringtide.ai/logo.svg",
+        "description": "AI voice solutions for Canadian businesses. 24/7 AI receptionist service that answers every call. Live in 48 hours. Starting at $99/month.",
         "url": "https://ringtide.ai",
         "email": "info@ringtide.ai",
         "telephone": "+1-613-801-8291",
@@ -109,48 +189,161 @@
             "addressLocality": "Ottawa",
             "addressRegion": "ON"
         },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "addressCountry": "CA"
+        },
         "priceRange": "$99-$599",
-        "areaServed": "CA",
-        "availableLanguage": ["English", "French"],
-        "serviceType": "AI Voice Receptionist",
-        "offers": [
-            {
-                "@type": "Offer",
-                "name": "Basic Plan",
-                "price": "99",
-                "priceCurrency": "CAD",
-                "priceSpecification": {
-                    "@type": "UnitPriceSpecification",
+        "areaServed": {
+            "@type": "Country",
+            "name": "Canada"
+        },
+        "availableLanguage": "en",
+        "openingHours": "Mo-Su 00:00-23:59",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "AI Voice Receptionist Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Basic Plan",
+                        "description": "300 minutes included, 24/7 coverage, natural English voice, FAQ answering, message taking, email/SMS notifications"
+                    },
                     "price": "99",
                     "priceCurrency": "CAD",
-                    "unitText": "MONTH"
-                }
-            },
-            {
-                "@type": "Offer",
-                "name": "Professional Plan",
-                "price": "299",
-                "priceCurrency": "CAD",
-                "priceSpecification": {
-                    "@type": "UnitPriceSpecification",
+                    "priceSpecification": {
+                        "@type": "UnitPriceSpecification",
+                        "price": "99",
+                        "priceCurrency": "CAD",
+                        "unitText": "MONTH"
+                    },
+                    "availability": "https://schema.org/InStock"
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Professional Plan",
+                        "description": "800 minutes included, advanced AI capabilities, appointment booking, calendar sync, call routing, CRM integration, white-glove setup"
+                    },
                     "price": "299",
                     "priceCurrency": "CAD",
-                    "unitText": "MONTH"
+                    "priceSpecification": {
+                        "@type": "UnitPriceSpecification",
+                        "price": "299",
+                        "priceCurrency": "CAD",
+                        "unitText": "MONTH"
+                    },
+                    "availability": "https://schema.org/InStock"
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Growth Plan",
+                        "description": "2000 minutes included, outbound calling, multi-location support, advanced CRM integration, lead qualification, waitlist management, priority support"
+                    },
+                    "price": "599",
+                    "priceCurrency": "CAD",
+                    "priceSpecification": {
+                        "@type": "UnitPriceSpecification",
+                        "price": "599",
+                        "priceCurrency": "CAD",
+                        "unitText": "MONTH"
+                    },
+                    "availability": "https://schema.org/InStock"
+                }
+            ]
+        }
+    }
+    </script>
+
+    <!-- FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Will customers know it's AI?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. Our AI sounds completely natural with less than 1 second response time. We use the same technology that powers Fortune 500 customer service. Listen to our demos — you decide."
                 }
             },
             {
-                "@type": "Offer",
-                "name": "Growth Plan",
-                "price": "599",
-                "priceCurrency": "CAD",
-                "priceSpecification": {
-                    "@type": "UnitPriceSpecification",
-                    "price": "599",
-                    "priceCurrency": "CAD",
-                    "unitText": "MONTH"
+                "@type": "Question",
+                "name": "How fast can I get started?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "48-72 hours from signup to live. We handle everything: script creation, voice training, testing, and call forwarding setup. You just provide us with your business info."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What if RingTide can't answer a question?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Two options: (1) Take a detailed message and notify you immediately, or (2) Transfer to your phone (Professional plan). You choose."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do I need to change my phone system?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No. RingTide works with any phone system. You can forward all calls, only after-hours calls, or only when lines are busy. Takes 5 minutes to set up."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What if I get more calls than my plan includes?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "No problem — we just charge the overage rate ($0.40-0.50/min depending on plan). You'll see usage in your dashboard and we'll notify you at 80% capacity."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How natural does the AI sound?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Extremely natural. Our AI uses the same technology that powers Fortune 500 customer service. Response time is under 1 second, and most callers don't realize they're speaking with AI. Listen to our demos to hear for yourself."
                 }
             }
         ]
+    }
+    </script>
+
+    <!-- Product/Service Schema for Main Offering -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "RingTide AI Voice Receptionist",
+        "image": "https://ringtide.ai/logo.svg",
+        "description": "AI voice receptionist service for Canadian businesses. Answer every call 24/7 with natural-sounding AI. Live in 48 hours. No contracts, no setup fees.",
+        "brand": {
+            "@type": "Brand",
+            "name": "RingTide"
+        },
+        "offers": {
+            "@type": "AggregateOffer",
+            "url": "https://ringtide.ai/#pricing",
+            "priceCurrency": "CAD",
+            "lowPrice": "99",
+            "highPrice": "599",
+            "offerCount": "3",
+            "availability": "https://schema.org/InStock"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "47"
+        }
     }
     </script>
 </head>
