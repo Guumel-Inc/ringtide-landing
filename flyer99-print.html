@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RingTide Flyer - Print Version</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        @page {
+            size: letter;
+            margin: 0.4in;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', -apple-system, sans-serif; 
+            background: white;
+            color: #1F2937;
+            width: 7.7in;
+            margin: 0 auto;
+        }
+        
+        .print-container {
+            background: white;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0891B2 0%, #06B6D4 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .logo h1 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 2px;
+        }
+        
+        .logo p {
+            font-size: 12px;
+            font-style: italic;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        
+        .headline {
+            font-size: 26px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 5px;
+        }
+        
+        .subheadline {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .problem-box {
+            background: #FEE2E2;
+            border: 2px solid #DC2626;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .problem-box h2 {
+            font-size: 15px;
+            margin-bottom: 6px;
+            color: #DC2626;
+        }
+        
+        .problem-box p {
+            font-size: 13px;
+            line-height: 1.5;
+            color: #1F2937;
+        }
+        
+        .features {
+            background: #F0F9FF;
+            border: 2px solid #0891B2;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .features h2 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            text-align: center;
+            color: #0891B2;
+        }
+        
+        .green-check {
+            color: #10B981;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: start;
+            gap: 6px;
+            font-size: 12px;
+            line-height: 1.4;
+            color: #1F2937;
+        }
+        
+        .check {
+            font-size: 14px;
+            font-weight: 700;
+            flex-shrink: 0;
+            color: #0891B2;
+        }
+        
+        .bottom-section {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 15px;
+            align-items: center;
+            background: #F9FAFB;
+            border: 2px solid #E5E7EB;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .pricing-box {
+            text-align: center;
+        }
+        
+        .pricing-box h2 {
+            font-size: 14px;
+            margin-bottom: 6px;
+            color: #0891B2;
+        }
+        
+        .price {
+            font-size: 36px;
+            font-weight: 800;
+            line-height: 1;
+            color: #0891B2;
+        }
+        
+        .price-period {
+            font-size: 16px;
+            color: #6B7280;
+        }
+        
+        .price-note {
+            font-size: 10px;
+            color: #6B7280;
+            margin-top: 4px;
+        }
+        
+        .qr-box {
+            background: white;
+            padding: 8px;
+            border: 2px solid #0891B2;
+            border-radius: 10px;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .qr-box img {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .qr-label {
+            text-align: center;
+            font-size: 10px;
+            color: #6B7280;
+            margin-top: 3px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #0891B2 0%, #06B6D4 100%);
+            color: white;
+            padding: 12px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .cta-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .contact-info {
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-size: 11px;
+            color: #6B7280;
+        }
+        
+        .badge {
+            background: #F3F4F6;
+            padding: 5px 12px;
+            border-radius: 15px;
+            border: 1px solid #E5E7EB;
+        }
+        
+        @media print {
+            body {
+                width: 100%;
+            }
+            .print-container {
+                page-break-after: avoid;
+            }
+            a {
+                text-decoration: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="print-container">
+        <div class="header">
+            <div class="logo">
+                <h1>RingTide</h1>
+                <p>always there</p>
+            </div>
+            <h2 class="headline">Never Miss Another Call</h2>
+            <p class="subheadline">AI Voice Receptionist • Live in 48 Hours</p>
+        </div>
+        
+        <div class="problem-box">
+            <h2>❌ The Problem</h2>
+            <p>Canadian SMBs lose <strong>$10,500+/month</strong> from missed calls. Customers hang up after 3 rings and call your competitors.</p>
+        </div>
+        
+        <div class="features">
+            <h2><span class="green-check">✓</span> The Solution</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <span class="check">✓</span>
+                    <span><strong>Answer 24/7/365</strong> - Never miss a call</span>
+                </div>
+                <div class="feature-item">
+                    <span class="check">✓</span>
+                    <span><strong>Book appointments</strong> - Syncs to calendar</span>
+                </div>
+                <div class="feature-item">
+                    <span class="check">✓</span>
+                    <span><strong>Email/SMS summaries</strong> - Get call details instantly</span>
+                </div>
+                <div class="feature-item">
+                    <span class="check">✓</span>
+                    <span><strong>Sounds 100% human</strong> - Customers can't tell</span>
+                </div>
+                <div class="feature-item">
+                    <span class="check">✓</span>
+                    <span><strong>Live in 48 hours</strong> - No long setup</span>
+                </div>
+                <div class="feature-item">
+                    <span class="check">✓</span>
+                    <span><strong>No contracts</strong> - Cancel anytime</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bottom-section">
+            <div class="pricing-box">
+                <h2>Starting at</h2>
+                <div class="price">$99<span class="price-period">/mo</span></div>
+                <p class="price-note">Less than 3 hours of receptionist time</p>
+            </div>
+            
+            <div>
+                <div class="qr-box">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https://ringtide.ai" alt="Scan for demos">
+                </div>
+                <p class="qr-label">Scan for live demos</p>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <div class="cta-title">🎧 Hear Live Demos & Get Started</div>
+            <div class="contact-info">
+                📧 <a href="mailto:info@ringtide.ai">info@ringtide.ai</a><br>
+                📞 <a href="tel:+16136219266">613-621-9266</a><br>
+                🌐 ringtide.ai
+            </div>
+        </div>
+        
+        <div class="badges">
+            <span class="badge">🇨🇦 Canadian-owned</span>
+            <span class="badge">🔒 PIPEDA Compliant</span>
+            <span class="badge">⚡ Ottawa-based</span>
+        </div>
+    </div>
+    
+    <script>
+        // Auto-print when page loads (optional)
+        // window.onload = function() { window.print(); }
+    </script>
+</body>
+</html>
